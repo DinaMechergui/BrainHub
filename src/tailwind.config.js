@@ -1,5 +1,9 @@
 module.exports = {
-  content: ["./*.html"],
+
+  content: [
+    "./*.html",
+    "./src/**/*.{js,jsx,ts,tsx,vue}",
+  ],
   theme: {
     extend: {
       // 🎨 PALETTE DE COULEURS

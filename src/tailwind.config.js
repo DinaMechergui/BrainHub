@@ -6,7 +6,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // 🎨 PALETTE DE COULEURS
       colors: {
         background: "#FFFFFF",
         primary: "#667EEA",
@@ -18,26 +17,26 @@ module.exports = {
         navy: "#000080"
       },
 
-      // 🔤 TYPOGRAPHIE
+ 
       fontFamily: {
         roboto: ["Roboto", "sans-serif"],
         raleway: ["Raleway", "sans-serif"]
       },
 
-      // 🟦 RADIUS GLOBAL 30%
+  
       borderRadius: {
         '30': "30px",
         '30p': "30%", 
       },
 
-      // 📏 ICONES (Taille standard)
+ 
       spacing: {
         icon: "24px",
         "icon-lg": "32px",
         "icon-sm": "16px"
       },
 
-      // 🟣 TAILLES DES CARTES
+//cards
       width: {
         card: "350px",
         "card-lg": "450px",
@@ -48,10 +47,10 @@ module.exports = {
     },
   },
 
-  // 📌 POUR AJOUTER LES COMPOSANTS PERSONNALISÉS
+  //  POUR AJOUTER LES COMPOSANTS PERSONNALISÉS
   plugins: [
     function ({ addComponents }) {
-      // 🔵 BOUTONS
+      //  BOUTONS
       const buttons = {
         ".btn": {
           padding: ".6rem 1.2rem",
@@ -82,7 +81,7 @@ module.exports = {
         }
       };
 
-      // 🔶 CARDS
+      //  CARDS
       const cards = {
         ".card": {
           backgroundColor: "#fff",

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BrainHub – Notes</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS compilé -->
+  <link rel="stylesheet" href="../../src/output.css">
+</head>
+<body class="font-raleway bg-panel text-gray-800">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 h-14 z-50 bg-primary text-white flex items-center px-6 shadow-soft-1">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+        <img src="https://via.placeholder.com/22/667EEA/FFFFFF?text=B" alt="logo" class="w-5 h-5">
+      </div>
+      <span class="font-bold text-lg tracking-tight">BrainHub</span>
+    </div>
+
+    <nav class="ml-8 hidden lg:flex gap-8 text-sm">
+      <a class="hover:underline" href="#">Accueil</a>
+      <a class="hover:underline" href="#">A propos</a>
+      <a class="hover:underline" href="#">Contact</a>
+    </nav>
+
+    <div class="ml-auto flex items-center gap-4">
+      <div class="flex items-center bg-white rounded-pill px-3 py-1 w-96 max-w-xs">
+        <i class="fas fa-search text-gray-400 mr-3"></i>
+        <input class="bg-transparent w-full outline-none text-sm" placeholder="Search for anything..." />
+      </div>
+      <button id="openLeft" class="lg:hidden"><i class="fas fa-bars"></i></button>
+    </div>
+  </header>
+
+  <div class="pt-16 flex gap-6">
+
+    <!-- LEFT SIDEBAR -->
+    <aside id="leftSidebar" class="hidden left-width sidebar-left fixed left-4 top-20 bottom-6 p-6 overflow-auto z-40 bg-primary text-white rounded-2xl shadow-soft-1">
+      <div class="bg-white text-gray-800 rounded-2xl p-4 shadow-soft-2">
+        <h3 class="text-base font-semibold text-center">Salon “Java POO Avancée”</h3>
+      </div>
+
+      <div class="mt-6 bg-white rounded-2xl p-5 shadow-soft-2">
+        <div class="mb-4 space-y-3">
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">Matière :</span>
+            <span class="text-sm font-medium text-red-600">Java</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">Statut :</span>
+            <div class="flex items-center gap-2">
+              <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+              <span class="text-sm text-green-600 font-medium">Actif</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-sm text-gray-600">Membre Actifs :</span>
+            <span class="text-sm text-gray-600">12/15</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <h4 class="text-white text-lg font-semibold mb-4">Menu Salon</h4>
+
+        <button class="w-full mb-4 py-4 bg-white/30 rounded-xxl flex items-center gap-4 px-5">
+          <i class="fas fa-file-alt text-white"></i>
+          <span class="text-white font-medium">Notes Partagées</span>
+        </button>
+
+        <button class="w-full mb-4 py-4 bg-white/20 rounded-xxl flex items-center gap-4 px-5">
+          <i class="fas fa-question text-white"></i>
+          <span class="text-white font-medium">Quiz de groupe</span>
+        </button>
+      </div>
+
+      <div class="mt-6">
+        <h4 class="text-white text-lg font-semibold mb-4">Statistiques</h4>
+        <div class="w-full py-4 bg-white/20 rounded-xxl flex items-center gap-3 px-5">
+          <i class="fas fa-chart-bar text-white"></i>
+          <span class="text-white">Voir les statistiques</span>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <button id="closeLeft" class="w-full bg-white text-primary py-2 rounded-btn font-medium shadow-soft-2">Retour</button>
+      </div>
+    </aside>
+
+    <!-- CENTER CONTENT -->
+    <main class="flex-1 max-w-6xl mx-auto px-6 relative z-10">
+      <div class="bg-white rounded-2xl p-6 min-h-[72vh] shadow-soft-2">
+        <div class="flex justify-between items-start">
+          <div>
+            <nav class="text-sm text-gray-500 mb-2">Accueil &gt; <span class="text-black font-medium">Notes</span></nav>
+            <h1 class="text-2xl font-bold mb-1">Note De Révision : "Heritage Et Polymorphisme"</h1>
+          </div>
+          <div>
+            <button class="btn-pill bg-primary text-white rounded-btn px-6 py-2">Lancer une Session Vidéo</button>
+          </div>
+        </div>
+
+        <div class="mt-8 bg-white rounded-2xl relative w-11/12 max-w-5xl mx-auto p-8 min-h-[400px] flex items-center justify-center">
+          <div class="bg-paleBlue rounded-xxl p-6 w-4/5 max-h-[300px] overflow-auto relative z-10">
+            <pre class="font-roboto text-sm text-[#2b3b5c] leading-relaxed bg-transparent overflow-auto rounded-md">
+class Animal {
+    void parler() { System.out.println("Je suis un animal"); }
+} 
+class Chien extends Animal {
+    void parler() { System.out.println("Wouff"); }
+}
+public class Main {
+    public static void main(String[] args) {
+        new Chien().parler();
+    }
+}
+            </pre>
+          </div>
+
+          <div class="absolute top-full mt-[-30px] w-64 bubble p-4 flex items-start gap-3 z-20">
+            <div class="w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs">i</div>
+            <div>
+              <div class="text-sm font-semibold">Objectif</div>
+              <div class="text-xs text-gray-600">Réviser le chapitre Héritage & Polymorphisme</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-20 flex justify-between items-center">
+          <button id="salonBtn" class="btn-pill border border-primary text-primary bg-white px-6 py-2">Salon</button>
+                    <button id="chatBtn" class="btn-pill border border-primary text-primary bg-white px-6 py-2">Chat</button>
+
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+     <!-- FOOTER -->
+
+
+    </main>
+
+    <!-- RIGHT CHAT -->
+       <!-- RIGHT CHAT -->
+    <aside id="rightChat" class="right-width fixed right-6 top-20 bottom-6 bg-white rounded-2xl p-4 shadow-soft-2 overflow-hidden hidden">
+      <div class="mb-4">
+        <button id="closeChat" class="btn btn-secondary text-sm">Retour</button>
+      </div>
+      <div class="space-y-4 mb-6 overflow-y-auto h-[60%] pr-2">
+        <!-- Messages -->
+      </div>
+      <div class="mt-auto">
+        <input class="input w-full" placeholder="Tapez votre message..." />
+      </div>
+    </aside>
+  </div>
+    <div id="overlay" class="fixed inset-0 bg-black/40 hidden z-30"></div>
+
+  </div>
+
+  <div id="overlay" class="fixed inset-0 bg-black/40 hidden z-30"></div>
+
+  <script src="https://kit.fontawesome.com/a2d9b8d3c8.js" crossorigin="anonymous"></script>
+</body>
+<footer class="w-full bg-primary text-white p-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div>
+      <h4 class="font-semibold">BrainHub</h4>
+      <p class="text-sm mt-2">Plateforme collaborative d'apprentissage</p>
+      <p class="text-xs mt-4">© 2025 Tous droits réservés</p>
+    </div>
+    <div>
+      <h4 class="font-semibold">Aide</h4>
+      <p class="text-sm mt-2">FAQ</p>
+      <p class="text-sm">Contact</p>
+    </div>
+    <div>
+      <h4 class="font-semibold">Contact</h4>
+      <p class="text-sm mt-2">+21651677171</p>
+      <p class="text-sm">brainhub@gmail.com</p>
+    </div>
+  </div>
+</footer>
+</html>
+
+<script>
+const openLeft = document.getElementById('openLeft');
+const closeLeft = document.getElementById('closeLeft');
+const salonBtn = document.getElementById('salonBtn');
+
+const openRight = document.getElementById('chatBtn'); // ton bouton Chat
+const closeRight = document.getElementById('closeChat'); // si tu as un bouton fermer dans le chat
+
+const leftSidebar = document.getElementById('leftSidebar');
+const rightChat = document.getElementById('rightChat');
+const overlay = document.getElementById('overlay');
+
+// Fonction pour ouvrir sidebar gauche
+function showLeft() {
+  leftSidebar.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+}
+
+// Fonction pour fermer sidebar gauche
+function hideLeft() {
+  leftSidebar.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
+// Fonction pour ouvrir sidebar droite
+function showRight() {
+  rightChat.classList.remove('hidden');
+  overlay.classList.remove('hidden');
+}
+
+// Fonction pour fermer sidebar droite
+function hideRight() {
+  rightChat.classList.add('hidden');
+  overlay.classList.add('hidden');
+}
+
+// Événements
+openLeft?.addEventListener('click', showLeft);
+closeLeft?.addEventListener('click', hideLeft);
+salonBtn?.addEventListener('click', showLeft);
+
+openRight?.addEventListener('click', showRight);
+closeRight?.addEventListener('click', hideRight);
+
+// Clic sur overlay ferme tout
+overlay?.addEventListener('click', () => {
+  hideLeft();
+  hideRight();
+});
+</script>
+

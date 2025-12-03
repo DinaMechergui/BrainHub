@@ -14,22 +14,27 @@
 <body class="font-raleway bg-panel text-gray-800">
 
   <!-- HEADER -->
-  <header class="header-primary w-full py-2 h-16 flex items-center">
+ <header class="header-primary w-full py-2 h-16 flex items-center">
   <div class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full">
 
-    <!-- LOGO agrandi mais limité -->
-    <img src="../pages/assets/logo.png" 
-         alt="Logo" 
-         class="max-h-19">
+    <!-- LOGO à gauche -->
+    <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32">
 
-    <nav class="flex items-center gap-8">
+    <!-- NAV centré -->
+    <nav class="flex items-center gap-8 mx-auto">
       <a href="#" class="text-white">Accueil</a>
       <a href="#" class="text-white">A propos</a>
       <a href="#" class="text-white">Contact</a>
     </nav>
 
-    <div class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
-      <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-56">
+    <!-- SEARCH + LOGOUT à droite -->
+    <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
+        <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-56">
+      </div>
+      <button class="w-10 h-10 rounded-full bg-coral flex items-center justify-center hover:bg-coral/80 transition">
+        <img src="../pages/assets/logout.png" class="w-5 h-5" alt="Logout"/>
+      </button>
     </div>
 
   </div>
@@ -91,21 +96,31 @@
     </aside>
 
     <!-- CENTER CONTENT -->
-    <main class="flex-1 max-w-6xl mx-auto px-6 relative z-10">
-      <div class="bg-white rounded-2xl p-6 min-h-[72vh] shadow-soft-2">
-        <div class="flex justify-between items-start">
-          <div>
-            <nav class="text-sm text-gray-500 mb-2">Accueil &gt; <span class="text-black font-medium">Notes</span></nav>
-            <h1 class="text-2xl font-bold mb-1">Note De Révision : "Heritage Et Polymorphisme"</h1>
-          </div>
-          <div>
-            <button class="btn-pill bg-primary text-white rounded-btn px-6 py-2">Lancer une Session Vidéo</button>
-          </div>
-        </div>
+   <main class="flex-1 max-w-6xl mx-auto px-6 relative z-10">
+  <div class="bg-white rounded-2xl p-6 min-h-[72vh] shadow-soft-2">
+    
+    <div class="flex justify-between items-start">
+      <div>
+        <nav class="text-sm text-gray-500 mb-2">
+          Accueil &gt; <span class="text-black font-medium">Notes</span>
+        </nav>
+        <h1 class="text-2xl font-bold mb-1">
+          Note De Révision : "Heritage Et Polymorphisme"
+        </h1>
+      </div>
+      <div>
+        <button class="btn-pill bg-primary text-white rounded-btn px-6 py-2">
+          Lancer une Session Vidéo
+        </button>
+      </div>
+    </div>
 
-        <div class="mt-8 bg-white rounded-2xl relative w-11/12 max-w-5xl mx-auto p-8 min-h-[400px] flex items-center justify-center">
-          <div class="bg-paleBlue rounded-xxl p-6 w-4/5 max-h-[300px] overflow-auto relative z-10">
-            <pre class="font-roboto text-sm text-[#2b3b5c] leading-relaxed bg-transparent overflow-auto rounded-md">
+    <!-- CARD PRINCIPALE AVEC CODE -->
+<div class="mt-8 bg-white rounded-2xl relative w-11/12 max-w-5xl mx-auto p-8 flex flex-col items-center">
+
+  <!-- BLOC DU CODE (plus petit) -->
+  <div class="bg-paleBlue rounded-xxl p-6 w-4/5 min-h-[200px] overflow-auto relative z-10">
+    <pre class="font-roboto text-sm text-[#2b3b5c] leading-relaxed bg-transparent overflow-auto rounded-md">
 class Animal {
     void parler() { System.out.println("Je suis un animal"); }
 } 
@@ -117,30 +132,32 @@ public class Main {
         new Chien().parler();
     }
 }
-            </pre>
-          </div>
+    </pre>
+  </div>
 
-          <div class="absolute top-full mt-[-30px] w-64 bubble p-4 flex items-start gap-3 z-20">
-            <div class="w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs">i</div>
-            <div>
-              <div class="text-sm font-semibold">Objectif</div>
-              <div class="text-xs text-gray-600">Réviser le chapitre Héritage & Polymorphisme</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-20 flex justify-between items-center">
-          <button id="salonBtn" class="btn-pill border border-primary text-primary bg-white px-6 py-2">Salon</button>
-                    <button id="chatBtn" class="btn-pill border border-primary text-primary bg-white px-6 py-2">Chat</button>
-
-        </div>
+  <!-- BUBBLE COLLÉE AU BLOC -->
+<div class=" left-1/2 -translate-x-[40%]  -mt-8 w-64 bubble p-2 flex items-start gap-3 z-20">
+    <div class="w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs">i</div>
+    <div>
+      <div class="text-sm font-semibold">Objectif</div>
+      <div class="text-xs text-gray-600">
+        Réviser le chapitre Héritage & Polymorphisme
       </div>
+    </div>
+  </div>
 
-      <!-- FOOTER -->
-     <!-- FOOTER -->
+</div>
 
 
-    </main>
+    <!-- BOUTONS BAS -->
+    <div class="mt-20 flex justify-between items-center">
+      <button id="salonBtn" class="btn-pill border border-primary text-primary bg-white px-6 py-2">Salon</button>
+      <button id="chatBtn" class="btn-pill border border-primary text-primary bg-white px-6 py-2">Chat</button>
+    </div>
+
+  </div>
+</main>
+
 
     <!-- RIGHT CHAT -->
        <!-- RIGHT CHAT -->

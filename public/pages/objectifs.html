@@ -15,19 +15,24 @@
 <header class="header-primary w-full py-2 h-16 flex items-center">
   <div class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full">
 
-    <!-- LOGO agrandi mais limité -->
-    <img src="../pages/assets/logo.png" 
-         alt="Logo" 
-         class="max-h-19">
+    <!-- LOGO à gauche -->
+    <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32">
 
-    <nav class="flex items-center gap-8">
+    <!-- NAV centré -->
+    <nav class="flex items-center gap-8 mx-auto">
       <a href="#" class="text-white">Accueil</a>
       <a href="#" class="text-white">A propos</a>
       <a href="#" class="text-white">Contact</a>
     </nav>
 
-    <div class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
-      <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-56">
+    <!-- SEARCH + LOGOUT à droite -->
+    <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
+        <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-56">
+      </div>
+      <button class="w-10 h-10 rounded-full bg-coral flex items-center justify-center hover:bg-coral/80 transition">
+        <img src="../pages/assets/logout.png" class="w-5 h-5" alt="Logout"/>
+      </button>
     </div>
 
   </div>

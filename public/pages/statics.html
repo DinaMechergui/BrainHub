@@ -20,11 +20,12 @@
       }
     </style>
   </head>
+
   <body class="min-h-screen flex flex-col bg-white">
-    <!-- BOUTON SIDEBAR FIXE EN HAUT À GAUCHE (hors du header) -->
+    <!-- Bouton hamburger toujours visible -->
     <button
       id="sidebar-toggle"
-      class="fixed top-20 left-6 z-50 p-3 bg-[#667EEA] text-white rounded-full shadow-xl hover:bg-[#764BA2] transition"
+      class="fixed top-20 left-4 z-50 p-3 bg-[#667EEA] text-white rounded-full shadow-xl hover:bg-[#764BA2] transition"
     >
       <svg
         class="w-7 h-7"
@@ -41,33 +42,28 @@
       </svg>
     </button>
 
-    <!-- HEADER EXACTEMENT COMME DANS TON DERNIER CODE -->
-    <header
-      class="header-primary w-full py-2 h-16 flex items-center bg-[#667EEA]"
-    >
+    <!-- Header responsive -->
+    <header class="w-full py-3 bg-[#667EEA] shadow-md">
       <div
-        class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full"
+        class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4"
       >
-        <!-- Logo depuis ton dossier exact -->
         <img
           src="C:\Users\slima\Desktop\BrainHub\public\pages\assets/logo.png"
           alt="BrainHub Logo"
-          class="max-h-20"
+          class="h-12 sm:h-16"
         />
-
-        <nav class="flex items-center gap-8 text-white font-medium">
+        <nav class="hidden sm:flex gap-6 text-white font-medium">
           <a href="#" class="hover:opacity-80">Accueil</a>
           <a href="#" class="hover:opacity-80">À propos</a>
           <a href="#" class="hover:opacity-80">Contact</a>
         </nav>
-
         <div
-          class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full shadow-md"
+          class="flex items-center gap-2 bg-white rounded-full shadow px-3 py-2 w-full max-w-xs"
         >
           <input
             type="text"
-            placeholder="Search for anything..."
-            class="outline-none bg-transparent w-56"
+            placeholder="Search..."
+            class="outline-none flex-1 text-sm"
           />
           <svg
             class="w-5 h-5 text-gray-600"
@@ -86,7 +82,7 @@
       </div>
     </header>
 
-    <!-- Sidebar (cachée par défaut) -->
+    <!-- Sidebar cachée par défaut sur TOUS les écrans -->
     <aside
       id="sidebar"
       class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out rounded-r-2xl"
@@ -94,7 +90,7 @@
       <div class="p-6 space-y-4 mt-20">
         <a
           href="#"
-          class="block w-full py-3 bg-[#667EEA] text-white text-center rounded-full font-medium hover:bg-[#764BA2]"
+          class="block w-full py-3 bg-[#667EEA text-white text-center rounded-full font-medium hover:bg-[#764BA2]"
           >Matières</a
         >
         <a
@@ -117,50 +113,55 @@
     <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 
     <!-- Breadcrumb -->
-    <div class="max-w-7xl mx-auto px-6 py-4 text-sm text-gray-600">
+    <div class="max-w-7xl mx-auto px-4 py-4 text-sm text-gray-600">
       <a href="#" class="hover:text-[#667EEA]">Accueil</a> >
       <a href="#" class="hover:text-[#667EEA]">Statistique</a> >
       <span class="text-[#667EEA]">Statistique Temps</span>
     </div>
 
-    <!-- Main Content -->
-    <main class="flex-1 max-w-7xl mx-auto px-6 py-6">
-      <div class="flex justify-between items-center mb-8">
-        <h1 class="text-3xl font-bold text-gray-900">
+    <!-- Main content -->
+    <main class="flex-1 max-w-7xl mx-auto px-4 pb-10">
+      <!-- Titre + Select -->
+      <div
+        class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-10"
+      >
+        <h1 class="text-2xl sm:text-3xl font-bold text-center sm:text-left">
           Vos Statistiques: <span class="text-[#764BA2]">Aujourd'hui</span>
         </h1>
         <select
-          class="rounded-full px-6 py-3 bg-white border border-[#764BA2] text-[#764BA2] font-medium shadow-sm"
+          class="w-full max-w-xs sm:w-auto px-6 py-3 rounded-full border border-[#764BA2] text-[#764BA2] font-medium bg-white shadow"
         >
           <option>Select Matière</option>
         </select>
       </div>
 
-      <h2 class="text-2xl font-bold text-[#764BA2] mb-6 text-center">
+      <h2 class="text-2xl font-bold text-[#764BA2] text-center mb-8">
         Matières:
       </h2>
 
-      <!-- Barres avec alignement parfait -->
-      <div class="max-w-4xl mx-auto space-y-8">
+      <!-- Cartes temps (parfaites même sur mobile) -->
+      <div class="space-y-10 max-w-3xl mx-auto">
         <!-- UX/UI Design -->
-        <div>
-          <div class="flex justify-end mb-3 text-sm text-gray-600">
-            <span class="w-28 text-center">Dernière Révision</span>
-            <span class="w-28 text-center ml-8">Nouveau progrès</span>
+        <div
+          class="bg-white border-2 border-[#667EEA] rounded-3xl p-6 shadow-lg"
+        >
+          <div
+            class="text-center sm:text-right text-sm text-gray-600 mb-3 space-y-1 sm:space-y-0"
+          >
+            <div>Dernière Révision</div>
+            <div>Nouveau progrès</div>
           </div>
           <div
-            class="bg-white border-2 border-[#667EEA] rounded-full py-5 px-8 shadow-lg flex items-center justify-between"
+            class="flex flex-col sm:flex-row items-center justify-between gap-4"
           >
-            <span class="text-xl font-semibold text-gray-800"
-              >UX/UI Design</span
-            >
-            <div class="flex space-x-8">
+            <span class="text-lg font-semibold">UX/UI Design</span>
+            <div class="flex gap-4">
               <span
-                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
+                class="bg-[#00D4FF] text-white font-bold px-6 py-3 rounded-full"
                 >2h</span
               >
               <span
-                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
+                class="bg-[#00D4FF] text-white font-bold px-6 py-3 rounded-full"
                 >1h</span
               >
             </div>
@@ -168,24 +169,26 @@
         </div>
 
         <!-- Mathématique -->
-        <div>
-          <div class="flex justify-end mb-3 text-sm text-gray-600">
-            <span class="w-28 text-center">Dernière Révision</span>
-            <span class="w-28 text-center ml-8">Nouveau progrès</span>
+        <div
+          class="bg-white border-2 border-[#667EEA] rounded-3xl p-6 shadow-lg"
+        >
+          <div
+            class="text-center sm:text-right text-sm text-gray-600 mb-3 space-y-1 sm:space-y-0"
+          >
+            <div>Dernière Révision</div>
+            <div>Nouveau progrès</div>
           </div>
           <div
-            class="bg-white border-2 border-[#667EEA] rounded-full py-5 px-8 shadow-lg flex items-center justify-between"
+            class="flex flex-col sm:flex-row items-center justify-between gap-4"
           >
-            <span class="text-xl font-semibold text-gray-800"
-              >Mathématique</span
-            >
-            <div class="flex space-x-8">
+            <span class="text-lg font-semibold">Mathématique</span>
+            <div class="flex gap-4">
               <span
-                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
+                class="bg-[#00D4FF] text-white font-bold px-6 py-3 rounded-full"
                 >2h</span
               >
               <span
-                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
+                class="bg-[#00D4FF] text-white font-bold px-6 py-3 rounded-full"
                 >3h</span
               >
             </div>
@@ -194,116 +197,114 @@
       </div>
 
       <!-- Historique -->
-      <h2 class="text-2xl font-bold text-[#764BA2] mt-16 mb-6">Historique:</h2>
+      <h2 class="text-2xl font-bold text-[#764BA2] text-center mt-16 mb-8">
+        Historique:
+      </h2>
 
-      <div class="max-w-5xl mx-auto">
-        <div class="bg-gray-100 rounded-3xl p-8 shadow-lg">
-          <div class="flex items-start justify-between gap-10">
-            <!-- Calendrier -->
-            <div class="w-96">
-              <select
-                class="w-full mb-6 px-6 py-3 bg-gray-300 rounded-full text-center font-medium"
-              >
-                <option>June 2023</option>
-              </select>
-              <div
-                class="grid grid-cols-7 text-center text-sm font-bold text-gray-600 mb-3"
-              >
-                <div>SUN</div>
-                <div>MON</div>
-                <div>TUE</div>
-                <div>WED</div>
-                <div>THU</div>
-                <div>FRI</div>
-                <div>SAT</div>
-              </div>
-              <div class="grid grid-cols-7 gap-3 text-center text-lg">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div
-                  class="bg-[#667EEA] text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto font-bold"
-                >
-                  5
-                </div>
-                <div>6</div>
-                <div>7</div>
-                <div>8</div>
-                <div>9</div>
-                <div>10</div>
-                <div>11</div>
-                <div>12</div>
-                <div>13</div>
-                <div>14</div>
-                <div>15</div>
-                <div>16</div>
-                <div>17</div>
-              </div>
+      <div class="bg-gray-100 rounded-3xl p-6 shadow-lg max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <!-- Calendrier -->
+          <div class="order-2 lg:order-1">
+            <select
+              class="w-full mb-6 px-4 py-3 bg-gray-300 rounded-full text-center font-medium"
+            >
+              <option>June 2023</option>
+            </select>
+            <div
+              class="grid grid-cols-7 text-xs font-bold text-gray-600 mb-2 text-center"
+            >
+              <div>SUN</div>
+              <div>MON</div>
+              <div>TUE</div>
+              <div>WED</div>
+              <div>THU</div>
+              <div>FRI</div>
+              <div>SAT</div>
             </div>
-
-            <!-- Graphique -->
-            <div class="flex-1">
+            <div class="grid grid-cols-7 gap-2 text-center">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div class="py-2">1</div>
+              <div class="py-2">2</div>
+              <div class="py-2">3</div>
+              <div class="py-2">4</div>
               <div
-                class="flex justify-end items-center gap-6 text-sm text-gray-600 mb-4"
+                class="bg-[#667EEA] text-white rounded-full w-10 h-10 mx-auto flex items-center justify-center font-bold"
               >
-                <span class="flex items-center"
-                  ><span class="w-3 h-3 bg-gray-500 rounded-full mr-2"></span
-                  >Dernière Révision</span
-                >
-                <span class="flex items-center"
-                  ><span class="w-3 h-3 bg-[#667EEA] rounded-full mr-2"></span
-                  >Nouveau progrès</span
-                >
+                5
               </div>
-              <img
-                src="C:\Users\slima\Desktop\BrainHub\public\pages\assets\graph.png"
-                alt="Graphique historique"
-                class="w-full rounded-2xl shadow-md"
-              />
-              <div class="flex justify-between text-xs text-gray-600 mt-3">
-                <span>7AM</span><span>12PM</span><span>12AM</span>
-              </div>
+              <div class="py-2">6</div>
+              <div class="py-2">7</div>
+              <div class="py-2">8</div>
+              <div class="py-2">9</div>
+              <div class="py-2">10</div>
+              <div class="py-2">11</div>
+              <div class="py-2">12</div>
+              <div class="py-2">13</div>
+              <div class="py-2">14</div>
+              <div class="py-2">15</div>
+              <div class="py-2">16</div>
+              <div class="py-2">17</div>
+            </div>
+          </div>
+
+          <!-- Graphique -->
+          <div class="order-1 lg:order-2">
+            <div
+              class="flex flex-wrap justify-center sm:justify-end gap-4 text-sm text-gray-600 mb-4"
+            >
+              <span class="flex items-center"
+                ><span class="w-3 h-3 bg-gray-500 rounded-full mr-2"></span
+                >Dernière Révision</span
+              >
+              <span class="flex items-center"
+                ><span class="w-3 h-3 bg-[#667EEA] rounded-full mr-2"></span
+                >Nouveau progrès</span
+              >
+            </div>
+            <img
+              src="C:\Users\slima\Desktop\BrainHub\public\pages\assets\graph.png"
+              alt="Graphique"
+              class="w-full rounded-2xl shadow-md"
+            />
+            <div class="flex justify-between text-xs text-gray-600 mt-3">
+              <span>7AM</span><span>12PM</span><span>12AM</span>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Bouton Suivant HORS du cadre -->
-        <div class="flex justify-end mt-6">
-          <button
-            class="bg-white border-2 border-[#667EEA] text-[#667EEA] font-medium px-10 py-4 rounded-full hover:bg-[#667EEA] hover:text-white transition flex items-center gap-3 shadow-lg"
+      <!-- Bouton Suivant -->
+      <div class="flex justify-center mt-10">
+        <button
+          class="bg-white border-2 border-[#667EEA] text-[#667EEA] font-medium px-10 py-4 rounded-full hover:bg-[#667EEA] hover:text-white transition flex items-center gap-3 shadow-lg"
+        >
+          Suivant
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-            Suivant
-            <svg
-              class="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="3"
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-        </div>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="3"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
       </div>
     </main>
 
-    <!-- FOOTER EXACTEMENT COMME DANS TON DERNIER CODE -->
-    <footer class="bg-[#667EEA] text-white mt-16 py-10">
+    <!-- Footer -->
+    <footer class="bg-[#667EEA] text-white py-10 mt-auto">
       <div
-        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left"
+        class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left"
       >
-        <div>
-          <h3 class="font-semibold text-lg mb-4">BrainHub</h3>
-        </div>
+        <div><h3 class="font-semibold text-lg mb-4">BrainHub</h3></div>
         <div>
           <h3 class="font-semibold text-lg mb-4">BrainHub</h3>
           <p class="text-sm">À propos<br />Nos services</p>
@@ -317,12 +318,12 @@
           <p class="text-sm">+21651771<br />Brainhub@gmail.com</p>
         </div>
       </div>
-      <div class="text-center mt-8 pt-6 border-t border-white/20">
-        <p class="text-sm">© 2025 BrainHub – Tous les droits réservés</p>
+      <div class="text-center mt-8 pt-6 border-t border-white/20 text-sm">
+        © 2025 BrainHub – Tous les droits réservés
       </div>
     </footer>
 
-    <!-- Script pour la sidebar -->
+    <!-- Script sidebar -->
     <script>
       const toggleBtn = document.getElementById("sidebar-toggle");
       const sidebar = document.getElementById("sidebar");

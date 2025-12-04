@@ -3,12 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tâches | BrainHub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Pomodoro | BrainHub</title>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- [web:75] -->
     <link
       href="C:\Users\zaabi\Desktop\web manel\mon-projet-tailwind\BrainHub\src\input.css"
       rel="stylesheet"
     />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#667EEA",
+              secondary: "#764BA2",
+              accent: "#00D4FF",
+            },
+          },
+        },
+      };
+    </script>
     <style>
       body {
         font-family: "Roboto", sans-serif;
@@ -22,10 +35,10 @@
   </head>
 
   <body class="min-h-screen flex flex-col bg-gray-50">
-    <!-- Hamburger Button -->
+    <!-- Bouton hamburger -->
     <button
       id="sidebar-toggle"
-      class="fixed top-20 left-6 z-50 p-3 bg-[#667EEA] text-white rounded-full shadow-xl hover:bg-[#764BA2] transition"
+      class="fixed top-20 left-6 z-50 p-3 bg-primary text-white rounded-full shadow-xl hover:bg-secondary transition"
     >
       <svg
         class="w-7 h-7"
@@ -42,28 +55,30 @@
       </svg>
     </button>
 
-    <!-- Header -->
-    <header class="w-full py-2 h-16 flex items-center bg-[#667EEA]">
+    <!-- HEADER -->
+    <header class="w-full py-2 h-16 flex items-center bg-primary">
       <div
         class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full"
       >
         <img
-          src="C:\Users\slima\Desktop\BrainHub\public\pages\assets\logo.png"
-          alt="BrainHub Logo"
-          class="max-h-20"
+          src="C:\Users\zaabi\Desktop\web manel\mon-projet-tailwind\BrainHub\public\pages\assets\logo.png"
+          alt="Logo"
+          class="max-h-32"
         />
-        <nav class="flex items-center gap-8 text-white font-medium">
+
+        <nav class="hidden md:flex items-center gap-8 text-white font-medium">
           <a href="#" class="hover:opacity-80">Accueil</a>
           <a href="#" class="hover:opacity-80">À propos</a>
           <a href="#" class="hover:opacity-80">Contact</a>
         </nav>
+
         <div
-          class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full shadow-md"
+          class="hidden md:flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full shadow-md"
         >
           <input
             type="text"
             placeholder="Search for anything..."
-            class="outline-none bg-transparent w-56"
+            class="outline-none bg-transparent w-56 text-sm"
           />
           <svg
             class="w-5 h-5 text-gray-600"
@@ -81,7 +96,6 @@
         </div>
       </div>
     </header>
-
     <!-- Sidebar -->
     <aside
       id="sidebar"
@@ -113,12 +127,15 @@
     <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 
     <!-- Breadcrumb -->
-
-<div class="max-w-7xl mx-auto px-6 py-4 text-sm text-gray-600">
-  <a href="#" class="hover:text-[#667EEA]">Accueil</a> >
-  <a href="#" class="hover:text-[#667EEA]">Statistique</a> >
-  <span class="text-[#667EEA]">Taches</span>
+   <div class="w-full px-6 py-4 text-sm text-gray-600">
+  <div class="max-w-7xl mx-auto">
+    <a href="#" class="hover:text-primary">Accueil</a> &gt;
+    <a href="#" class="hover:text-primary ml-1">Statistique</a> &gt;
+    <span class="text-primary ml-1">Pomodoro</span>
+  </div>
 </div>
+
+
 
     <!-- Main Content -->
     <main class="flex-1 max-w-8xl mx-auto px-6 py-8">
@@ -138,152 +155,70 @@
           readonly
         />
         <div class="flex items-center gap-4 ml-4">
-  <button
-    class="px-8 py-2 border-2 border-[#667EEA] text-[#667EEA] text-sm font-medium rounded-full bg-white hover:bg-[#667EEA] hover:text-white flex items-center gap-2 shadow-md"
-  >
-    Ajouter
-    <span class="text-xl leading-none">+</span>
-  </button>
-  <button
-    class="px-6 py-2 border-2 border-[#667EEA] text-[#667EEA] text-sm font-medium rounded-full bg-white hover:bg-[#667EEA] hover:text-white flex items-center gap-2"
-  >
-    <span>rechercher</span>
-    <svg
-      class="w-4 h-4"
-      fill="none"
-      stroke="currentColor"
-      viewBox="0 0 24 24"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="2"
-        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-      />
-    </svg>
-  </button>
-</div>
+          <button
+            id="add-task-btn"
+            class="px-8 py-2 border-2 border-[#667EEA] text-[#667EEA] text-sm font-medium rounded-full bg-white hover:bg-[#667EEA] hover:text-white flex items-center gap-2 shadow-md"
+          >
+            Ajouter
+            <span class="text-xl leading-none">+</span>
+          </button>
 
+          <button
+            id="search-task-btn"
+            class="px-6 py-2 border-2 border-[#667EEA] text-[#667EEA] text-sm font-medium rounded-full bg-white hover:bg-[#667EEA] hover:text-white flex items-center gap-2"
+          >
+            <span>rechercher</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <!-- Grille des cartes -->
+      <!-- Grille des cartes ÉDITABLES -->
       <section
+        id="cards-grid"
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-24 gap-y-16 mb-10"
       >
-        <!-- Carte 1 -->
-        <div class="flex items-start gap-6">
+        <!-- Carte modèle -->
+        <div class="task-card flex items-start gap-6">
           <div
             class="w-56 h-72 bg-white rounded-3xl shadow-2xl border-8 border-gray-500 flex flex-col"
           >
-            <div class="flex-1 px-8 pt-10 space-y-5">
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
+            <!-- Zone texte editable -->
+            <div class="flex-1 px-4 pt-4">
+              <textarea
+                class="w-full h-40 resize-none border border-dashed border-gray-400 rounded-md p-2 text-xs text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#667EEA]"
+                placeholder="Écrire la tâche ici..."
+              ></textarea>
             </div>
-            <div class="text-right pr-6 pb-4 text-gray-700 font-bold text-lg">
-              17/10/25
+            <!-- Date -->
+            <div class="flex items-center justify-end px-4 pb-3">
+              <input
+                type="date"
+                class="text-xs text-gray-700 font-semibold border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[#667EEA]"
+              />
             </div>
           </div>
+          <!-- Boutons à droite (desktop) -->
           <div class="hidden lg:flex flex-col gap-3 pt-4 text-[11px]">
             <button
-              class="px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
+              class="btn-delete px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
             >
               SUPPRIMER
             </button>
             <button
-              class="px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
-            >
-              MODIFIER
-            </button>
-          </div>
-        </div>
-
-        <!-- Carte 2 -->
-        <div class="flex items-start gap-6">
-          <div
-            class="w-56 h-72 bg-white rounded-3xl shadow-2xl border-8 border-gray-500 flex flex-col"
-          >
-            <div class="flex-1 px-8 pt-10 space-y-5">
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-            </div>
-            <div class="text-right pr-6 pb-4 text-gray-700 font-bold text-lg">
-              17/10/25
-            </div>
-          </div>
-          <div class="hidden lg:flex flex-col gap-3 pt-4 text-[11px]">
-            <button
-              class="px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
-            >
-              SUPPRIMER
-            </button>
-            <button
-              class="px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
-            >
-              MODIFIER
-            </button>
-          </div>
-        </div>
-
-        <!-- Carte 3 -->
-        <div class="flex items-start gap-6">
-          <div
-            class="w-56 h-72 bg-white rounded-3xl shadow-2xl border-8 border-gray-500 flex flex-col"
-          >
-            <div class="flex-1 px-8 pt-10 space-y-5">
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-            </div>
-            <div class="text-right pr-6 pb-4 text-gray-700 font-bold text-lg">
-              17/10/25
-            </div>
-          </div>
-          <div class="hidden lg:flex flex-col gap-3 pt-4 text-[11px]">
-            <button
-              class="px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
-            >
-              SUPPRIMER
-            </button>
-            <button
-              class="px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
-            >
-              MODIFIER
-            </button>
-          </div>
-        </div>
-
-        <!-- Carte 4 -->
-        <div class="flex items-start gap-6">
-          <div
-            class="w-56 h-72 bg-white rounded-3xl shadow-2xl border-8 border-gray-500 flex flex-col"
-          >
-            <div class="flex-1 px-8 pt-10 space-y-5">
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-              <div class="border-t-2 border-dashed border-gray-400"></div>
-            </div>
-            <div class="text-right pr-6 pb-4 text-gray-700 font-bold text-lg">
-              17/10/25
-            </div>
-          </div>
-          <div class="hidden lg:flex flex-col gap-3 pt-4 text-[11px]">
-            <button
-              class="px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
-            >
-              SUPPRIMER
-            </button>
-            <button
-              class="px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
+              class="btn-edit px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
             >
               MODIFIER
             </button>
@@ -294,17 +229,40 @@
       <!-- Boutons mobiles sous les cartes -->
       <div class="grid grid-cols-2 gap-4 lg:hidden mt-6">
         <button
-          class="w-full px-4 py-3 rounded-full bg-[#667EEA] text-white text-xs font-semibold hover:bg-[#764BA2]"
+          class="btn-delete-all w-full px-4 py-3 rounded-full bg-[#667EEA] text-white text-xs font-semibold hover:bg-[#764BA2]"
         >
-          SUPPRIMER
+          SUPPRIMER la carte sélectionnée
         </button>
         <button
-          class="w-full px-4 py-3 rounded-full bg-[#667EEA] text-white text-xs font-semibold hover:bg-[#764BA2]"
+          class="btn-edit-focus w-full px-4 py-3 rounded-full bg-[#667EEA] text-white text-xs font-semibold hover:bg-[#764BA2]"
         >
-          MODIFIER
+          MODIFIER (focus texte)
         </button>
       </div>
     </main>
+    <!-- Bouton Suivant -->
+      <div class="flex justify-end mt-4">
+        <button
+          id="btn-suivant"
+          class="bg-white border-4 border-primary text-primary font-bold px-10 md:px-12 py-4 rounded-full hover:bg-primary hover:text-white transition flex items-center gap-4 shadow-2xl text-lg"
+        >
+          Suivant
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="3"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      </div>
+
 
     <!-- Footer -->
     <footer class="bg-[#667EEA] text-white mt-16 py-10">
@@ -332,19 +290,113 @@
 
     <!-- Script -->
     <script>
+      // Sidebar
       const toggleBtn = document.getElementById("sidebar-toggle");
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
+      const logoutBtn = document.getElementById("logout-btn");
 
-      toggleBtn.addEventListener("click", () => {
-        sidebar.classList.toggle("-translate-x-full");
-        overlay.classList.toggle("hidden");
-      });
+      if (toggleBtn && sidebar && overlay) {
+        toggleBtn.addEventListener("click", () => {
+          sidebar.classList.toggle("-translate-x-full");
+          overlay.classList.toggle("hidden");
+        });
+        overlay.addEventListener("click", () => {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("hidden");
+        });
+      }
 
-      overlay.addEventListener("click", () => {
-        sidebar.classList.add("-translate-x-full");
-        overlay.classList.add("hidden");
-      });
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+          alert("Déconnexion");
+        });
+      }
+
+      const cardsGrid = document.getElementById("cards-grid");
+      const cardTemplate = cardsGrid ? cardsGrid.querySelector(".task-card") : null;
+      const addBtn = document.getElementById("add-task-btn");
+      const searchBtn = document.getElementById("search-task-btn");
+      const searchInput = document.getElementById("search-input");
+
+      // Fonction pour brancher les boutons d'une carte
+      function attachCardButtons(card) {
+        const deleteBtn = card.querySelector(".btn-delete");
+        const editBtn = card.querySelector(".btn-edit");
+
+        if (deleteBtn) {
+          deleteBtn.addEventListener("click", () => {
+            card.remove();
+          });
+        }
+
+        if (editBtn) {
+          editBtn.addEventListener("click", () => {
+            const ta = card.querySelector("textarea");
+            if (ta) ta.focus();
+          });
+        }
+      }
+
+      // Brancher la carte initiale
+      if (cardTemplate) {
+        attachCardButtons(cardTemplate);
+      }
+
+      // Ajouter une nouvelle carte
+      if (addBtn && cardsGrid && cardTemplate) {
+        addBtn.addEventListener("click", () => {
+          const clone = cardTemplate.cloneNode(true);
+          const textarea = clone.querySelector("textarea");
+          const dateInput = clone.querySelector("input[type='date']");
+
+          if (textarea) textarea.value = "";
+          if (dateInput) dateInput.value = "";
+          attachCardButtons(clone);
+          cardsGrid.appendChild(clone);
+        });
+      }
+
+      // Rechercher : filtre sur le texte de la tâche
+      if (searchBtn && searchInput) {
+        searchBtn.addEventListener("click", () => {
+          const query = searchInput.value.trim().toLowerCase();
+          const allCards = document.querySelectorAll(".task-card");
+          allCards.forEach((card) => {
+            const ta = card.querySelector("textarea");
+            const text = ta ? ta.value.toLowerCase() : "";
+            if (!query || text.includes(query)) {
+              card.classList.remove("opacity-30");
+            } else {
+              card.classList.add("opacity-30");
+            }
+          });
+        });
+      }
+
+      // Boutons mobiles
+      const deleteMobile = document.querySelector(".btn-delete-all");
+      const editMobile = document.querySelector(".btn-edit-focus");
+
+      if (deleteMobile) {
+        deleteMobile.addEventListener("click", () => {
+          const firstCard = document.querySelector(".task-card");
+          if (firstCard) firstCard.remove();
+        });
+      }
+
+      if (editMobile) {
+        editMobile.addEventListener("click", () => {
+          const firstTextarea = document.querySelector(".task-card textarea");
+          if (firstTextarea) firstTextarea.focus();
+        });
+      }
+  const btnSuivant = document.getElementById('btn-suivant');
+  btnSuivant.addEventListener('click', () => {
+    window.location.href = 'index2.html';
+  
+  });
+
     </script>
   </body>
 </html>

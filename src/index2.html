@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pomodoro | BrainHub</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script> <!-- [web:75] -->
     <link
       href="C:\Users\zaabi\Desktop\web manel\mon-projet-tailwind\BrainHub\src\input.css"
       rel="stylesheet"
@@ -35,7 +35,7 @@
   </head>
 
   <body class="min-h-screen flex flex-col bg-gray-50">
-    <!-- Bouton hamburger (même principe que Répartition Matière) -->
+    <!-- Bouton hamburger -->
     <button
       id="sidebar-toggle"
       class="fixed top-20 left-6 z-50 p-3 bg-primary text-white rounded-full shadow-xl hover:bg-secondary transition"
@@ -55,21 +55,23 @@
       </svg>
     </button>
 
-    <!-- HEADER identique -->
+    <!-- HEADER -->
     <header class="w-full py-2 h-16 flex items-center bg-primary">
       <div
         class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full"
       >
         <img
-          src="C:\Users\slima\Desktop\BrainHub\public\pages\assets\logo.png"
-          alt="BrainHub Logo"
-          class="max-h-20"
+          src="C:\Users\zaabi\Desktop\web manel\mon-projet-tailwind\BrainHub\public\pages\assets\logo.png"
+          alt="Logo"
+          class="max-h-32"
         />
+
         <nav class="hidden md:flex items-center gap-8 text-white font-medium">
           <a href="#" class="hover:opacity-80">Accueil</a>
           <a href="#" class="hover:opacity-80">À propos</a>
           <a href="#" class="hover:opacity-80">Contact</a>
         </nav>
+
         <div
           class="hidden md:flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full shadow-md"
         >
@@ -95,7 +97,7 @@
       </div>
     </header>
 
-    <!-- SIDEBAR identique -->
+    <!-- SIDEBAR -->
     <aside
       id="sidebar"
       class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out rounded-r-2xl"
@@ -126,33 +128,41 @@
     <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
 
     <!-- BREADCRUMB -->
-    <div class="max-w-7xl mx-auto px-6 py-4 text-sm text-gray-600">
-      <a href="#" class="hover:text-primary">Accueil</a> >
-      <a href="#" class="hover:text-primary">Statistique</a> >
-      <span class="text-primary">Pomodoro</span>
-    </div>
+    <div class="w-full px-6 py-4 text-sm text-gray-600">
+  <div class="max-w-7xl mx-auto">
+    <a href="#" class="hover:text-primary">Accueil</a> &gt;
+    <a href="#" class="hover:text-primary ml-1">Statistique</a> &gt;
+    <span class="text-primary ml-1">Pomodoro</span>
+  </div>
+</div>
+
 
     <!-- CONTENU PRINCIPAL -->
     <main class="flex-1 max-w-7xl mx-auto px-6 py-8">
       <!-- Titre -->
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-4">
+      <div
+        class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-4"
+      >
         <h1 class="text-3xl md:text-4xl font-bold text-gray-900">
           Pomodoro <span class="text-primary mx-3">|</span> gestion du temps
         </h1>
         <select
+          id="mode-select"
           class="px-8 py-3 bg-white border-2 border-primary text-primary rounded-full font-medium shadow-sm text-sm"
         >
-          <option>Mode standard</option>
-          <option>Mode révision</option>
-          <option>Mode examen</option>
+          <option value="standard">Mode standard</option>
+          <option value="revision">Mode révision</option>
+          <option value="examen">Mode examen</option>
         </select>
       </div>
 
-      <!-- Bloc Pomodoro (travail + pause dans une carte proche du style Progress Block) -->
+      <!-- Bloc Pomodoro -->
       <section
         class="bg-white rounded-3xl shadow-2xl border-4 border-primary p-8 md:p-10 mb-12"
       >
-        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+        <h2
+          class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center"
+        >
           Session Pomodoro
         </h2>
 
@@ -163,15 +173,15 @@
               <span class="text-xl md:text-2xl font-semibold text-gray-700">
                 Temps de travail
               </span>
-              <!-- Indication simple comme une barre de progression -->
               <div
                 class="w-56 md:w-72 bg-gray-200 rounded-full h-6 relative overflow-hidden"
               >
                 <div
-                  class="absolute inset-y-0 left-0 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-end pr-4 text-white font-semibold text-sm"
+                  id="work-bar"
+                  class="absolute inset-y-0 left-0 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-end pr-4 text-white font-semibold text-sm transition-all"
                   style="width: 100%"
                 >
-                  25 min
+                  <span id="work-label">25 min</span>
                 </div>
               </div>
             </div>
@@ -183,9 +193,9 @@
               <!-- Plus / Moins -->
               <div class="flex bg-primary rounded-full overflow-hidden">
                 <button
+                  id="work-plus"
                   class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
                 >
-                  <!-- Plus -->
                   <svg
                     class="w-4 h-4"
                     viewBox="0 0 24 24"
@@ -199,9 +209,9 @@
                 </button>
                 <div class="w-px bg-indigo-300"></div>
                 <button
+                  id="work-minus"
                   class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
                 >
-                  <!-- Moins -->
                   <svg
                     class="w-4 h-4"
                     viewBox="0 0 24 24"
@@ -215,6 +225,7 @@
 
               <!-- Affichage temps -->
               <span
+                id="work-display"
                 class="text-4xl md:text-5xl font-bold text-teal-500 tracking-widest"
               >
                 25:00
@@ -223,9 +234,9 @@
               <!-- Play / Pause / Reset -->
               <div class="flex bg-primary rounded-full overflow-hidden">
                 <button
+                  id="work-play"
                   class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
                 >
-                  <!-- Play -->
                   <svg
                     class="w-4 h-4"
                     viewBox="0 0 24 24"
@@ -237,9 +248,9 @@
                 </button>
                 <div class="w-px bg-indigo-300"></div>
                 <button
+                  id="work-pause"
                   class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
                 >
-                  <!-- Pause -->
                   <svg
                     class="w-4 h-4"
                     viewBox="0 0 24 24"
@@ -253,9 +264,9 @@
                 </button>
                 <div class="w-px bg-indigo-300"></div>
                 <button
+                  id="work-reset"
                   class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
                 >
-                  <!-- Reset -->
                   <svg
                     class="w-4 h-4"
                     viewBox="0 0 24 24"
@@ -281,10 +292,11 @@
                 class="w-56 md:w-72 bg-gray-200 rounded-full h-6 relative overflow-hidden"
               >
                 <div
-                  class="absolute inset-y-0 left-0 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-end pr-4 text-white font-semibold text-sm"
+                  id="break-bar"
+                  class="absolute inset-y-0 left-0 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-end pr-4 text-white font-semibold text-sm transition-all"
                   style="width: 100%"
                 >
-                  5 min
+                  <span id="break-label">5 min</span>
                 </div>
               </div>
             </div>
@@ -295,6 +307,7 @@
             >
               <div class="flex bg-primary rounded-full overflow-hidden">
                 <button
+                  id="break-plus"
                   class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
                 >
                   <svg
@@ -310,6 +323,7 @@
                 </button>
                 <div class="w-px bg-indigo-300"></div>
                 <button
+                  id="break-minus"
                   class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
                 >
                   <svg
@@ -324,6 +338,7 @@
               </div>
 
               <span
+                id="break-display"
                 class="text-4xl md:text-5xl font-bold text-teal-500 tracking-widest"
               >
                 05:00
@@ -331,6 +346,7 @@
 
               <div class="flex bg-primary rounded-full overflow-hidden">
                 <button
+                  id="break-play"
                   class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
                 >
                   <svg
@@ -344,6 +360,7 @@
                 </button>
                 <div class="w-px bg-indigo-300"></div>
                 <button
+                  id="break-pause"
                   class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
                 >
                   <svg
@@ -359,6 +376,7 @@
                 </button>
                 <div class="w-px bg-indigo-300"></div>
                 <button
+                  id="break-reset"
                   class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
                 >
                   <svg
@@ -378,9 +396,10 @@
         </div>
       </section>
 
-      <!-- Bouton Suivant (cohérent avec la deuxième page) -->
+      <!-- Bouton Suivant -->
       <div class="flex justify-end mt-4">
         <button
+          id="btn-suivant"
           class="bg-white border-4 border-primary text-primary font-bold px-10 md:px-12 py-4 rounded-full hover:bg-primary hover:text-white transition flex items-center gap-4 shadow-2xl text-lg"
         >
           Suivant
@@ -401,7 +420,7 @@
       </div>
     </main>
 
-    <!-- FOOTER identique -->
+    <!-- FOOTER -->
     <footer class="bg-primary text-white mt-16 py-10">
       <div
         class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left"
@@ -425,8 +444,9 @@
       </div>
     </footer>
 
-    <!-- Script sidebar -->
+    <!-- Scripts -->
     <script>
+      // Sidebar
       const toggleBtn = document.getElementById("sidebar-toggle");
       const sidebar = document.getElementById("sidebar");
       const overlay = document.getElementById("overlay");
@@ -440,6 +460,175 @@
         sidebar.classList.add("-translate-x-full");
         overlay.classList.add("hidden");
       });
+
+      // Timers
+      let workDuration = 25 * 60;   // en secondes
+      let breakDuration = 5 * 60;   // en secondes
+      let workRemaining = workDuration;
+      let breakRemaining = breakDuration;
+      let workInterval = null;
+      let breakInterval = null;
+
+      const modeSelect = document.getElementById("mode-select");
+
+      const workDisplay = document.getElementById("work-display");
+      const breakDisplay = document.getElementById("break-display");
+      const workLabel = document.getElementById("work-label");
+      const breakLabel = document.getElementById("break-label");
+      const workBar = document.getElementById("work-bar");
+      const breakBar = document.getElementById("break-bar");
+
+      const workPlus = document.getElementById("work-plus");
+      const workMinus = document.getElementById("work-minus");
+      const workPlay = document.getElementById("work-play");
+      const workPause = document.getElementById("work-pause");
+      const workReset = document.getElementById("work-reset");
+
+      const breakPlus = document.getElementById("break-plus");
+      const breakMinus = document.getElementById("break-minus");
+      const breakPlay = document.getElementById("break-play");
+      const breakPause = document.getElementById("break-pause");
+      const breakReset = document.getElementById("break-reset");
+
+      const btnSuivant = document.getElementById("btn-suivant");
+
+      function formatTime(sec) {
+        const m = Math.floor(sec / 60)
+          .toString()
+          .padStart(2, "0");
+        const s = (sec % 60).toString().padStart(2, "0");
+        return m + ":" + s;
+      }
+
+      function updateWorkUI() {
+        workDisplay.textContent = formatTime(workRemaining);
+        workLabel.textContent = Math.round(workDuration / 60) + " min";
+        const ratio = workRemaining / workDuration;
+        workBar.style.width = (ratio * 100) + "%";
+      }
+
+      function updateBreakUI() {
+        breakDisplay.textContent = formatTime(breakRemaining);
+        breakLabel.textContent = Math.round(breakDuration / 60) + " min";
+        const ratio = breakRemaining / breakDuration;
+        breakBar.style.width = (ratio * 100) + "%";
+      }
+
+      function resetWorkTimer() {
+        clearInterval(workInterval);
+        workInterval = null;
+        workRemaining = workDuration;
+        updateWorkUI();
+      }
+
+      function resetBreakTimer() {
+        clearInterval(breakInterval);
+        breakInterval = null;
+        breakRemaining = breakDuration;
+        updateBreakUI();
+      }
+
+      // Modes (juste quelques presets)
+      modeSelect.addEventListener("change", () => {
+        if (modeSelect.value === "standard") {
+          workDuration = 25 * 60;
+          breakDuration = 5 * 60;
+        } else if (modeSelect.value === "revision") {
+          workDuration = 40 * 60;
+          breakDuration = 10 * 60;
+        } else if (modeSelect.value === "examen") {
+          workDuration = 50 * 60;
+          breakDuration = 10 * 60;
+        }
+        resetWorkTimer();
+        resetBreakTimer();
+      });
+
+      // Ajuster durée travail
+      workPlus.addEventListener("click", () => {
+        workDuration += 60;
+        workRemaining = workDuration;
+        updateWorkUI();
+      });
+
+      workMinus.addEventListener("click", () => {
+        if (workDuration > 5 * 60) {
+          workDuration -= 60;
+          workRemaining = workDuration;
+          updateWorkUI();
+        }
+      });
+
+      // Play/pause/reset travail
+      workPlay.addEventListener("click", () => {
+        if (workInterval) return;
+        workInterval = setInterval(() => {
+          workRemaining--;
+          if (workRemaining <= 0) {
+            workRemaining = 0;
+            updateWorkUI();
+            clearInterval(workInterval);
+            workInterval = null;
+            alert("Session de travail terminée ! Prends une pause.");
+          } else {
+            updateWorkUI();
+          }
+        }, 1000);
+      });
+
+      workPause.addEventListener("click", () => {
+        clearInterval(workInterval);
+        workInterval = null;
+      });
+
+      workReset.addEventListener("click", resetWorkTimer);
+
+      // Ajuster durée pause
+      breakPlus.addEventListener("click", () => {
+        breakDuration += 60;
+        breakRemaining = breakDuration;
+        updateBreakUI();
+      });
+
+      breakMinus.addEventListener("click", () => {
+        if (breakDuration > 1 * 60) {
+          breakDuration -= 60;
+          breakRemaining = breakDuration;
+          updateBreakUI();
+        }
+      });
+
+      // Play/pause/reset pause
+      breakPlay.addEventListener("click", () => {
+        if (breakInterval) return;
+        breakInterval = setInterval(() => {
+          breakRemaining--;
+          if (breakRemaining <= 0) {
+            breakRemaining = 0;
+            updateBreakUI();
+            clearInterval(breakInterval);
+            breakInterval = null;
+            alert("Pause terminée ! Reprends le travail.");
+          } else {
+            updateBreakUI();
+          }
+        }, 1000);
+      });
+
+      breakPause.addEventListener("click", () => {
+        clearInterval(breakInterval);
+        breakInterval = null;
+      });
+
+      breakReset.addEventListener("click", resetBreakTimer);
+
+      // Init UI
+      updateWorkUI();
+      updateBreakUI();
+      btnSuivant.addEventListener("click", () => {
+      window.location.href = "index1.html"; // ou vers la page que tu veux ouvrir après le pomodoro
+      });
+
     </script>
   </body>
 </html>

@@ -11,77 +11,108 @@
 
 <body class="bg-white font-raleway">
 
-  <!-- HEADER -->
-<header class="header-primary w-full py-2 h-16 flex items-center">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full">
+  <!-- HEADER - Desktop par défaut -->
+ <header class="header-primary w-full py-2 h-16 flex items-center">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full">
 
-    <!-- LOGO à gauche -->
-    <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32">
+      <!-- LOGO à gauche -->
+      <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32 w-auto">
 
-    <!-- NAV centré -->
-    <nav class="flex items-center gap-8 mx-auto">
-      <a href="#" class="text-white">Accueil</a>
-      <a href="#" class="text-white">A propos</a>
-      <a href="#" class="text-white">Contact</a>
-    </nav>
+      <!-- NAV centré (visible sur desktop) -->
+      <nav class="hidden md:flex items-center gap-8 mx-auto">
+        <a href="#" class="text-white">Accueil</a>
+        <a href="#" class="text-white">A propos</a>
+        <a href="#" class="text-white">Contact</a>
+      </nav>
 
-    <!-- SEARCH + LOGOUT à droite -->
-    <div class="flex items-center gap-2">
-      <div class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
-        <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-56">
+      <!-- SEARCH + LOGOUT à droite (visible sur desktop) -->
+      <div class="hidden md:flex items-center gap-2">
+        <div class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
+          <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-40 lg:w-56">
+        </div>
+        <button class="w-10 h-10 rounded-full bg-coral flex items-center justify-center hover:bg-coral/80 transition">
+          <img src="../pages/assets/logout.png" class="w-5 h-5" alt="Logout"/>
+        </button>
       </div>
-      <button class="w-10 h-10 rounded-full bg-coral flex items-center justify-center hover:bg-coral/80 transition">
-        <img src="../pages/assets/logout.png" class="w-5 h-5" alt="Logout"/>
+
+      <!-- BURGER MENU (visible seulement sur mobile) -->
+      <button id="mobile-menu-button" class="md:hidden text-white">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
       </button>
+
     </div>
+  </header>
 
+  <!-- DROPDOWN MENU MOBILE -->
+  <div id="mobile-dropdown" class="md:hidden hidden bg-primary shadow-lg">
+    <div class="px-6 py-4 space-y-4">
+      <!-- Liens dropdown -->
+      <a href="#" class="block text-white py-3 px-4 hover:bg-primaryDark rounded-btn transition">Accueil</a>
+      <a href="#" class="block text-white py-3 px-4 hover:bg-primaryDark rounded-btn transition">A propos</a>
+      <a href="#" class="block text-white py-3 px-4 hover:bg-primaryDark rounded-btn transition">Contact</a>
+      
+      <!-- Search bar dans dropdown -->
+      <div class="pt-4 border-t border-primaryDark">
+        <div class="flex items-center gap-2">
+          <div class="flex-1 flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
+            <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-full">
+          </div>
+          <button class="w-10 h-10 rounded-full bg-coral flex items-center justify-center hover:bg-coral/80 transition flex-shrink-0">
+            <img src="../pages/assets/logout.png" class="w-5 h-5" alt="Logout"/>
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-</header>
-
-
 
   <!-- CONTENT -->
-  <main class="max-w-6xl mx-auto px-6 py-10">
+<main class="max-w-6xl mx-auto px-6 pt-6">
+<div class="max-w-7xl mx-auto mt-6 px-2 md:px-1">
+<p class="text-primary mb-4 text-sm md:text-base flex items-center gap-1">
+  <a href="../../index.html" class="text-primary hover:underline">Accueil ></a>
+  <a href="Note.html" class="text-primary hover:underline">Notes ></a>
+  <span class="text-black font-semibold">Objectifs</span>
+</p>
+</div>
 
-    <p class="text-primary mb-4">Accueil > <span class="text-black font-semibold">Objectifs</span></p>
 
     <h2 class="text-3xl font-bold text-center mb-10">Mes Objectifs Du Jour</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
       <!-- LEFT SIDE: OBJECTIFS -->
-<div class="space-y-4">
+      <div class="space-y-4">
 
-  <!-- CONTENEUR DES OBJECTIFS -->
-  <div id="objectifs-container" class="space-y-4">
+        <!-- CONTENEUR DES OBJECTIFS -->
+        <div id="objectifs-container" class="space-y-4">
 
-    <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
-      <input type="checkbox" class="checkbox">
-      <span>Relire Fiche Java</span>
-    </div>
+          <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
+            <input type="checkbox" class="checkbox">
+            <span>Relire Fiche Java</span>
+          </div>
 
-    <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
-      <input type="checkbox" class="checkbox">
-      <span>Faire Un Quiz</span>
-    </div>
+          <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
+            <input type="checkbox" class="checkbox">
+            <span>Faire Un Quiz</span>
+          </div>
 
-    <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
-      <input type="checkbox" class="checkbox">
-      <span>Réviser Réseau (30 Minutes)</span>
-    </div>
+          <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
+            <input type="checkbox" class="checkbox">
+            <span>Réviser Réseau (30 Minutes)</span>
+          </div>
 
-    <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
-      <input type="checkbox" class="checkbox">
-      <span>Finir TD Php</span>
-    </div>
+          <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
+            <input type="checkbox" class="checkbox">
+            <span>Finir TD Php</span>
+          </div>
 
-  </div>
+        </div>
 
-  <!-- BOUTON EN DESSOUS SEULEMENT -->
-  <button id="add-btn" class="btn btn-primary w-full mt-4">+ Ajouter Un Objectif</button>
-</div>
-
-
+        <!-- BOUTON EN DESSOUS SEULEMENT -->
+        <button id="add-btn" class="btn btn-primary w-full mt-4">+ Ajouter Un Objectif</button>
+      </div>
 
       <!-- RIGHT SIDE IMAGE -->
       <div class="flex justify-center">
@@ -135,23 +166,84 @@
 
     <p class="text-center mt-6">© 2025 BrainHub – Tous les droits réservés</p>
   </footer>
-<script>
-  const container = document.getElementById("objectifs-container");
-  const btnAdd = document.getElementById("add-btn");
 
-  btnAdd.addEventListener("click", () => {
-    const div = document.createElement("div");
-    div.className = "flex items-center gap-3 border border-primary rounded-btn p-3";
+  <script>
+    const container = document.getElementById("objectifs-container");
+    const btnAdd = document.getElementById("add-btn");
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileDropdown = document.getElementById("mobile-dropdown");
+    const desktopNav = document.querySelector('nav');
+    const desktopSearch = document.querySelector('.flex.items-center.gap-2');
 
-    div.innerHTML = `
-      <input type="checkbox" class="checkbox">
-      <input type="text" placeholder="Nouvel objectif..." 
-             class="outline-none w-full bg-transparent">
-    `;
+    // Fonction pour gérer l'affichage responsive
+    function handleResponsive() {
+      if (window.innerWidth <= 768) {
+        // Mode mobile - cacher les éléments desktop
+        desktopNav.style.display = 'none';
+        desktopSearch.style.display = 'none';
+        // Afficher burger menu
+        mobileMenuButton.style.display = 'block';
+      } else {
+        // Mode desktop - afficher les éléments desktop
+        desktopNav.style.display = 'flex';
+        desktopSearch.style.display = 'flex';
+        // Cacher burger menu et dropdown
+        mobileMenuButton.style.display = 'none';
+        mobileDropdown.classList.add('hidden');
+      }
+    }
 
-    container.appendChild(div);
-  });
-</script>
+    // Initialiser au chargement
+    document.addEventListener('DOMContentLoaded', handleResponsive);
+    
+    // Écouter le redimensionnement
+    window.addEventListener('resize', handleResponsive);
+
+    // Toggle dropdown mobile
+    mobileMenuButton.addEventListener('click', () => {
+      mobileDropdown.classList.toggle('hidden');
+      
+      // Utiliser l'animation depuis le CSS
+      if (!mobileDropdown.classList.contains('hidden')) {
+        mobileDropdown.classList.add('animate-slideDown');
+      } else {
+        mobileDropdown.classList.remove('animate-slideDown');
+      }
+    });
+
+    // Fermer dropdown si on clique ailleurs
+    document.addEventListener('click', (event) => {
+      const isClickInsideMenu = mobileDropdown.contains(event.target);
+      const isClickOnButton = mobileMenuButton.contains(event.target);
+      
+      if (!isClickInsideMenu && !isClickOnButton && !mobileDropdown.classList.contains('hidden')) {
+        mobileDropdown.classList.add('hidden');
+        mobileDropdown.classList.remove('animate-slideDown');
+      }
+    });
+
+    // Fermer dropdown si on clique sur un lien
+    mobileDropdown.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDropdown.classList.add('hidden');
+        mobileDropdown.classList.remove('animate-slideDown');
+      });
+    });
+
+    // Ajouter un nouvel objectif
+    btnAdd.addEventListener("click", () => {
+      const div = document.createElement("div");
+      div.className = "flex items-center gap-3 border border-primary rounded-btn p-3";
+
+      div.innerHTML = `
+        <input type="checkbox" class="checkbox">
+        <input type="text" placeholder="Nouvel objectif..." 
+               class="outline-none w-full bg-transparent">
+      `;
+
+      container.appendChild(div);
+    });
+  </script>
 
 </body>
 </html>

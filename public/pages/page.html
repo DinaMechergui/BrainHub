@@ -1,16 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>BrainHub – Quiz Mathématique</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../src/output.css">
-</head>
-<body class="font-raleway bg-panel text-gray-800">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrainHub – Mes Quiz</title>
 
-   <!-- ================= HEADER ================= -->
-  <header class="w-full bg-primary text-white shadow-md relative">
+    <!-- Google Fonts: Poppins pour coller au design moderne -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS compilé -->
+    <link rel="stylesheet" href="../../src/output.css">
+
+ 
+</head>
+<body class="font-sans text-brand-text min-h-screen flex flex-col justify-between">
+
+    <!-- ================= HEADER ================= -->
+    <header class="w-full bg-primary text-white shadow-md relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
             
             <!-- LOGO à gauche -->
@@ -101,97 +107,163 @@
         </div>
     </header>
 
-  <main class="max-w-5xl mx-auto pt-20 pb-16 px-6 space-y-8">
-    <nav class="text-sm text-gray-500">Accueil &gt; <span class="text-black font-medium">Quiz</span></nav>
+
+
+
+
     
-    <div class="flex flex-wrap items-start justify-between gap-4">
-      <div>
-        <p class="text-xl md:text-2xl text-black font-bold">Question 1/10 – Quiz Mathématique</p>
-      </div>
-      <div class="flex items-center gap-2 text-primary font-semibold">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
-          <path d="M12 6v6l3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        12:25 Min
-      </div>
-    </div>
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
 
-    <section class="bg-white rounded-btn border-2 border-[#8271D7] shadow-soft-2 p-6">
-      <!-- Question au-dessus -->
-      <h1 class="text-2xl font-bold text-gray-900 mb-6">Quelle est la formule de l'aire d'un cercle ?</h1>
-      
-      <!-- Contenu aligné: Image à gauche, Options à droite -->
-      <div class="flex flex-col lg:flex-row gap-8 items-start">
-        <!-- Section gauche: Image -->
-        <div class="flex-1">
-          <div class="bg-panel rounded-btn border-2 border-[#8271D7] p-6 flex items-center justify-center min-h-[200px]">
-            <img src="./assets/question-aire-cercle.png" alt="Illustration cercle" class="w-full max-w-sm">
-          </div>
+        <!-- Titre -->
+        <h1 class="text-2xl sm:text-3xl font-bold text-center text-brand-text mb-6 sm:mb-10">Mes Quiz Et Evaluations</h1>
+
+        <!-- Filtres -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <!-- Filter Button: Math -->
+            <div class="relative w-full">
+                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
+                    <span>Math</span>
+                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+             <!-- Filter Button: Chapitre -->
+             <div class="relative w-full">
+                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
+                    <span>Chapitre</span>
+                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+             <!-- Filter Button: Difficulté -->
+             <div class="relative w-full">
+                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
+                    <span>Par difficulté</span>
+                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+             <!-- Filter Button: Type -->
+             <div class="relative w-full">
+                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
+                    <span>Type</span>
+                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
         </div>
 
-        <!-- Section droite: Options de réponse - Alignées avec l'image -->
-        <div class="flex-1">
-          <div class="w-full space-y-3">
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">2r</span>
-            </label>
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">2πr</span>
-            </label>
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">πr</span>
-            </label>
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">πr²</span>
-            </label>
-          </div>
+        <!-- LISTE DES CARTES -->
+        <div class="space-y-4 sm:space-y-6">
+
+            <!-- CARTE 1 -->
+            <article class="bg-white rounded-[20px] sm:rounded-[30px] border-2 border-primary/30 p-1 shadow-card group hover:border-primary transition duration-300">
+                <div class="rounded-[16px] sm:rounded-[26px] bg-white border border-transparent p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
+                    
+                    <!-- Icon + Text -->
+                    <div class="flex items-start gap-3 sm:gap-5 flex-1 min-w-0">
+                        <!-- Icone Math -->
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white border-2 border-brand-text/80 rounded-lg flex items-center justify-center text-brand-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        
+                        <div class="min-w-0 flex-1">
+                            <h2 class="text-lg sm:text-xl font-bold text-brand-text truncate">Quiz De Mathematique</h2>
+                            <p class="text-sm sm:text-base text-brand-text font-medium mt-1 line-clamp-2">Chapitre 1 : Arithmétique Et Théorie Des Nombres</p>
+                            <p class="text-xs text-brand-gray font-medium mt-1">10 Questions | Avancé</p>
+                        </div>
+                    </div>
+
+                    <!-- Actions / Meta Right Side -->
+                    <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1 w-full sm:w-auto sm:min-w-[140px]">
+                        <!-- Time -->
+                        <div class="flex items-center gap-1 text-xs font-bold text-brand-text mb-2 sm:mb-4">
+                            <span>15 Mn</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+
+                        <!-- Link -->
+                        <a href="#" class="text-[11px] font-bold text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-primary mb-2">
+                            Details De Cours
+                        </a>
+
+                        <!-- Button -->
+                        <button class="bg-primary hover:bg-primary/90 text-white text-xs font-semibold px-4 sm:px-6 py-2 rounded-full flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center">
+                            <span>Commencer</span>
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CARTE 2 (En Cours) -->
+            <article class="bg-white rounded-[20px] sm:rounded-[30px] border border-brand-purple p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 shadow-sm hover:shadow-md transition">
+                <div class="flex items-start gap-3 sm:gap-5 flex-1 min-w-0">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white border-2 border-brand-text/80 rounded-lg flex items-center justify-center text-brand-text">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <h2 class="text-lg sm:text-xl font-bold text-brand-text truncate">Quiz De Mathematique</h2>
+                        <p class="text-sm sm:text-base text-brand-text font-medium mt-1 line-clamp-2">Chapitre 2 : Polynômes Et Équations Du Second Degré</p>
+                        <p class="text-xs text-brand-gray font-medium mt-1">20 Questions | Moyen</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1 w-full sm:w-auto sm:min-w-[140px]">
+                    <div class="flex items-center gap-1 text-xs font-bold text-brand-text mb-2 sm:mb-4">
+                        <span>15 Mn</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <a href="#" class="text-[11px] font-bold text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-primary mb-2">
+                        Details De Cours
+                    </a>
+                    <button class="bg-primary hover:bg-primary/90 text-white text-xs font-semibold px-4 sm:px-8 py-2 rounded-full flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center">
+                        <span>En Cours</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </button>
+                </div>
+            </article>
+
+            <!-- CARTE 3 (Terminé) -->
+            <article class="bg-white rounded-[20px] sm:rounded-[30px] border border-brand-purple p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 shadow-sm hover:shadow-md transition">
+                <div class="flex items-start gap-3 sm:gap-5 flex-1 min-w-0">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white border-2 border-brand-text/80 rounded-lg flex items-center justify-center text-brand-text">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <h2 class="text-lg sm:text-xl font-bold text-brand-text truncate">Quiz De Mathematique</h2>
+                        <p class="text-sm sm:text-base text-brand-text font-medium mt-1 line-clamp-2">Chapitre 3 : Calcul Vectoriel</p>
+                        <p class="text-xs text-brand-gray font-medium mt-1">15 Questions | Débutant</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1 w-full sm:w-auto sm:min-w-[140px]">
+                    <div class="flex items-center gap-1 text-xs font-bold text-brand-text mb-2 sm:mb-4">
+                        <span>15 Mn</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <a href="#" class="text-[11px] font-bold text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-primary mb-2">
+                        Details De Cours
+                    </a>
+                    <button class="bg-primary hover:bg-primary/90 text-white text-xs font-semibold px-4 sm:px-8 py-2 rounded-full flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center">
+                        <span>Terminé</span>
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </button>
+                </div>
+            </article>
+
         </div>
-      </div>
-    </section>
+    </main>
 
-    <!-- Boutons de navigation et validation - Disposition 2x2 centrés -->
-    <div class="flex flex-col gap-4 items-center justify-center">
-      <!-- Première ligne: Précédent et Suivant -->
-      <div class="flex items-center gap-4">
-        <button class="flex items-center gap-2 bg-white border-2 border-[#8271D7] text-gray-900 rounded-btn px-5 py-2 font-semibold hover:bg-panel transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          Précédent
-        </button>
-        <button class="flex items-center gap-2 bg-white border-2 border-[#8271D7] text-gray-900 rounded-btn px-5 py-2 font-semibold hover:bg-panel transition">
-          Suivant
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </div>
-      <!-- Deuxième ligne: Valider l'état et Validation du quiz -->
-      <div class="flex items-center gap-4">
-        <button class="flex items-center gap-2 bg-primary text-white rounded-btn px-6 py-3 font-semibold hover:bg-primaryDark transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M9 9l6 6M15 9l-6 6"/>
-          </svg>
-          Valider l'état
-        </button>
-        <button class="flex items-center gap-2 bg-primary text-white rounded-btn px-6 py-3 font-semibold hover:bg-primaryDark transition">
-          Validation du quiz
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 6L9 17l-5-5"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </main>
-
- <!-- ================= FOOTER ================= -->
-  <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 border-b border-white/20 pb-6 sm:pb-8">
             
             <!-- Col 1: BrainHub -->
@@ -254,8 +326,13 @@
 
 
 
-    <!-- Script mobile menu simple -->
-   <script>
+
+
+    
+
+
+    <!-- JavaScript pour la barre de recherche et le menu mobile -->
+    <script>
         // Éléments DOM
         const searchInput = document.getElementById('searchInput');
         const mobileSearchBtn = document.getElementById('mobileSearchBtn');
@@ -386,6 +463,6 @@
             });
         }
     </script>
+
 </body>
 </html>
-

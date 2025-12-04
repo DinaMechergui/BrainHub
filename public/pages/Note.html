@@ -10,112 +10,213 @@
 
   <!-- Tailwind CSS compilé -->
   <link rel="stylesheet" href="../../src/output.css">
+ 
 </head>
-<body class="font-raleway bg-panel text-gray-800">
+<body class="font-raleway bg- text-gray-800">
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 h-14 z-50 bg-primary text-white flex items-center px-6 shadow-soft-1">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-        <img src="https://via.placeholder.com/22/667EEA/FFFFFF?text=B" alt="logo" class="w-5 h-5">
-      </div>
-      <span class="font-bold text-lg tracking-tight">BrainHub</span>
-    </div>
+  <!-- HEADER RESPONSIVE -->
+   <header class="w-full bg-primary text-white shadow-md relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            
+            <!-- LOGO à gauche -->
+            <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32">
 
-<nav class="hidden lg:flex gap-8 text-sm justify-center w-full">
-  <a class="hover:underline" href="#">Accueil</a>
-  <a class="hover:underline" href="#">A propos</a>
-  <a class="hover:underline" href="#">Contact</a>
-</nav>
+            <!-- NAV centré (desktop) -->
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-white/80 transition">Accueil</a>
+                <a href="#" class="hover:text-white/80 transition">A propos</a>
+                <a href="#" class="hover:text-white/80 transition">Contact</a>
+            </nav>
+
+            <!-- SEARCH + LOGOUT (desktop) -->
+            <div class="hidden sm:flex items-center gap-3 lg:gap-4">
+                <!-- Search Bar -->
+                <div class="hidden md:flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2 w-48 lg:w-64 transition-all focus-within:bg-white/30 focus-within:border-white/40">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="Search for anything..." 
+                        class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <!-- Logout Icon -->
+                <button class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Mobile: Menu button + Search icon -->
+            <div class="flex sm:hidden items-center gap-3">
+                <!-- Mobile Search Button -->
+                <button id="mobileSearchBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Rechercher">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
 
 
-    <div class="relative w-96">
-      <input
-        type="text"
-        placeholder="Rechercher..."
-        class="w-full pl-10 pr-4 py-2 rounded-pill bg-white text-black shadow-soft-2 focus:outline-none"
-      />
-      <!-- Icone recherche -->
-      <svg xmlns="http://www.w3.org/2000/svg"
-           class="w-5 h-5 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2"
-           viewBox="0 0 24 24" fill="none" stroke="currentColor">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-    </div>
-  </header>
+        
+        <!-- Mobile Search Bar (hidden by default) -->
+        <div id="mobileSearchBar" class="search-container hidden sm:hidden">
+            <div class="flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input 
+                    type="text" 
+                    id="mobileSearchInput"
+                    placeholder="Search for anything..." 
+                    class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                    autocomplete="off"
+                >
+                <button id="closeMobileSearch" class="ml-2 text-white/70 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
 
-  <div class="pt-16 flex gap-6">
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobileMenu" class="hidden absolute top-full left-0 right-0 bg-primary border-t border-white/20 z-50">
+            <nav class="flex flex-col p-4 space-y-4">
+                <a href="#" class="text-white hover:text-white/80 transition py-2">Accueil</a>
+                <a href="#" class="text-white hover:text-white/80 transition py-2">A propos</a>
+                <a href="#" class="text-white hover:text-white/80 transition py-2">Contact</a>
+                <button class="bg-white/20 p-2 rounded-lg text-white hover:bg-white/30 transition text-left">
+                    Déconnexion
+                </button>
+            </nav>
+        </div>
+    </header>
 
-    <!-- LEFT SIDEBAR -->
-    <aside id="leftSidebar" class="hidden left-width sidebar-left fixed left-4 top-20 bottom-6 p-6 overflow-auto z-40 bg-primary text-white rounded-2xl shadow-soft-1">
-      <div class="bg-white text-gray-800 rounded-2xl p-4 shadow-soft-2">
-        <h3 class="text-base font-semibold text-center">Salon “Java POO Avancée”</h3>
-      </div>
-
-      <div class="mt-6 bg-white rounded-2xl p-5 shadow-soft-2">
-        <div class="mb-4 space-y-3">
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">Matière :</span>
-            <span class="text-sm font-medium text-red-600">Java</span>
+  <!-- DROPDOWN MENU MOBILE -->
+  <div id="mobile-dropdown" class="md:hidden hidden bg-primary shadow-lg">
+    <div class="px-6 py-4 space-y-4">
+      <!-- Liens dropdown -->
+      <a href="#" class="block text-white py-3 px-4 hover:bg-primaryDark rounded-btn transition">Accueil</a>
+      <a href="#" class="block text-white py-3 px-4 hover:bg-primaryDark rounded-btn transition">A propos</a>
+      <a href="#" class="block text-white py-3 px-4 hover:bg-primaryDark rounded-btn transition">Contact</a>
+      
+      <!-- Search bar dans dropdown -->
+      <div class="pt-4 border-t border-primaryDark">
+        <div class="flex items-center gap-2">
+          <div class="flex-1 flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
+            <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-full">
           </div>
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">Statut :</span>
-            <div class="flex items-center gap-2">
-              <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-              <span class="text-sm text-green-600 font-medium">Actif</span>
+          <button class="w-10 h-10 rounded-full bg-coral flex items-center justify-center hover:bg-coral/80 transition flex-shrink-0">
+            <img src="../pages/assets/logout.png" class="w-5 h-5" alt="Logout"/>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="max-w-7xl mx-auto mt-6 px-4 md:px-6">
+<p class="text-primary mb-4 text-sm md:text-base flex items-center gap-1">
+  <span>Accueil ></span>
+  <a href="Fiche.html" class="text-primary hover:underline">Fiche ></a>
+  <span class="text-black font-semibold">Note</span>
+</p>
+</div>
+
+
+
+
+    <div class="pt-8 md:pt-16 flex gap-4 md:gap-6">
+
+      <!-- LEFT SIDEBAR -->
+      <aside id="leftSidebar" class="hidden left-width sidebar-left fixed left-4 top-20 bottom-6 p-4 md:p-6 overflow-auto z-40 bg-primary text-white rounded-2xl shadow-soft-1">
+        <div class="bg-white text-gray-800 rounded-2xl p-3 md:p-4 shadow-soft-2">
+          <h3 class="text-sm md:text-base font-semibold text-center">Salon "Java POO Avancée"</h3>
+        </div>
+
+        <div class="mt-4 md:mt-6 bg-white rounded-2xl p-3 md:p-4 shadow-soft-2">
+          <div class="mb-3 space-y-2">
+            <div class="flex justify-between items-center">
+              <span class="text-xs md:text-sm text-gray-600">Matière :</span>
+              <span class="text-xs md:text-sm font-medium text-red-600">Java</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs md:text-sm text-gray-600">Statut :</span>
+              <div class="flex items-center gap-1 md:gap-2">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-xs md:text-sm text-green-600 font-medium">Actif</span>
+              </div>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xs md:text-sm text-gray-600">Membres :</span>
+              <span class="text-xs md:text-sm text-gray-600">12/15</span>
             </div>
           </div>
-          <div class="flex justify-between items-center">
-            <span class="text-sm text-gray-600">Membre Actifs :</span>
-            <span class="text-sm text-gray-600">12/15</span>
-          </div>
         </div>
-      </div>
 
-      <div class="mt-6">
-        <h4 class="text-white text-lg font-semibold mb-4">Menu Salon</h4>
+        <div class="mt-4 md:mt-6">
+          <h4 class="text-white text-base md:text-lg font-semibold mb-3">Menu Salon</h4>
 
-        <button class="w-full mb-4 py-4 bg-white/30 rounded-xxl flex items-center gap-4 px-5">
-          <i class="fas fa-file-alt text-white"></i>
-          <span class="text-white font-medium">Notes Partagées</span>
-        </button>
+          <button class="w-full mb-3 py-3 bg-white/30 rounded-xxl flex items-center gap-3 px-4">
+            <i class="fas fa-file-alt text-white text-sm"></i>
+            <span class="text-white font-medium text-sm">Notes Partagées</span>
+          </button>
 
-        <button class="w-full mb-4 py-4 bg-white/20 rounded-xxl flex items-center gap-4 px-5">
-          <i class="fas fa-question text-white"></i>
-          <span class="text-white font-medium">Quiz de groupe</span>
-        </button>
-      </div>
-
-      <div class="mt-6">
-        <h4 class="text-white text-lg font-semibold mb-4">Statistiques</h4>
-        <div class="w-full py-4 bg-white/20 rounded-xxl flex items-center gap-3 px-5">
-          <i class="fas fa-chart-bar text-white"></i>
-          <span class="text-white">Voir les statistiques</span>
+          <button class="w-full mb-3 py-3 bg-white/20 rounded-xxl flex items-center gap-3 px-4">
+            <i class="fas fa-question text-white text-sm"></i>
+            <span class="text-white font-medium text-sm">Quiz de groupe</span>
+          </button>
         </div>
-      </div>
 
-      <div class="mt-6">
-        <button id="closeLeft" class="w-full bg-white text-primary py-2 rounded-btn font-medium shadow-soft-2">Retour</button>
-      </div>
-    </aside>
-
-    <!-- CENTER CONTENT -->
-    <main class="flex-1 max-w-6xl mx-auto px-6 relative z-10">
-      <div class="bg-white rounded-2xl p-6 min-h-[72vh] shadow-soft-2">
-        <div class="flex justify-between items-start">
-          <div>
-            <nav class="text-sm text-gray-500 mb-2">Accueil &gt; <span class="text-black font-medium">Notes</span></nav>
-            <h1 class="text-2xl font-bold mb-1">Note De Révision : "Heritage Et Polymorphisme"</h1>
-          </div>
-          <div>
-            <button class="btn-pill bg-primary text-white rounded-btn px-6 py-2">Lancer une Session Vidéo</button>
+        <div class="mt-4 md:mt-6">
+          <h4 class="text-white text-base md:text-lg font-semibold mb-3">Statistiques</h4>
+          <div class="w-full py-3 bg-white/20 rounded-xxl flex items-center gap-2 px-4">
+            <i class="fas fa-chart-bar text-white text-sm"></i>
+            <span class="text-white text-sm">Voir les statistiques</span>
           </div>
         </div>
 
-        <div class="mt-8 bg-white rounded-2xl relative w-11/12 max-w-5xl mx-auto p-8 min-h-[400px] flex items-center justify-center">
-          <div class="bg-paleBlue rounded-xxl p-6 w-4/5 max-h-[300px] overflow-auto relative z-10">
-            <pre class="font-roboto text-sm text-[#2b3b5c] leading-relaxed bg-transparent overflow-auto rounded-md">
+        <div class="mt-4 md:mt-6">
+          <button id="closeLeft" class="w-full bg-white text-primary py-2 rounded-btn font-medium text-sm shadow-soft-2">Retour</button>
+        </div>
+      </aside>
+
+      <!-- CENTER CONTENT (plus petite et centrée) -->
+      <main class="flex-1 max-w-4xl mx-auto px-0 md:px-4">
+        <div class="card-3d p-4 md:p-6 min-h-[65vh]">
+          
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
+            <div>
+              <h1 class="text-xl md:text-2xl font-bold text-gray-800 mb-1">
+                Note De Révision : "Héritage Et Polymorphisme"
+              </h1>
+            </div>
+            <div>
+              <button class="btn-3d text-white rounded-btn px-5 md:px-6 py-2 text-sm md:text-base flex items-center gap-2">
+                <i class="fas fa-video"></i> Lancer une Session Vidéo
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD PRINCIPALE AVEC CODE -->
+          <div class="mt-6 md:mt-8 code-3d p-4 md:p-6 rounded-2xl relative">
+
+            <!-- BLOC DU CODE -->
+            <div class="bg-white/90 rounded-xl p-4 md:p-5 min-h-[180px] overflow-auto">
+              <pre class="font-roboto text-sm md:text-base text-gray-800 leading-relaxed overflow-auto">
 class Animal {
     void parler() { System.out.println("Je suis un animal"); }
 } 
@@ -126,238 +227,562 @@ public class Main {
     public static void main(String[] args) {
         new Chien().parler();
     }
-}
-            </pre>
+}</pre>
+            </div>
+
+            <!-- BUBBLE COLLÉE AU BLOC -->
+            <div class="left-1/2 -translate-x-1/2 -mt-5 w-64 bubble-3d p-3 flex items-start gap-3 z-20">
+              <div class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center text-xs">
+                i
+              </div>
+              <div>
+                <div class="text-sm font-semibold text-gray-800">Objectif</div>
+<div class="text-xs text-gray-600">
+  Réviser le chapitre Héritage & Polymorphisme
+</div>
+
+<!-- 🔗 Lien vers tous les objectifs -->
+<a href="../pages/objectifs.html" 
+   class="text-xs text-primary font-semibold underline mt-2 inline-block hover:text-primaryDark transition">
+   Voir les autres objectifs →
+</a>
+
+              </div>
+            </div>
+
           </div>
 
-          <div class="absolute top-full mt-[-30px] w-64 bubble p-4 flex items-start gap-3 z-20">
-            <div class="w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs">i</div>
-            <div>
-              <div class="text-sm font-semibold">Objectif</div>
-              <div class="text-xs text-gray-600">Réviser le chapitre Héritage & Polymorphisme</div>
+          <!-- CARDS INFORMATIONS (plus petites avec effet 3D) -->
+          <div class="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <!-- Card 1 -->
+            <div class="card-3d p-4">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center">
+                  <i class="fas fa-book text-sm"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 text-sm md:text-base">Concepts Clés</h3>
+              </div>
+              <ul class="space-y-1.5 text-xs md:text-sm text-gray-600">
+                <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> Héritage simple</li>
+                <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> Redéfinition</li>
+                <li class="flex items-center gap-2"><i class="fas fa-check text-green-500 text-xs"></i> Polymorphisme</li>
+              </ul>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-3d p-4">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center">
+                  <i class="fas fa-clock text-sm"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 text-sm md:text-base">Durée</h3>
+              </div>
+              <p class="text-xl md:text-2xl font-bold text-gray-800">45 min</p>
+              <p class="text-xs text-gray-500 mt-1">Pour maîtriser ce concept</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-3d p-4">
+              <div class="flex items-center gap-3 mb-3">
+                <div class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center">
+                  <i class="fas fa-star text-sm"></i>
+                </div>
+                <h3 class="font-semibold text-gray-800 text-sm md:text-base">Difficulté</h3>
+              </div>
+              <div class="flex items-center gap-1">
+                <i class="fas fa-star text-yellow-500 text-xs"></i>
+                <i class="fas fa-star text-yellow-500 text-xs"></i>
+                <i class="fas fa-star text-yellow-500 text-xs"></i>
+                <i class="fas fa-star text-gray-300 text-xs"></i>
+                <i class="fas fa-star text-gray-300 text-xs"></i>
+              </div>
+              <p class="text-xs text-gray-500 mt-2">Niveau intermédiaire</p>
+            </div>
+          </div>
+
+          <!-- BOUTONS BAS (dans leur place originale) -->
+          <!-- BOUTONS BAS (dans leur place originale) -->
+<div class="mt-10 md:mt-14 flex justify-between items-center mb-16">
+  <div class="flex gap-3">
+    <button id="salonBtn" class="btn-outline-3d text-primary rounded-btn px-4 md:px-6 py-2 text-sm md:text-base">
+      Salon
+    </button>
+    <button id="chatBtn" class="btn-outline-3d text-primary rounded-btn px-4 md:px-6 py-2 text-sm md:text-base">
+      Chat
+    </button>
+  </div>
+  <button class="btn-3d text-white rounded-btn px-4 md:px-6 py-2 text-sm md:text-base">
+    <i class="fas fa-download mr-2"></i>Télécharger
+  </button>
+</div>
+      </main>
+
+      <!-- RIGHT CHAT -->
+      <aside id="rightChat" class="hidden right-width sidebar-right fixed right-4 top-20 bottom-6 p-4 md:p-6 overflow-auto z-40 bg-primary text-white rounded-2xl shadow-soft-1 flex flex-col">
+        
+        <div class="mb-4 flex justify-between items-center">
+          <h4 class="font-semibold text-base md:text-lg">Chat</h4>
+          <button id="closeChat" class="btn-pill border border-primary text-primary bg-white px-3 py-1.5 text-xs md:text-sm">Retour</button>
+        </div>
+
+        <!-- Participants -->
+        <div class="mb-4 p-3 bg-white/10 rounded-xl">
+          <p class="text-sm text-white/80 mb-2">En ligne (3)</p>
+          <div class="flex items-center gap-2">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="profil" class="w-8 h-8 rounded-full border-2 border-white">
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="profil" class="w-8 h-8 rounded-full border-2 border-white">
+            <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="profil" class="w-8 h-8 rounded-full border-2 border-white">
+          </div>
+        </div>
+
+        <!-- Messages -->
+        <div class="flex-1 space-y-4 overflow-y-auto pr-2" id="chatMessages">
+          <!-- Message à gauche (autre personne) -->
+          <div class="flex items-start gap-3 message-left">
+            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="profil" class="w-8 h-8 rounded-full flex-shrink-0">
+            <div class="bg-white text-gray-800 rounded-2xl px-3 py-2 max-w-[80%]">
+              <p class="text-sm">Salut, as-tu révisé le chapitre d'Héritage ?</p>
+              <p class="text-xs text-gray-500 mt-1">10:24</p>
+            </div>
+          </div>
+
+          <!-- Message à droite (moi) -->
+          <div class="flex items-start gap-3 message-right">
+            <div class="bg-green-500 text-white rounded-2xl px-3 py-2 max-w-[80%] order-2">
+              <p class="text-sm">Oui, je suis prêt pour le quiz !</p>
+              <p class="text-xs text-white/80 mt-1">10:25</p>
+            </div>
+            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="profil" class="w-8 h-8 rounded-full flex-shrink-0 order-1">
+          </div>
+
+          <!-- Message à gauche avec pièce jointe -->
+          <div class="flex items-start gap-3 message-left">
+            <img src="https://randomuser.me/api/portraits/men/55.jpg" alt="profil" class="w-8 h-8 rounded-full flex-shrink-0">
+            <div class="bg-white text-gray-800 rounded-2xl px-3 py-2 max-w-[80%]">
+              <div class="flex items-center gap-2 mb-1">
+                <i class="fas fa-paperclip text-gray-400"></i>
+                <p class="text-sm font-medium">Document partagé</p>
+              </div>
+              <p class="text-xs text-gray-500">exercices_heritage.pdf</p>
+              <p class="text-xs text-gray-500 mt-1">10:26</p>
             </div>
           </div>
         </div>
 
-        <div class="mt-20 flex justify-between items-center">
-          <button id="salonBtn" class="btn-pill border border-primary text-primary bg-white px-6 py-2">Salon</button>
-                    <button id="chatBtn" class="btn-pill border border-primary text-primary bg-white px-6 py-2">Chat</button>
-
+        <!-- Input pour envoyer message -->
+        <div class="mt-4 flex gap-2 items-center">
+          <!-- Zone écriture -->
+          <input
+            type="text"
+            id="messageInput"
+            placeholder="Écrivez un message..."
+            class="flex-1 px-4 py-2 rounded-full bg-white text-black outline-none text-sm"
+          />
+          <!-- Bouton envoyer -->
+          <button id="sendMessage" class="bg-coral p-2.5 rounded-full flex items-center justify-center hover:bg-coral/90 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+              stroke-width="2" stroke="white" class="w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4.5 12l15-9-4.5 9 4.5 9-15-9z" />
+            </svg>
+          </button>
         </div>
-      </div>
-
-      <!-- FOOTER -->
-     <!-- FOOTER -->
-
-
-    </main>
-
-    <!-- RIGHT CHAT -->
-       <!-- RIGHT CHAT -->
-  <!-- RIGHT CHAT -->
-<aside id="rightChat" class="hidden right-width sidebar-right fixed right-4 top-20 bottom-6 p-6 overflow-auto z-40 bg-primary text-white rounded-2xl shadow-soft-1 flex flex-col">
-  
-  <div class="mb-4 flex justify-between items-center">
-    <h4 class="font-semibold">Chat</h4>
-    <button id="closeChat" class="btn-pill border border-primary text-primary bg-white px-6 py-2">Retour</button>
-  </div>
-
-  <!-- Messages -->
-  <div class="flex-1 space-y-4 overflow-y-auto pr-2" id="chatMessages">
-    <div class="flex items-start gap-3">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ04lHEm_QJa8F-3ZDtNAvGLg7AIi37VoLaTQ&s" alt="profil" class="w-10 h-10 rounded-full">
-      <div class="bg-white text-gray-800 rounded-2xl px-4 py-2 max-w-xs">
-        <p class="text-sm">Salut, as-tu révisé le chapitre d’Héritage ?</p>
-      </div>
+      </aside>
     </div>
-
-    <div class="flex items-start gap-3 justify-end">
-      <div class="bg-green-500 text-white rounded-2xl px-4 py-2 max-w-xs">
-        <p class="text-sm">Oui, je suis prêt pour le quiz !</p>
-      </div>
-      <img src="data:image/jpeg;base64,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" alt="profil" class="w-10 h-10 rounded-full">
-    </div>
-
-    <div class="flex items-start gap-3">
-      <img src="data:image/jpeg;base64,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" alt="profil" class="w-10 h-10 rounded-full">
-      <div class="bg-white text-gray-800 rounded-2xl px-4 py-2 max-w-xs flex items-center gap-2">
-        <p class="text-sm">Voici le document :</p>
-        <i class="fas fa-paperclip text-gray-400"></i>
-      </div>
-    </div>
+<div id="overlay" class="fixed inset-0 bg-black/40 hidden z-30 mb-16"></div>
   </div>
 
-  <!-- Input pour envoyer message -->
-<div class="mt-4 flex gap-2 items-center">
+  <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 border-b border-white/20 pb-6 sm:pb-8">
+            
+            <!-- Col 1: BrainHub -->
+            <div>
+                
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">BrainHub</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li><a href="#" class="hover:underline">A propos</a></li>
+                    <li><a href="#" class="hover:underline">Nos services</a></li>
+                </ul>
+            </div>
 
-  <!-- Zone écriture -->
-  <input
-    type="text"
-    id="messageInput"
-    placeholder="Tapez votre message..."
-    class="flex-1 px-4 py-2 rounded-full bg-white text-black outline-none"
-  />
+            <!-- Col 2: Aide -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Aide</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li><a href="#" class="hover:underline">FAQ</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
 
-  <!-- Bouton envoyer -->
-  <button id="sendMessage" class="bg-primary p-3 rounded-full flex items-center justify-center">
-    <!-- Icône envoyer -->
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-      stroke-width="2" stroke="white" class="w-5 h-5">
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M4.5 12l15-9-4.5 9 4.5 9-15-9z" />
-    </svg>
-  </button>
+            <!-- Col 3: Suivez-nous -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Suivez-nous</h3>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a3 3 0 100-6 3 3 0 000 6z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M17 7v.01"></path></svg>
+                    </a>
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+                    </a>
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
+                </div>
+            </div>
 
-  <!-- Bouton pièce jointe -->
-  <button class="bg-primaryDark p-3 rounded-full flex items-center justify-center">
-    <!-- Icône trombone -->
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-      stroke-width="2" stroke="white" class="w-5 h-5">
-      <path stroke-linecap="round" stroke-linejoin="round"
-        d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.415-6.414a4 4 0 10-5.657-5.657L5.636 9.586" />
-    </svg>
-  </button>
-
-</div>
-
-
-
-</aside>
-
-  </div>
-    <div id="overlay" class="fixed inset-0 bg-black/40 hidden z-30"></div>
-
-  </div>
-
-  <div id="overlay" class="fixed inset-0 bg-black/40 hidden z-30"></div>
+            <!-- Col 4: Contact -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Contact</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li>+21561771</li>
+                    <li>Brainhub@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Copyright centré -->
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-xs opacity-70">© 2025 BrainHub - Tous les droits réservés</p>
+        </div>
+    </footer>
 
   <script src="https://kit.fontawesome.com/a2d9b8d3c8.js" crossorigin="anonymous"></script>
-</body>
-<footer class="bg-primary text-white py-6 px-8">
-  <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+  <script>
+    // ===== GESTION SIDEBARS GAUCHE/DROITE =====
+    const salonBtn = document.getElementById('salonBtn');
+    const chatBtn = document.getElementById('chatBtn');
+    const closeLeft = document.getElementById('closeLeft');
+    const closeRight = document.getElementById('closeChat');
+    const leftSidebar = document.getElementById('leftSidebar');
+    const rightChat = document.getElementById('rightChat');
+    const overlay = document.getElementById('overlay');
 
-    <!-- Logo -->
-    <div>
-      <h2 class="font-semibold text-lg">BrainHub</h2>
-    </div>
+    function showLeft() {
+      leftSidebar.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+    }
 
-    <!-- Brainhub -->
-    <div>
-      <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">BrainHub</h3>
-      <ul class="mt-3 space-y-1 text-sm">
-        <li><a href="#" class="hover:underline">A propos</a></li>
-        <li><a href="#" class="hover:underline">Nos services</a></li>
-      </ul>
-    </div>
+    function hideLeft() {
+      leftSidebar.classList.add('hidden');
+      overlay.classList.add('hidden');
+    }
 
-    <!-- Aide -->
-    <div>
-      <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">Aide</h3>
-      <ul class="mt-3 space-y-1 text-sm">
-        <li><a href="#" class="hover:underline">FAQ</a></li>
-        <li><a href="#" class="hover:underline">Contact</a></li>
-      </ul>
-    </div>
+    function showRight() {
+      rightChat.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+    }
 
-    <!-- Suivez-nous -->
-    <div>
-      <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">Suivez-nous</h3>
-      <div class="flex items-center gap-4 mt-3">
+    function hideRight() {
+      rightChat.classList.add('hidden');
+      overlay.classList.add('hidden');
+    }
 
-        <!-- Instagram -->
-        <div class="p-2 rounded-full border border-white">
-          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" 
-               stroke-width="2" viewBox="0 0 24 24">
-            <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" />
-            <circle cx="12" cy="12" r="3" />
-            <circle cx="17" cy="7" r="1" />
-          </svg>
+    salonBtn?.addEventListener('click', showLeft);
+    closeLeft?.addEventListener('click', hideLeft);
+    chatBtn?.addEventListener('click', showRight);
+    closeRight?.addEventListener('click', hideRight);
+    
+    overlay?.addEventListener('click', () => {
+      hideLeft();
+      hideRight();
+    });
+
+    // ===== GESTION HEADER RESPONSIVE =====
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileDropdown = document.getElementById('mobile-dropdown');
+    const desktopNav = document.querySelector('nav');
+    const desktopSearch = document.querySelector('.hidden.md\\:flex');
+
+    // Fonction pour gérer l'affichage responsive
+    function handleResponsive() {
+      if (window.innerWidth <= 768) {
+        // Mode mobile - cacher les éléments desktop
+        if (desktopNav) desktopNav.style.display = 'none';
+        if (desktopSearch) desktopSearch.style.display = 'none';
+        // Afficher burger menu
+        if (mobileMenuButton) mobileMenuButton.style.display = 'block';
+      } else {
+        // Mode desktop - afficher les éléments desktop
+        if (desktopNav) desktopNav.style.display = 'flex';
+        if (desktopSearch) desktopSearch.style.display = 'flex';
+        // Cacher burger menu et dropdown
+        if (mobileMenuButton) mobileMenuButton.style.display = 'none';
+        if (mobileDropdown) mobileDropdown.classList.add('hidden');
+      }
+    }
+
+    // Initialiser au chargement
+    document.addEventListener('DOMContentLoaded', handleResponsive);
+    
+    // Écouter le redimensionnement
+    window.addEventListener('resize', handleResponsive);
+
+    // Toggle dropdown mobile
+    if (mobileMenuButton) {
+      mobileMenuButton.addEventListener('click', () => {
+        if (mobileDropdown) {
+          mobileDropdown.classList.toggle('hidden');
+          
+          // Utiliser l'animation depuis le CSS
+          if (!mobileDropdown.classList.contains('hidden')) {
+            mobileDropdown.classList.add('animate-slideDown');
+          } else {
+            mobileDropdown.classList.remove('animate-slideDown');
+          }
+        }
+      });
+    }
+
+    // Fermer dropdown si on clique ailleurs
+    document.addEventListener('click', (event) => {
+      if (!mobileDropdown || !mobileMenuButton) return;
+      
+      const isClickInsideMenu = mobileDropdown.contains(event.target);
+      const isClickOnButton = mobileMenuButton.contains(event.target);
+      
+      if (!isClickInsideMenu && !isClickOnButton && !mobileDropdown.classList.contains('hidden')) {
+        mobileDropdown.classList.add('hidden');
+        mobileDropdown.classList.remove('animate-slideDown');
+      }
+    });
+
+    // Fermer dropdown si on clique sur un lien
+    if (mobileDropdown) {
+      mobileDropdown.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDropdown.classList.add('hidden');
+          mobileDropdown.classList.remove('animate-slideDown');
+        });
+      });
+    }
+
+    // Gestion des messages dans le chat
+    const messageInput = document.getElementById('messageInput');
+    const sendMessageBtn = document.getElementById('sendMessage');
+    const chatMessages = document.getElementById('chatMessages');
+
+    function sendMessage() {
+      if (!messageInput || !chatMessages) return;
+      
+      const message = messageInput.value.trim();
+      if (message === '') return;
+
+      // Créer un nouveau message à droite (moi)
+      const messageDiv = document.createElement('div');
+      messageDiv.className = 'flex items-start gap-3 message-right';
+      
+      const now = new Date();
+      const time = `${now.getHours()}:${now.getMinutes().toString().padStart(2, '0')}`;
+      
+      messageDiv.innerHTML = `
+        <div class="bg-green-500 text-white rounded-2xl px-3 py-2 max-w-[80%] order-2">
+          <p class="text-sm">${message}</p>
+          <p class="text-xs text-white/80 mt-1">${time}</p>
         </div>
+        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="profil" class="w-8 h-8 rounded-full flex-shrink-0 order-1">
+      `;
 
-        <!-- Facebook -->
-        <div class="p-2 rounded-full border border-white">
-          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
-               stroke-width="2" viewBox="0 0 24 24">
-            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-          </svg>
-        </div>
+      chatMessages.appendChild(messageDiv);
+      messageInput.value = '';
+      
+      // Faire défiler vers le bas
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 
-        <!-- Email -->
-        <div class="p-2 rounded-full border border-white">
-          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
-               stroke-width="2" viewBox="0 0 24 24">
-            <path d="M4 4h16v16H4z" />
-            <path d="M4 4l8 8 8-8" />
-          </svg>
-        </div>
+    if (sendMessageBtn && messageInput) {
+      sendMessageBtn.addEventListener('click', sendMessage);
+      
+      messageInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          sendMessage();
+        }
+      });
+    }
+  </script>
+    <script>
+        // Éléments DOM
+        const searchInput = document.getElementById('searchInput');
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+        const mobileSearchBar = document.getElementById('mobileSearchBar');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        const closeMobileSearch = document.getElementById('closeMobileSearch');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-      </div>
-    </div>
+        // Données de recherche (exemple - à remplacer par vos vraies données)
+        const quizData = [
+            { title: 'Quiz De Mathematique', chapter: 'Chapitre 1 : Arithmétique Et Théorie Des Nombres', questions: '10 Questions', level: 'Avancé' },
+            { title: 'Quiz De Mathematique', chapter: 'Chapitre 2 : Polynômes Et Équations Du Second Degré', questions: '20 Questions', level: 'Moyen' },
+            { title: 'Quiz De Mathematique', chapter: 'Chapitre 3 : Calcul Vectoriel', questions: '15 Questions', level: 'Débutant' }
+        ];
 
-    <!-- Contact -->
-  
+        // Fonction de recherche
+        function performSearch(query) {
+            if (!query.trim()) {
+                return quizData;
+            }
 
-  </div>
+            const lowerQuery = query.toLowerCase();
+            return quizData.filter(quiz => 
+                quiz.title.toLowerCase().includes(lowerQuery) ||
+                quiz.chapter.toLowerCase().includes(lowerQuery) ||
+                quiz.level.toLowerCase().includes(lowerQuery)
+            );
+        }
 
-  <!-- Bas du footer -->
-  <div class="text-center mt-8 text-sm opacity-90">
-    © 2025 BrainHub - Tous les droits réservés
-  </div>
-</footer>
+        // Fonction pour filtrer les cartes visuellement
+        function filterCards(query) {
+            const cards = document.querySelectorAll('article');
+            const results = performSearch(query);
+            
+            cards.forEach((card, index) => {
+                if (index < results.length) {
+                    card.style.display = '';
+                    card.classList.remove('hidden');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
 
+            // Si aucun résultat, afficher un message
+            const cardsContainer = document.querySelector('.space-y-4, .space-y-6');
+            let noResultsMsg = document.getElementById('noResultsMsg');
+            
+            if (results.length === 0 && query.trim()) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.id = 'noResultsMsg';
+                    noResultsMsg.className = 'text-center py-12 text-brand-gray';
+                    noResultsMsg.innerHTML = '<p class="text-lg font-semibold mb-2">Aucun résultat trouvé</p><p class="text-sm">Essayez avec d\'autres mots-clés</p>';
+                    cardsContainer.appendChild(noResultsMsg);
+                }
+            } else if (noResultsMsg) {
+                noResultsMsg.remove();
+            }
+        }
 
+        // Écouteur pour la recherche desktop
+        if (searchInput) {
+            let searchTimeout;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    filterCards(e.target.value);
+                }, 300);
+            });
+        }
 
+        // Écouteur pour la recherche mobile
+        if (mobileSearchInput) {
+            let mobileSearchTimeout;
+            mobileSearchInput.addEventListener('input', (e) => {
+                clearTimeout(mobileSearchTimeout);
+                mobileSearchTimeout = setTimeout(() => {
+                    filterCards(e.target.value);
+                }, 300);
+            });
+        }
 
-</html>
+        // Toggle mobile search bar
+        if (mobileSearchBtn && mobileSearchBar) {
+            mobileSearchBtn.addEventListener('click', () => {
+                mobileSearchBar.classList.toggle('hidden');
+                if (!mobileSearchBar.classList.contains('hidden')) {
+                    mobileSearchInput.focus();
+                }
+            });
+        }
 
-<script>
-const openLeft = document.getElementById('openLeft');
-const closeLeft = document.getElementById('closeLeft');
-const salonBtn = document.getElementById('salonBtn');
+        // Fermer la barre de recherche mobile
+        if (closeMobileSearch && mobileSearchBar) {
+            closeMobileSearch.addEventListener('click', () => {
+                mobileSearchBar.classList.add('hidden');
+                mobileSearchInput.value = '';
+                filterCards('');
+            });
+        }
 
-const openRight = document.getElementById('chatBtn'); // ton bouton Chat
-const closeRight = document.getElementById('closeChat'); // si tu as un bouton fermer dans le chat
+        // Toggle mobile menu
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                // Fermer la recherche si ouverte
+                if (mobileSearchBar && !mobileSearchBar.classList.contains('hidden')) {
+                    mobileSearchBar.classList.add('hidden');
+                }
+            });
+        }
 
-const leftSidebar = document.getElementById('leftSidebar');
-const rightChat = document.getElementById('rightChat');
-const overlay = document.getElementById('overlay');
+        // Fermer les menus au clic en dehors
+        document.addEventListener('click', (e) => {
+            if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
 
-// Fonction pour ouvrir sidebar gauche
-function showLeft() {
-  leftSidebar.classList.remove('hidden');
-  overlay.classList.remove('hidden');
-}
+        // Synchroniser les deux champs de recherche
+        if (searchInput && mobileSearchInput) {
+            searchInput.addEventListener('input', (e) => {
+                mobileSearchInput.value = e.target.value;
+            });
+            mobileSearchInput.addEventListener('input', (e) => {
+                searchInput.value = e.target.value;
+            });
+        }
+    </script>
+    <script>
+/* =========  GESTION DES OBJECTIFS  ========= */
+const container = document.getElementById('objectifs-container');
+const addBtn    = document.getElementById('add-btn');
 
-// Fonction pour fermer sidebar gauche
-function hideLeft() {
-  leftSidebar.classList.add('hidden');
-  overlay.classList.add('hidden');
-}
-
-// Fonction pour ouvrir sidebar droite
-function showRight() {
-  rightChat.classList.remove('hidden');
-  overlay.classList.remove('hidden');
-}
-
-// Fonction pour fermer sidebar droite
-function hideRight() {
-  rightChat.classList.add('hidden');
-  overlay.classList.add('hidden');
-}
-
-// Événements
-openLeft?.addEventListener('click', showLeft);
-closeLeft?.addEventListener('click', hideLeft);
-salonBtn?.addEventListener('click', showLeft);
-
-openRight?.addEventListener('click', showRight);
-closeRight?.addEventListener('click', hideRight);
-
-// Clic sur overlay ferme tout
-overlay?.addEventListener('click', () => {
-  hideLeft();
-  hideRight();
+/* 1️⃣  Chargement au démarrage */
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = JSON.parse(localStorage.getItem('objectifs') || '[]');
+  if (saved.length) {                       // on a déjà sauvegardé
+    container.innerHTML = '';               // on vide le HTML statique
+    saved.forEach(text => renderObjectif(text));
+  }
+  attachCheckListeners();                   // coche / dé-coche
 });
-</script>
 
+/* 2️⃣  Ajouter un objectif */
+addBtn.addEventListener('click', () => {
+  const text = prompt('Nouvel objectif :');
+  if (!text || !text.trim()) return;
+  renderObjectif(text);
+  save();
+});
+
+/* 3️⃣  Afficher un objectif */
+function renderObjectif(text) {
+  const div = document.createElement('div');
+  div.className = 'flex items-center gap-3 border border-primary rounded-btn p-3';
+  div.innerHTML = `
+    <input type="checkbox" class="checkbox">
+    <span class="flex-1">${text}</span>
+    <button class="text-red-500 hover:underline text-sm delete-btn">🗑</button>`;
+  container.appendChild(div);
+  attachCheckListeners();
+}
+
+/* 4️⃣  Cocher / décocher */
+function attachCheckListeners() {
+  container.querySelectorAll('.checkbox').forEach(cb => {
+    cb.onchange = () => save();   // on sauvegarde l’étape « coché » aussi
+  });
+  container.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.onclick = (e) => {
+      e.target.parentElement.remove();
+      save();
+    };
+  });
+}
+
+/* 5️⃣  Sauvegarde dans localStorage */
+function save() {
+  const liste = [...container.querySelectorAll('span')].map(span => span.textContent);
+  localStorage.setItem('objectifs', JSON.stringify(liste));
+}
+</script>
+</body>
+</html>

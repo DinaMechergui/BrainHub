@@ -1,15 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>BrainHub – Quiz Mathématique</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainHub – Paquet</title>
+
+  <!-- TON TAILWIND COMPILÉ -->
   <link rel="stylesheet" href="../../src/output.css">
 </head>
-<body class="font-raleway bg-panel text-gray-800">
 
-   <!-- ================= HEADER ================= -->
+<body class="bg-white">
+
+  <!-- ================= HEADER ================= -->
+ <!-- ================= HEADER ================= -->
   <header class="w-full bg-primary text-white shadow-md relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
             
@@ -101,96 +105,74 @@
         </div>
     </header>
 
-  <main class="max-w-5xl mx-auto pt-20 pb-16 px-6 space-y-8">
-    <nav class="text-sm text-gray-500">Accueil &gt; <span class="text-black font-medium">Quiz</span></nav>
+
+
+
+  <!-- ================= BREADCRUMB + NOTES ================= -->
+  <div class="max-w-6xl mx-auto mt-6 px-4 flex justify-between">
+       <p class="text-primary mb-4"> Accueil > Matières > <span class="text-black font-semibold">Fiche</span></p>
+
     
-    <div class="flex flex-wrap items-start justify-between gap-4">
-      <div>
-        <p class="text-xl md:text-2xl text-black font-bold">Question 1/10 – Quiz Mathématique</p>
-      </div>
-      <div class="flex items-center gap-2 text-primary font-semibold">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-          <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
-          <path d="M12 6v6l3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-        </svg>
-        12:25 Min
-      </div>
+
+    <button class="btn-primary px-6 py-2 rounded-btn"> <a href="../pages/Note.html">Notes</a> </button>
+  </div>
+
+  <!-- ================= BADGES ================= -->
+  <div class="max-w-5xl mx-auto mt-8 flex justify-between px-4">
+    <div class="bubble w-48 h-20 flex flex-col justify-center items-center shadow-soft-2">
+      <p class="text-gray-700 font-semibold">Apprentissage</p>
+<p class="text-xl text-primary font-bold" id="apprentissage-count">4</p>
     </div>
 
-    <section class="bg-white rounded-btn border-2 border-[#8271D7] shadow-soft-2 p-6">
-      <!-- Question au-dessus -->
-      <h1 class="text-2xl font-bold text-gray-900 mb-6">Quelle est la formule de l'aire d'un cercle ?</h1>
-      
-      <!-- Contenu aligné: Image à gauche, Options à droite -->
-      <div class="flex flex-col lg:flex-row gap-8 items-start">
-        <!-- Section gauche: Image -->
-        <div class="flex-1">
-          <div class="bg-panel rounded-btn border-2 border-[#8271D7] p-6 flex items-center justify-center min-h-[200px]">
-            <img src="./assets/question-aire-cercle.png" alt="Illustration cercle" class="w-full max-w-sm">
-          </div>
-        </div>
-
-        <!-- Section droite: Options de réponse - Alignées avec l'image -->
-        <div class="flex-1">
-          <div class="w-full space-y-3">
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">2r</span>
-            </label>
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">2πr</span>
-            </label>
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">πr</span>
-            </label>
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">πr²</span>
-            </label>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Boutons de navigation et validation - Disposition 2x2 centrés -->
-    <div class="flex flex-col gap-4 items-center justify-center">
-      <!-- Première ligne: Précédent et Suivant -->
-      <div class="flex items-center gap-4">
-        <button class="flex items-center gap-2 bg-white border-2 border-[#8271D7] text-gray-900 rounded-btn px-5 py-2 font-semibold hover:bg-panel transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          Précédent
-        </button>
-        <button class="flex items-center gap-2 bg-white border-2 border-[#8271D7] text-gray-900 rounded-btn px-5 py-2 font-semibold hover:bg-panel transition">
-          Suivant
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
-          </svg>
-        </button>
-      </div>
-      <!-- Deuxième ligne: Valider l'état et Validation du quiz -->
-      <div class="flex items-center gap-4">
-        <button class="flex items-center gap-2 bg-primary text-white rounded-btn px-6 py-3 font-semibold hover:bg-primaryDark transition">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="3" y="3" width="18" height="18" rx="2"/>
-            <path d="M9 9l6 6M15 9l-6 6"/>
-          </svg>
-          Valider l'état
-        </button>
-        <button class="flex items-center gap-2 bg-primary text-white rounded-btn px-6 py-3 font-semibold hover:bg-primaryDark transition">
-          Validation du quiz
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M20 6L9 17l-5-5"/>
-          </svg>
-        </button>
-      </div>
+    <div class="bubble w-48 h-20 flex flex-col justify-center items-center shadow-soft-2">
+      <p class="text-gray-700 font-semibold">En révision</p>
+<p class="text-xl text-primary font-bold" id="revision-count">20</p>
     </div>
-  </main>
 
- <!-- ================= FOOTER ================= -->
+    <div class="bubble w-48 h-20 flex flex-col justify-center items-center shadow-soft-2">
+      <p class="text-gray-700 font-semibold">Connu</p>
+<p class="text-xl text-primary font-bold" id="connu-count">6</p>
+    </div>
+
+    <div class="bubble w-48 h-20 flex flex-col justify-center items-center shadow-soft-2">
+      <p class="text-gray-700 font-semibold">Maitrisé</p>
+<p class="text-xl text-primary font-bold" id="maitrise-count">2</p>
+    </div>
+  </div>
+
+  <!-- ================= CARTE QUESTION ================= -->
+  <div class="max-w-3xl mx-auto mt-10 px-4">
+    <div class="bubble rounded-[22px] px-10 py-16 text-center text-2xl font-semibold shadow-soft-2">
+      C’est quoi l’heritage en programmation orientée objet ?
+    </div>
+  </div>
+
+  <!-- ================= EMOJIS ================= -->
+  <div class="flex justify-center items-center gap-10 mt-6 text-sm">
+    <div class="flex flex-col items-center">
+<div class="w-14 h-14 rounded-full bg-primaryDark flex items-center justify-center text-white text-2xl cursor-pointer" id="btn-connu">😊</div>
+      <p class="mt-2">Bravo !</p>
+    </div>
+
+    <div class="flex flex-col items-center">
+<div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white text-2xl cursor-pointer" id="btn-revision">😐</div>
+      <p class="mt-2">Presque</p>
+    </div>
+
+    <div class="flex flex-col items-center">
+<div class="w-14 h-14 rounded-full bg-coral flex items-center justify-center text-white text-2xl cursor-pointer" id="btn-apprentissage">☹️</div>
+      <p class="mt-2">Mauvaise</p>
+    </div>
+
+    <p class="text-xl font-bold">◁▷</p>
+  </div>
+
+  <!-- ================= RETOUR ================= -->
+<div class="max-w-5xl mx-auto mt-12 mb-16 px-4">
+      <button class="btn-secondary px-6 py-2 rounded-btn">Retour</button>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
   <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 border-b border-white/20 pb-6 sm:pb-8">
             
@@ -244,18 +226,36 @@
             <p class="text-xs opacity-70">© 2025 BrainHub - Tous les droits réservés</p>
         </div>
     </footer>
+<script>
+  // === Récupération des compteurs ===
+  const apprentissageCount = document.getElementById("apprentissage-count");
+  const revisionCount = document.getElementById("revision-count");
+  const connuCount = document.getElementById("connu-count");
 
+  // === Récupération des boutons ===
+  const btnConnu = document.getElementById("btn-connu");
+  const btnRevision = document.getElementById("btn-revision");
+  const btnApprentissage = document.getElementById("btn-apprentissage");
 
+  // === Ajout des actions ===
 
+  // 😊 Bravo -> Connu +1
+  btnConnu.addEventListener("click", () => {
+    connuCount.textContent = parseInt(connuCount.textContent) + 1;
+  });
 
+  // 😐 Presque -> En revision +1
+  btnRevision.addEventListener("click", () => {
+    revisionCount.textContent = parseInt(revisionCount.textContent) + 1;
+  });
 
+  // ☹️ Mauvaise -> Apprentissage +1
+  btnApprentissage.addEventListener("click", () => {
+    apprentissageCount.textContent = parseInt(apprentissageCount.textContent) + 1;
+  });
+</script>
 
-
-
-
-
-    <!-- Script mobile menu simple -->
-   <script>
+     <script>
         // Éléments DOM
         const searchInput = document.getElementById('searchInput');
         const mobileSearchBtn = document.getElementById('mobileSearchBtn');
@@ -387,5 +387,5 @@
         }
     </script>
 </body>
-</html>
 
+</html>

@@ -295,6 +295,7 @@
 
 
     <!-- Script mobile menu simple -->
+<<<<<<< HEAD
    <script>
         // Éléments DOM
         const searchInput = document.getElementById('searchInput');
@@ -423,6 +424,13 @@
             });
             mobileSearchInput.addEventListener('input', (e) => {
                 searchInput.value = e.target.value;
+=======
+    <script>
+        const btn = document.getElementById('mobileMenuBtn');
+        if(btn) {
+            btn.addEventListener('click', () => {
+                alert("Menu mobile à implémenter selon vos besoins");
+>>>>>>> 4d21611060bea6668324e2db8998c5e0b28dcb21
             });
         }
     </script>

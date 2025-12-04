@@ -22,26 +22,6 @@
   </head>
 
   <body class="min-h-screen flex flex-col bg-white">
-    <!-- Bouton hamburger toujours visible -->
-    <button
-      id="sidebar-toggle"
-      class="fixed top-20 left-4 z-50 p-3 bg-[#667EEA] text-white rounded-full shadow-xl hover:bg-[#764BA2] transition"
-    >
-      <svg
-        class="w-7 h-7"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2.5"
-          d="M4 6h16M4 12h16M4 18h16"
-        />
-      </svg>
-    </button>
-
     <!-- Header responsive -->
     <header class="w-full py-3 bg-[#667EEA] shadow-md">
       <div
@@ -50,67 +30,36 @@
         <img
           src="C:\Users\slima\Desktop\BrainHub\public\pages\assets/logo.png"
           alt="BrainHub Logo"
-          class="h-12 sm:h-16"
+          class="max-h-20"
         />
         <nav class="hidden sm:flex gap-6 text-white font-medium">
           <a href="#" class="hover:opacity-80">Accueil</a>
           <a href="#" class="hover:opacity-80">À propos</a>
           <a href="#" class="hover:opacity-80">Contact</a>
         </nav>
-        <div
-          class="flex items-center gap-2 bg-white rounded-full shadow px-3 py-2 w-full max-w-xs"
-        >
-          <input
-            type="text"
-            placeholder="Search..."
-            class="outline-none flex-1 text-sm"
-          />
-          <svg
-            class="w-5 h-5 text-gray-600"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </div>
+        <div class="hidden sm:flex items-center gap-3 lg:gap-4">
+                <!-- Search Bar -->
+                <div class="hidden md:flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2 w-48 lg:w-64 transition-all focus-within:bg-white/30 focus-within:border-white/40">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="Search for anything..." 
+                        class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                        autocomplete="off"
+                    >
+                </div>
+        <button class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                </button>
       </div>
-    </header>
+      
 
-    <!-- Sidebar cachée par défaut sur TOUS les écrans -->
-    <aside
-      id="sidebar"
-      class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out rounded-r-2xl"
-    >
-      <div class="p-6 space-y-4 mt-20">
-        <a
-          href="#"
-          class="block w-full py-3 bg-[#667EEA text-white text-center rounded-full font-medium hover:bg-[#764BA2]"
-          >Matières</a
-        >
-        <a
-          href="#"
-          class="block w-full py-3 bg-[#667EEA] text-white text-center rounded-full font-medium hover:bg-[#764BA2]"
-          >Progression</a
-        >
-        <a
-          href="#"
-          class="block w-full py-3 bg-[#667EEA] text-white text-center rounded-full font-medium hover:bg-[#764BA2]"
-          >Favoris</a
-        >
-        <a
-          href="#"
-          class="block w-full py-3 bg-[#667EEA] text-white text-center rounded-full font-medium hover:bg-[#764BA2]"
-          >Quiz</a
-        >
-      </div>
-    </aside>
-    <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+    </header>
 
     <!-- Breadcrumb -->
     <div class="max-w-7xl mx-auto px-4 py-4 text-sm text-gray-600">
@@ -135,33 +84,31 @@
         </select>
       </div>
 
-      <h2 class="text-2xl font-bold text-[#764BA2] text-center mb-8">
+      <!-- Matières - ALIGNEMENT EXACTEMENT COMME AVANT + 100% RESPONSIVE -->
+      <h2 class="text-2xl font-bold text-[#764BA2] text-center mb-10">
         Matières:
       </h2>
 
-      <!-- Cartes temps (parfaites même sur mobile) -->
-      <div class="space-y-10 max-w-3xl mx-auto">
+      <div class="space-y-12 max-w-4xl mx-auto">
         <!-- UX/UI Design -->
-        <div
-          class="bg-white border-2 border-[#667EEA] rounded-3xl p-6 shadow-lg"
-        >
-          <div
-            class="text-center sm:text-right text-sm text-gray-600 mb-3 space-y-1 sm:space-y-0"
-          >
-            <div>Dernière Révision</div>
-            <div>Nouveau progrès</div>
+        <div>
+          <div class="flex justify-end mb-3 text-sm text-gray-600">
+            <span class="w-28 text-center">Dernière Révision</span>
+            <span class="w-28 text-center ml-8">Nouveau progrès</span>
           </div>
           <div
-            class="flex flex-col sm:flex-row items-center justify-between gap-4"
+            class="bg-white border-2 border-[#667EEA] rounded-full py-5 px-8 shadow-lg flex items-center justify-between"
           >
-            <span class="text-lg font-semibold">UX/UI Design</span>
-            <div class="flex gap-4">
+            <span class="text-xl font-semibold text-gray-800"
+              >UX/UI Design</span
+            >
+            <div class="flex space-x-8">
               <span
-                class="bg-[#00D4FF] text-white font-bold px-6 py-3 rounded-full"
+                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
                 >2h</span
               >
               <span
-                class="bg-[#00D4FF] text-white font-bold px-6 py-3 rounded-full"
+                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
                 >1h</span
               >
             </div>
@@ -169,26 +116,24 @@
         </div>
 
         <!-- Mathématique -->
-        <div
-          class="bg-white border-2 border-[#667EEA] rounded-3xl p-6 shadow-lg"
-        >
-          <div
-            class="text-center sm:text-right text-sm text-gray-600 mb-3 space-y-1 sm:space-y-0"
-          >
-            <div>Dernière Révision</div>
-            <div>Nouveau progrès</div>
+        <div>
+          <div class="flex justify-end mb-3 text-sm text-gray-600">
+            <span class="w-28 text-center">Dernière Révision</span>
+            <span class="w-28 text-center ml-8">Nouveau progrès</span>
           </div>
           <div
-            class="flex flex-col sm:flex-row items-center justify-between gap-4"
+            class="bg-white border-2 border-[#667EEA] rounded-full py-5 px-8 shadow-lg flex items-center justify-between"
           >
-            <span class="text-lg font-semibold">Mathématique</span>
-            <div class="flex gap-4">
+            <span class="text-xl font-semibold text-gray-800"
+              >Mathématique</span
+            >
+            <div class="flex space-x-8">
               <span
-                class="bg-[#00D4FF] text-white font-bold px-6 py-3 rounded-full"
+                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
                 >2h</span
               >
               <span
-                class="bg-[#00D4FF] text-white font-bold px-6 py-3 rounded-full"
+                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
                 >3h</span
               >
             </div>

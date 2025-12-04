@@ -1,0 +1,21 @@
+<svg width="220" height="70" viewBox="0 0 220 70" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .node { fill: #ff4b3a; }
+    .link { stroke: #2c2c2c; stroke-width: 2; stroke-linecap: round; }
+    .text-brain { font: 700 28px "Raleway", "Helvetica", sans-serif; fill: #4a4a4a; }
+    .text-hub { font: 700 28px "Raleway", "Helvetica", sans-serif; fill: #ff4b3a; }
+  </style>
+  <g transform="translate(10 10)">
+    <line class="link" x1="10" y1="15" x2="45" y2="5" />
+    <line class="link" x1="45" y1="5" x2="65" y2="30" />
+    <line class="link" x1="65" y1="30" x2="35" y2="45" />
+    <line class="link" x1="35" y1="45" x2="10" y2="15" />
+    <circle class="node" cx="10" cy="15" r="5" />
+    <circle class="node" cx="45" cy="5" r="5" />
+    <circle class="node" cx="65" cy="30" r="5" />
+    <circle class="node" cx="35" cy="45" r="5" />
+  </g>
+  <text class="text-brain" x="90" y="45">Brain</text>
+  <text class="text-hub" x="160" y="45">Hub</text>
+</svg>
+

@@ -38,6 +38,7 @@
 
   --shadow-soft-1: 0 6px 18px rgba(102,126,234,0.12);
   --shadow-soft-2: 0 6px 20px rgba(0,0,0,0.08);
+  --border-color: #8271D7;
 }
 
 /* ===========================
@@ -117,7 +118,7 @@
   }
 
   .select {
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color);
     border-radius: var(--radius-btn);
     padding: 0.4rem 1rem;
   }
@@ -126,14 +127,14 @@
     width: 20px;
     height: 20px;
     border-radius: 30%;
-    border: 1px solid #999;
+    border: 1px solid var(--border-color);
   }
 
   .radio {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    border: 1px solid #999;
+    border: 1px solid var(--border-color);
   }
 }
 

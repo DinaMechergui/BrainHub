@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistique Temps | BrainHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Raleway:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Raleway", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="min-h-screen flex flex-col bg-white">
+    <!-- Header responsive -->
+    <header class="w-full py-3 bg-[#667EEA] shadow-md">
+      <div
+        class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4"
+      >
+        <img
+          src="C:\Users\slima\Desktop\BrainHub\public\pages\assets/logo.png"
+          alt="BrainHub Logo"
+          class="max-h-20"
+        />
+        <nav class="hidden sm:flex gap-6 text-white font-medium">
+          <a href="#" class="hover:opacity-80">Accueil</a>
+          <a href="#" class="hover:opacity-80">À propos</a>
+          <a href="#" class="hover:opacity-80">Contact</a>
+        </nav>
+        <div class="hidden sm:flex items-center gap-3 lg:gap-4">
+                <!-- Search Bar -->
+                <div class="hidden md:flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2 w-48 lg:w-64 transition-all focus-within:bg-white/30 focus-within:border-white/40">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="Search for anything..." 
+                        class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                        autocomplete="off"
+                    >
+                </div>
+        <button class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Logout">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                </button>
+      </div>
+      
+
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="max-w-7xl mx-auto px-4 py-4 text-sm text-gray-600">
+      <a href="#" class="hover:text-[#667EEA]">Accueil</a> >
+      <a href="#" class="hover:text-[#667EEA]">Statistique</a> >
+      <span class="text-[#667EEA]">Statistique Temps</span>
+    </div>
+
+    <!-- Main content -->
+    <main class="flex-1 max-w-7xl mx-auto px-4 pb-10">
+      <!-- Titre + Select -->
+      <div
+        class="flex flex-col sm:flex-row justify-between items-center gap-4 mb-10"
+      >
+        <h1 class="text-2xl sm:text-3xl font-bold text-center sm:text-left">
+          Vos Statistiques: <span class="text-[#764BA2]">Aujourd'hui</span>
+        </h1>
+        <select
+          class="w-full max-w-xs sm:w-auto px-6 py-3 rounded-full border border-[#764BA2] text-[#764BA2] font-medium bg-white shadow"
+        >
+          <option>Select Matière</option>
+        </select>
+      </div>
+
+      <!-- Matières - ALIGNEMENT EXACTEMENT COMME AVANT + 100% RESPONSIVE -->
+      <h2 class="text-2xl font-bold text-[#764BA2] text-center mb-10">
+        Matières:
+      </h2>
+
+      <div class="space-y-12 max-w-4xl mx-auto">
+        <!-- UX/UI Design -->
+        <div>
+          <div class="flex justify-end mb-3 text-sm text-gray-600">
+            <span class="w-28 text-center">Dernière Révision</span>
+            <span class="w-28 text-center ml-8">Nouveau progrès</span>
+          </div>
+          <div
+            class="bg-white border-2 border-[#667EEA] rounded-full py-5 px-8 shadow-lg flex items-center justify-between"
+          >
+            <span class="text-xl font-semibold text-gray-800"
+              >UX/UI Design</span
+            >
+            <div class="flex space-x-8">
+              <span
+                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
+                >2h</span
+              >
+              <span
+                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
+                >1h</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Mathématique -->
+        <div>
+          <div class="flex justify-end mb-3 text-sm text-gray-600">
+            <span class="w-28 text-center">Dernière Révision</span>
+            <span class="w-28 text-center ml-8">Nouveau progrès</span>
+          </div>
+          <div
+            class="bg-white border-2 border-[#667EEA] rounded-full py-5 px-8 shadow-lg flex items-center justify-between"
+          >
+            <span class="text-xl font-semibold text-gray-800"
+              >Mathématique</span
+            >
+            <div class="flex space-x-8">
+              <span
+                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
+                >2h</span
+              >
+              <span
+                class="bg-[#00D4FF] text-white font-bold px-8 py-3 rounded-full text-lg"
+                >3h</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Historique -->
+      <h2 class="text-2xl font-bold text-[#764BA2] text-center mt-16 mb-8">
+        Historique:
+      </h2>
+
+      <div class="bg-gray-100 rounded-3xl p-6 shadow-lg max-w-5xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+          <!-- Calendrier -->
+          <div class="order-2 lg:order-1">
+            <select
+              class="w-full mb-6 px-4 py-3 bg-gray-300 rounded-full text-center font-medium"
+            >
+              <option>June 2023</option>
+            </select>
+            <div
+              class="grid grid-cols-7 text-xs font-bold text-gray-600 mb-2 text-center"
+            >
+              <div>SUN</div>
+              <div>MON</div>
+              <div>TUE</div>
+              <div>WED</div>
+              <div>THU</div>
+              <div>FRI</div>
+              <div>SAT</div>
+            </div>
+            <div class="grid grid-cols-7 gap-2 text-center">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div class="py-2">1</div>
+              <div class="py-2">2</div>
+              <div class="py-2">3</div>
+              <div class="py-2">4</div>
+              <div
+                class="bg-[#667EEA] text-white rounded-full w-10 h-10 mx-auto flex items-center justify-center font-bold"
+              >
+                5
+              </div>
+              <div class="py-2">6</div>
+              <div class="py-2">7</div>
+              <div class="py-2">8</div>
+              <div class="py-2">9</div>
+              <div class="py-2">10</div>
+              <div class="py-2">11</div>
+              <div class="py-2">12</div>
+              <div class="py-2">13</div>
+              <div class="py-2">14</div>
+              <div class="py-2">15</div>
+              <div class="py-2">16</div>
+              <div class="py-2">17</div>
+            </div>
+          </div>
+
+          <!-- Graphique -->
+          <div class="order-1 lg:order-2">
+            <div
+              class="flex flex-wrap justify-center sm:justify-end gap-4 text-sm text-gray-600 mb-4"
+            >
+              <span class="flex items-center"
+                ><span class="w-3 h-3 bg-gray-500 rounded-full mr-2"></span
+                >Dernière Révision</span
+              >
+              <span class="flex items-center"
+                ><span class="w-3 h-3 bg-[#667EEA] rounded-full mr-2"></span
+                >Nouveau progrès</span
+              >
+            </div>
+            <img
+              src="C:\Users\slima\Desktop\BrainHub\public\pages\assets\graph.png"
+              alt="Graphique"
+              class="w-full rounded-2xl shadow-md"
+            />
+            <div class="flex justify-between text-xs text-gray-600 mt-3">
+              <span>7AM</span><span>12PM</span><span>12AM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bouton Suivant -->
+      <!-- Bouton Suivant qui mène à la page Répartition -->
+      <div class="flex justify-center mt-10">
+        <a
+          href="repartition.html"
+          class="bg-white border-2 border-[#667EEA] text-[#667EEA] font-medium px-10 py-4 rounded-full hover:bg-[#667EEA] hover:text-white transition flex items-center gap-3 shadow-lg"
+        >
+          Suivant
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="3"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </a>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#667EEA] text-white py-10 mt-auto">
+      <div
+        class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left"
+      >
+        <div><h3 class="font-semibold text-lg mb-4">BrainHub</h3></div>
+        <div>
+          <h3 class="font-semibold text-lg mb-4">BrainHub</h3>
+          <p class="text-sm">À propos<br />Nos services</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Aide</h3>
+          <p class="text-sm">FAQ<br />Contact</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Contact</h3>
+          <p class="text-sm">+21651771<br />Brainhub@gmail.com</p>
+        </div>
+      </div>
+      <div class="text-center mt-8 pt-6 border-t border-white/20 text-sm">
+        © 2025 BrainHub – Tous les droits réservés
+      </div>
+    </footer>
+
+    <!-- Script sidebar -->
+    <script>
+      const toggleBtn = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+      });
+
+      overlay.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+  <head>
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Répartition Matière | BrainHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Raleway:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Raleway", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen flex flex-col bg-gray-50">
+    
+
+    <!-- Header (inchangé) -->
+    <header class="w-full py-2 h-16 flex items-center bg-[#667EEA]">
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full"
+      >
+        <img
+          src="C:\Users\slima\Desktop\BrainHub\public\pages\assets/logo.png"
+          alt="BrainHub Logo"
+          class="max-h-20"
+        />
+        <nav class="flex items-center gap-8 text-white font-medium">
+          <a href="#" class="hover:opacity-80">Accueil</a>
+          <a href="#" class="hover:opacity-80">À propos</a>
+          <a href="#" class="hover:opacity-80">Contact</a>
+        </nav>
+        <div
+          class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full shadow-md"
+        >
+          <input
+            type="text"
+            placeholder="Search for anything..."
+            class="outline-none bg-transparent w-56"
+          />
+          <svg
+            class="w-5 h-5 text-gray-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    
+
+    <!-- Breadcrumb -->
+    <div class="max-w-7xl mx-auto px-6 py-4 text-sm text-gray-600">
+      <a href="#" class="hover:text-[#667EEA]">Accueil</a> >
+      <a href="#" class="hover:text-[#667EEA]">Statistique</a> >
+      <span class="text-[#667EEA]">Répartition Matière</span>
+    </div>
+
+    <!-- Main Content (tout le reste exactement comme tu l’avais) -->
+    <main class="flex-1 max-w-7xl mx-auto px-6 py-8">
+      <!-- Title + Filter -->
+      <div class="flex justify-between items-center mb-10">
+        <h1 class="text-4xl font-bold text-gray-900">
+          Liste des Matières <span class="text-[#667EEA] mx-3">|</span> progrès
+        </h1>
+        <select
+          class="px-8 py-3 bg-white border-2 border-[#667EEA] text-[#667EEA] rounded-full font-medium shadow-sm"
+        >
+          <option>Filtrer</option>
+        </select>
+      </div>
+
+      <!-- Progress Block -->
+      <div
+        class="bg-white rounded-3xl shadow-2xl border-4 border-[#667EEA] p-10 mb-12"
+      >
+        <div class="space-y-10 max-w-4xl mx-auto">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl font-semibold text-gray-700"
+              >UX/UI Design</span
+            >
+            <div
+              class="w-96 bg-gray-200 rounded-full h-8 relative overflow-hidden"
+            >
+              <div
+                class="absolute top-0 left-0 h-full bg-gradient-to-r from-[#00D4FF] to-[#667EEA] rounded-full flex items-center justify-end pr-6 text-white font-bold text-lg"
+                style="width: 70%"
+              >
+                70%
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <span class="text-2xl font-semibold text-gray-700"
+              >Mathématique</span
+            >
+            <div
+              class="w-96 bg-gray-200 rounded-full h-8 relative overflow-hidden"
+            >
+              <div
+                class="absolute top-0 left-0 h-full bg-gradient-to-r from-[#00D4FF] to-[#667EEA] rounded-full flex items-center justify-end pr-6 text-white font-bold text-lg"
+                style="width: 50%"
+              >
+                50%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vos Notes -->
+      <h2 class="text-3xl font-bold text-gray-900 mb-8">Vos Notes</h2>
+
+      <!-- Notes Box -->
+      <div class="bg-white rounded-3xl shadow-xl p-10 mb-10">
+        <div class="flex justify-between items-center mb-10">
+          <div
+            class="px-10 py-4 bg-[#667EEA]/10 text-[#667EEA] font-bold text-xl rounded-full border-4 border-[#667EEA]"
+          >
+            UX/UI Design
+          </div>
+          <div class="flex gap-6">
+            <button
+              class="px-8 py-4 bg-[#667EEA] text-white rounded-full font-medium flex items-center gap-3 hover:bg-[#764BA2] shadow-lg"
+            >
+              Ajouter <span class="text-3xl">+</span>
+            </button>
+            <button
+              class="px-8 py-4 border-4 border-[#667EEA] text-[#667EEA] rounded-full font-medium flex items-center gap-3 hover:bg-[#667EEA] hover:text-white shadow-lg"
+            >
+              Rechercher
+              <svg
+                class="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Notes Cards -->
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-16 justify-center"
+        >
+          <!-- tes 3 cartes exactement comme avant -->
+          <div class="w-56 h-72 bg-white rounded-3xl shadow-2xl border-8 border-gray-500 flex flex-col">
+            <div class="flex-1 px-8 pt-10 space-y-5">
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+            </div>
+            <div class="text-center py-6 text-gray-700 font-bold text-lg">
+              17/10/25
+            </div>
+          </div>
+          <div class="w-56 h-72 bg-white rounded-3xl shadow-2xl border-8 border-gray-500 flex flex-col">
+            <div class="flex-1 px-8 pt-10 space-y-5">
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+            </div>
+            <div class="text-center py-6 text-gray-700 font-bold text-lg">
+              17/10/25
+            </div>
+          </div>
+          <div class="w-56 h-72 bg-white rounded-3xl shadow-2xl border-8 border-gray-500 flex flex-col">
+            <div class="flex-1 px-8 pt-10 space-y-5">
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+            </div>
+            <div class="text-center py-6 text-gray-700 font-bold text-lg">
+              17/10/25
+            </div>
+          </div>
+          <div class="w-56 h-72 bg-white rounded-3xl shadow-2xl border-8 border-gray-500 flex flex-col">
+            <div class="flex-1 px-8 pt-10 space-y-5">
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+              <div class="border-t-2 border-dashed border-gray-400"></div>
+            </div>
+            <div class="text-center py-6 text-gray-700 font-bold text-lg">
+              17/10/25
+            </div>
+          </div>
+          <!-- (les 2 autres cartes identiques) -->
+          <!-- ... -->
+        </div>
+      </div>
+
+      <!-- Bouton Suivant -->
+     <!-- Bouton Suivant qui mène à la page Répartition -->
+<div class="flex justify-center mt-10">
+  <a href="index1.html" 
+     class="bg-white border-2 border-[#667EEA] text-[#667EEA] font-medium px-10 py-4 rounded-full hover:bg-[#667EEA] hover:text-white transition flex items-center gap-3 shadow-lg">
+    Suivant
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
+    </svg>
+  </a>
+</div>
+<div class="flex justify-center items-center gap-8 mt- mt-12">
+  <!-- Bouton Retour (visible seulement sur l'étape Répartition) -->
+  <a href="statics.html"
+     onclick="goBack(); return false;"
+     class="bg-white border-2 border-[#667EEA] text-[#667EEA] font-medium px-10 py-4 rounded-full hover:bg-[#667EEA] hover:text-white transition flex items-center gap-3 shadow-lg">
+    <svg class="w-6 h-6 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
+    </svg>
+    Retour
+  </a>
+</div>
+    </main>
+
+    <!-- Footer (inchangé) -->
+    <footer class="bg-[#667EEA] text-white mt-16 py-10">
+      <!-- ... ton footer ... -->
+    </footer>
+
+    <!-- Script (inchangé) -->
+    <script>
+      const toggleBtn = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+      });
+
+      overlay.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainHub – Objectifs</title>
+
+  <!-- Tailwind compilé -->
+  <link rel="stylesheet" href="../../src/output.css">
+</head>
+
+<body class="bg-white font-raleway">
+
+  <!-- HEADER -->
+<header class="header-primary w-full py-2 h-16 flex items-center">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full">
+
+    <!-- LOGO à gauche -->
+    <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32">
+
+    <!-- NAV centré -->
+    <nav class="flex items-center gap-8 mx-auto">
+      <a href="#" class="text-white">Accueil</a>
+      <a href="#" class="text-white">A propos</a>
+      <a href="#" class="text-white">Contact</a>
+    </nav>
+
+    <!-- SEARCH + LOGOUT à droite -->
+    <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
+        <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-56">
+      </div>
+      <button class="w-10 h-10 rounded-full bg-coral flex items-center justify-center hover:bg-coral/80 transition">
+        <img src="../pages/assets/logout.png" class="w-5 h-5" alt="Logout"/>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+
+
+  <!-- CONTENT -->
+  <main class="max-w-6xl mx-auto px-6 py-10">
+
+    <p class="text-primary mb-4">Accueil > <span class="text-black font-semibold">Objectifs</span></p>
+
+    <h2 class="text-3xl font-bold text-center mb-10">Mes Objectifs Du Jour</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+      <!-- LEFT SIDE: OBJECTIFS -->
+<div class="space-y-4">
+
+  <!-- CONTENEUR DES OBJECTIFS -->
+  <div id="objectifs-container" class="space-y-4">
+
+    <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
+      <input type="checkbox" class="checkbox">
+      <span>Relire Fiche Java</span>
+    </div>
+
+    <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
+      <input type="checkbox" class="checkbox">
+      <span>Faire Un Quiz</span>
+    </div>
+
+    <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
+      <input type="checkbox" class="checkbox">
+      <span>Réviser Réseau (30 Minutes)</span>
+    </div>
+
+    <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
+      <input type="checkbox" class="checkbox">
+      <span>Finir TD Php</span>
+    </div>
+
+  </div>
+
+  <!-- BOUTON EN DESSOUS SEULEMENT -->
+  <button id="add-btn" class="btn btn-primary w-full mt-4">+ Ajouter Un Objectif</button>
+</div>
+
+
+
+      <!-- RIGHT SIDE IMAGE -->
+      <div class="flex justify-center">
+        <img src="../pages/assets/note.png.png" class="w-80 h-auto">
+      </div>
+    </div>
+
+    <!-- ASTUCES + STATISTIQUES -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-14">
+
+      <div class="card flex items-center gap-4 shadow-soft-1">
+        <img src="https://img.icons8.com/color/48/idea.png" class="w-12 h-12">
+        <p class="font-semibold">Retrouver Des Conseils Pour Optimiser Vos Sessions De Révision</p>
+      </div>
+
+      <div class="card flex items-center gap-4 shadow-soft-1">
+        <img src="https://img.icons8.com/color/48/combo-chart.png" class="w-12 h-12">
+        <p class="font-semibold">Analyser Vos Progrés Au Fil Du Temps</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary text-white mt-16 py-10">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
+
+      <div>
+        <h3 class="font-semibold mb-2">BrainHub</h3>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-2">BrainHub</h3>
+        <p>A propos</p>
+        <p>Nos services</p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-2">Aide</h3>
+        <p>FAQ</p>
+        <p>Contact</p>
+      </div>
+
+      <div>
+        <h3 class="font-semibold mb-2">Contact</h3>
+        <p>+21561771</p>
+        <p>Brainhub@gmail.com</p>
+      </div>
+
+    </div>
+
+    <p class="text-center mt-6">© 2025 BrainHub – Tous les droits réservés</p>
+  </footer>
+<script>
+  const container = document.getElementById("objectifs-container");
+  const btnAdd = document.getElementById("add-btn");
+
+  btnAdd.addEventListener("click", () => {
+    const div = document.createElement("div");
+    div.className = "flex items-center gap-3 border border-primary rounded-btn p-3";
+
+    div.innerHTML = `
+      <input type="checkbox" class="checkbox">
+      <input type="text" placeholder="Nouvel objectif..." 
+             class="outline-none w-full bg-transparent">
+    `;
+
+    container.appendChild(div);
+  });
+</script>
+
+</body>
+</html>

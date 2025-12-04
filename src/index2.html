@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>BrainHub - Pomodoro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4B5CF0',
+            violet: '#6366F1'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="min-h-screen flex flex-col bg-gray-50 font-sans text-base leading-normal">
+
+  <!-- HEADER -->
+  <header class="bg-primary text-white shadow-lg">
+    <div class="max-w-7xl mx-auto flex items-center justify-between py-3 px-6">
+      <div class="flex items-center space-x-12">
+        <div class="flex items-center space-x-1 font-semibold tracking-wide">
+          <span class="text-lg">Brain</span>
+          <span class="text-lg text-red-300">Lab</span>
+        </div>
+        <nav class="hidden md:flex space-x-8 text-sm">
+          <a href="#" class="hover:underline">Accueil</a>
+          <a href="#" class="hover:underline">A propos</a>
+          <a href="#" class="hover:underline">Contact</a>
+        </nav>
+      </div>
+      <div class="flex items-center space-x-3">
+        <div class="hidden md:block w-80">
+          <input
+            type="text"
+            placeholder="Search for anything..."
+            class="w-full rounded-full px-5 py-2 text-xs text-gray-800 bg-white outline-none"
+          />
+        </div>
+        <button class="w-8 h-8 rounded-full border border-white flex items-center justify-center text-xs hover:bg-white hover:bg-opacity-20">
+          Refresh
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="flex-1 bg-white">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row py-8 px-6 lg:space-x-12">
+
+      <!-- SIDEBAR -->
+      <aside class="w-full lg:w-64 bg-white rounded-3xl shadow-md p-4 lg:p-6 flex flex-col space-y-3 mb-4 lg:mb-0">
+        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
+          Matières
+        </button>
+        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
+          Progression
+        </button>
+        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
+          Favoris
+        </button>
+        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
+          Quiz
+        </button>
+        <div class="flex items-center justify-end mt-2 text-gray-400 text-lg">&lt;</div>
+      </aside>
+
+      <!-- CONTENU -->
+      <section class="flex-1">
+        <p class="text-[11px] lg:text-xs text-gray-500 mb-2">
+          Accueil &gt; Statistique &gt; <span class="font-semibold text-black">Pomodoro</span>
+        </p>
+        <h1 class="text-xl lg:text-2xl font-semibold text-black mb-6">Pomodoro</h1>
+
+        <!-- TEMPS TRAVAIL -->
+        <div class="mb-16">
+          <h2 class="text-center text-violet font-medium text-sm mb-5">Temps travail</h2>
+          <div class="max-w-3xl mx-auto bg-white border-2 border-gray-300 rounded-[32px] py-5 px-6 lg:px-10 flex items-center justify-between shadow-md">
+
+            <!-- Plus / Moins -->
+            <div class="flex bg-primary rounded-full overflow-hidden">
+              <!-- Plus -->
+              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                </svg>
+              </button>
+              <div class="w-px bg-indigo-300"></div>
+              <!-- Moins -->
+              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 13H5v-2h14v2z"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Temps -->
+            <span class="text-3xl lg:text-4xl font-bold text-[rgb(55,_179,_172)] tracking-widest">
+              25:00
+            </span>
+
+            <!-- Play / Pause / Reset -->
+            <div class="flex bg-primary rounded-full overflow-hidden">
+              <!-- Play -->
+              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7L8 5z"></path>
+                </svg>
+              </button>
+              <div class="w-px bg-indigo-300"></div>
+              <!-- Pause -->
+              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+                </svg>
+              </button>
+              <div class="w-px bg-indigo-300"></div>
+              <!-- Reset -->
+              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C20.85 9.56 16.91 6 12.5 6v2z"></path>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- TEMPS PAUSE -->
+        <div class="mb-8">
+          <h2 class="text-center text-violet font-medium text-sm mb-5">Temps Pause</h2>
+          <div class="max-w-3xl mx-auto bg-white border-2 border-gray-300 rounded-[32px] py-5 px-6 lg:px-10 flex items-center justify-between shadow-md">
+
+            <!-- Plus / Moins -->
+            <div class="flex bg-primary rounded-full overflow-hidden">
+              <!-- Plus -->
+              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                </svg>
+              </button>
+              <div class="w-px bg-indigo-300"></div>
+              <!-- Moins -->
+              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M19 13H5v-2h14v2z"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Temps pause -->
+            <span class="text-3xl lg:text-4xl font-bold text-[rgb(55,_179,_172)] tracking-widest">
+              05:00
+            </span>
+
+            <!-- Play / Pause / Reset -->
+            <div class="flex bg-primary rounded-full overflow-hidden">
+              <!-- Play -->
+              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5v14l11-7L8 5z"></path>
+                </svg>
+              </button>
+              <div class="w-px bg-indigo-300"></div>
+              <!-- Pause -->
+              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
+                </svg>
+              </button>
+              <div class="w-px bg-indigo-300"></div>
+              <!-- Reset -->
+              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
+                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C20.85 9.56 16.91 6 12.5 6v2z"></path>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto bg-primary text-white text-[11px] lg:text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 py-6 px-6">
+      <div>
+        <h3 class="font-semibold mb-2">BrainHub</h3>
+        <p class="mb-1">A propos</p>
+        <p>Nos services</p>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-2">Aide</h3>
+        <p class="mb-1">FAQ</p>
+        <p>Contact</p>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-2">Suivez-nous</h3>
+        <div class="flex space-x-4 mt-2">
+          <!-- Instagram -->
+          <a href="#" class="hover:opacity-80">
+            <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 3.838a6.324 6.324 0 0 0-6.324 6.324A6.324 6.324 0 0 0 12 18.649a6.324 6.324 0 0 0 6.324-6.324A6.324 6.324 0 0 0 12 6.001zm7.406-1.345a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"></path>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#" class="hover:opacity-80">
+            <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.657-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.588l-.467 3.622h-3.121V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-2">Contact</h3>
+        <p class="mb-1">+21 561771</p>
+        <p>Brainhub@gmail.com</p>
+      </div>
+    </div>
+    <div class="border-t border-white border-opacity-20 pt-4 text-center text-xs">
+      © 2025 BrainHub. Tous droits réservés.
+    </div>
+  </footer>
+
+</body>
+</html>

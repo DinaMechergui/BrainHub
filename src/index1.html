@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>BrainHub - Tâches</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#4B5CF0',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="min-h-screen flex flex-col bg-white font-sans text-base leading-normal">
+
+  <!-- HEADER -->
+  <header class="w-full bg-primary text-white shadow-lg">
+    <div class="max-w-6xl mx-auto flex items-center justify-between py-3 px-4 md:px-8">
+      <!-- Logo + menu -->
+      <div class="flex items-center space-x-6 md:space-x-12">
+        <div class="flex items-center space-x-1 font-semibold tracking-wide">
+          <span class="text-lg md:text-xl">Brain</span>
+          <span class="text-lg md:text-xl text-red-300">Lab</span>
+        </div>
+        <nav class="hidden md:flex space-x-8 text-sm">
+          <a href="#" class="hover:underline">Accueil</a>
+          <a href="#" class="hover:underline">A propos</a>
+          <a href="#" class="hover:underline">Contact</a>
+        </nav>
+      </div>
+
+      <!-- Recherche header + refresh -->
+      <div class="flex items-center space-x-3">
+        <div class="relative hidden md:block">
+          <input
+            type="text"
+            placeholder="Search for anything..."
+            class="w-64 lg:w-80 rounded-full pl-4 pr-10 py-1.5 text-xs text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-200"
+          />
+          <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs">🔍</span>
+        </div>
+        <button class="w-8 h-8 rounded-full border border-white flex items-center justify-center text-lg hover:bg-white hover:bg-opacity-20">
+          ↻
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="flex-1 bg-white">
+    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row py-6 lg:py-8 px-4 lg:px-8 lg:space-x-8">
+
+      <!-- SIDEBAR GAUCHE -->
+      <aside class="w-full lg:w-64 bg-white rounded-3xl shadow-md p-4 lg:p-6 flex flex-col space-y-3 mb-4 lg:mb-0">
+        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
+          Matières
+        </button>
+        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
+          Progression
+        </button>
+        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
+          Favoris
+        </button>
+        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
+          Quiz
+        </button>
+        <div class="flex items-center justify-end mt-2 text-gray-400 text-lg">
+          &lt;
+        </div>
+      </aside>
+
+      <!-- ZONE CENTRALE -->
+      <section class="flex-1">
+        <!-- Fil d'ariane -->
+        <nav class="text-[11px] lg:text-xs text-gray-500 mb-2">
+          Accueil &gt; Statistique &gt; <span class="font-semibold text-black">Tâches</span>
+        </nav>
+
+        <!-- Titre -->
+        <h1 class="text-xl lg:text-2xl font-semibold text-black mb-4">Tâches</h1>
+
+        <!-- Barre filtre tâches -->
+        <div class="w-full border-2 border-primary rounded-full flex flex-col sm:flex-row sm:items-center px-4 lg:px-6 py-2.5 mb-8 space-y-2 sm:space-y-0 sm:space-x-3">
+          <input
+            type="text"
+            value="UX/UI Design"
+            class="flex-1 text-sm text-gray-800 focus:outline-none bg-transparent"
+            readonly
+          />
+          <div class="flex items-center space-x-2 flex-shrink-0">
+            <button class="px-4 py-1.5 rounded-full bg-primary text-white text-xs font-medium hover:bg-opacity-90 transition">
+              Ajouter
+            </button>
+            <button class="w-7 h-7 rounded-full border-2 border-primary text-primary flex items-center justify-center text-sm font-medium hover:bg-primary hover:text-white transition">
+              +
+            </button>
+            <button class="px-4 py-1.5 rounded-full border-2 border-primary text-primary text-xs font-medium bg-white hover:bg-primary hover:text-white transition flex items-center space-x-1">
+              <span>rechercher</span>
+              <span class="text-sm">🔍</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- GRILLE POST-IT -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-x-24 lg:gap-y-12">
+          <!-- CARTE 1 -->
+          <div class="relative flex justify-center">
+            <div class="w-40 h-40 lg:w-44 lg:h-44 bg-gray-400 shadow-md border border-gray-300 flex items-center justify-center rounded-lg">
+              <div class="w-32 h-32 lg:w-36 lg:h-36 bg-gray-100 border-2 border-gray-300 rounded-lg p-3 text-[11px] leading-4 text-gray-600 relative overflow-hidden">
+                <div class="space-y-1 h-full flex flex-col justify-between">
+                  <div class="space-y-0.5 flex-1">
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                  </div>
+                  <span class="text-[11px] text-black font-medium block mt-1">17/10/25</span>
+                </div>
+              </div>
+            </div>
+            <div class="hidden lg:flex flex-col space-y-2 absolute -right-28 top-4 z-10">
+              <button class="px-5 py-1 rounded-full bg-primary text-white text-[11px] font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                SUPPRIMER ×
+              </button>
+              <button class="px-5 py-1 rounded-full bg-primary text-white text-[11px] font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                MODIFIER
+              </button>
+            </div>
+          </div>
+
+          <!-- CARTE 2 -->
+          <div class="relative flex justify-center">
+            <div class="w-40 h-40 lg:w-44 lg:h-44 bg-white shadow-md border border-gray-300 flex items-center justify-center rounded-lg">
+              <div class="w-32 h-32 lg:w-36 lg:h-36 bg-gray-100 border-2 border-gray-300 rounded-lg p-3 text-[11px] leading-4 text-gray-600 relative overflow-hidden">
+                <div class="space-y-1 h-full flex flex-col justify-between">
+                  <div class="space-y-0.5 flex-1">
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                  </div>
+                  <span class="text-[11px] text-black font-medium block mt-1">17/10/25</span>
+                </div>
+              </div>
+            </div>
+            <div class="hidden lg:flex flex-col space-y-2 absolute -right-28 top-4 z-10">
+              <button class="px-5 py-1 rounded-full bg-primary text-white text-[11px] font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                SUPPRIMER ×
+              </button>
+              <button class="px-5 py-1 rounded-full bg-primary text-white text-[11px] font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                MODIFIER
+              </button>
+            </div>
+          </div>
+
+          <!-- CARTE 3 -->
+          <div class="relative flex justify-center">
+            <div class="w-40 h-40 lg:w-44 lg:h-44 bg-white shadow-md border border-gray-300 flex items-center justify-center rounded-lg">
+              <div class="w-32 h-32 lg:w-36 lg:h-36 bg-gray-100 border-2 border-gray-300 rounded-lg p-3 text-[11px] leading-4 text-gray-600 relative overflow-hidden">
+                <div class="space-y-1 h-full flex flex-col justify-between">
+                  <div class="space-y-0.5 flex-1">
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                  </div>
+                  <span class="text-[11px] text-black font-medium block mt-1">17/10/25</span>
+                </div>
+              </div>
+            </div>
+            <div class="hidden lg:flex flex-col space-y-2 absolute -right-28 top-4 z-10">
+              <button class="px-5 py-1 rounded-full bg-primary text-white text-[11px] font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                SUPPRIMER ×
+              </button>
+              <button class="px-5 py-1 rounded-full bg-primary text-white text-[11px] font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                MODIFIER
+              </button>
+            </div>
+          </div>
+
+          <!-- CARTE 4 -->
+          <div class="relative flex justify-center">
+            <div class="w-40 h-40 lg:w-44 lg:h-44 bg-white shadow-md border border-gray-300 flex items-center justify-center rounded-lg">
+              <div class="w-32 h-32 lg:w-36 lg:h-36 bg-gray-100 border-2 border-gray-300 rounded-lg p-3 text-[11px] leading-4 text-gray-600 relative overflow-hidden">
+                <div class="space-y-1 h-full flex flex-col justify-between">
+                  <div class="space-y-0.5 flex-1">
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                    <div class="border-b border-dashed border-gray-400 w-full h-3"></div>
+                  </div>
+                  <span class="text-[11px] text-black font-medium block mt-1">17/10/25</span>
+                </div>
+              </div>
+            </div>
+            <div class="hidden lg:flex flex-col space-y-2 absolute -right-28 top-4 z-10">
+              <button class="px-5 py-1 rounded-full bg-primary text-white text-[11px] font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                SUPPRIMER ×
+              </button>
+              <button class="px-5 py-1 rounded-full bg-primary text-white text-[11px] font-medium hover:bg-opacity-90 transition whitespace-nowrap">
+                MODIFIER
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Boutons SUPPRIMER / MODIFIER visibles en dessous sur mobile -->
+        <div class="mt-6 grid grid-cols-2 gap-3 lg:hidden">
+          <button class="w-full px-4 py-2.5 rounded-full bg-primary text-white text-xs font-medium hover:bg-opacity-90 transition">
+            SUPPRIMER
+          </button>
+          <button class="w-full px-4 py-2.5 rounded-full bg-primary text-white text-xs font-medium hover:bg-opacity-90 transition">
+            MODIFIER
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER avec Facebook & Instagram -->
+  <footer class="mt-auto bg-primary text-white text-[11px] lg:text-xs">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 py-6 px-6">
+      <div>
+        <h3 class="font-semibold mb-2">BrainHub</h3>
+        <p class="mb-1">A propos</p>
+        <p>Nos services</p>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-2">Aide</h3>
+        <p class="mb-1">FAQ</p>
+        <p>Contact</p>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-2">Suivez-nous</h3>
+        <div class="flex space-x-4 mt-2">
+          <!-- Instagram -->
+          <a href="#" class="hover:opacity-80">
+            <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"></path>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#" class="hover:opacity-80">
+            <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.657-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.588l-.467 3.622h-3.121V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3 class="font-semibold mb-2">Contact</h3>
+        <p class="mb-1">+21 561771</p>
+        <p>Brainhub@gmail.com</p>
+      </div>
+    </div>
+    <div class="border-t border-white border-opacity-20 pt-4 text-center text-xs">
+      © 2025 BrainHub. Tous droits réservés.
+    </div>
+  </footer>
+
+</body>
+</html>

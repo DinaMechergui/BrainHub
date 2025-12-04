@@ -1,0 +1,268 @@
+/* ===========================
+   TAILWIND UTILITIES
+   =========================== */
+@import "tailwindcss";
+
+@import "tailwindcss/utilities";
+
+/* ===========================
+   🎨 VARIABLES PERSONNALISÉES
+   =========================== */
+:root {
+  --color-background: #FFFFFF;
+  --color-primary: #667EEA;
+  --color-primaryDark: #8271D7;
+  --color-secondary: #764BA2;
+  --color-secondaryDark: #8271D7;
+  --color-tertiary: #000000;
+  --color-coral: #FF7F7F;
+  --color-navy: #000080;
+  --color-panel: #F6F8FF;
+  --color-paleBlue: #E7EEFF;
+
+  /* Brand colors pour page.html */
+  --color-brand-blue: #5871eb;
+  --color-brand-purple: #9d8df1;
+  --color-brand-text: #2c2d49;
+  --color-brand-gray: #787994;
+  --color-brand-bg: #F8F9FD;
+  
+  /* Couleurs spécifiques pour page.html (anciennes valeurs) */
+  --color-brand-blue-page: #5871eb;
+  --color-brand-purple-page: #9d8df1;
+
+  --font-roboto: "Roboto", sans-serif;
+  --font-raleway: "Raleway", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+
+  --radius-xxl: 22px;
+  --radius-pill: 9999px;
+  --radius-btn: 30px;
+
+  --spacing-icon: 24px;
+  --spacing-icon-lg: 32px;
+  --spacing-icon-sm: 16px;
+
+  --width-card: 350px;
+  --width-card-lg: 450px;
+
+  --height-card: 200px;
+
+  --shadow-soft-1: 0 6px 18px rgba(102,126,234,0.12);
+  --shadow-soft-2: 0 6px 20px rgba(0,0,0,0.08);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ===========================
+   🔘 BOUTONS
+   =========================== */
+@layer components {
+  .btn {
+    padding: .6rem 1.2rem;
+    border-radius: var(--radius-btn);
+    font-weight: 500;
+    display: inline-block;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+  .btn-primary:hover {
+    background-color: #9A6EF2;
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-primaryDark);
+    color: var(--color-primaryDark);
+  }
+
+  .btn-tertiary {
+    color: #000;
+  }
+  .btn-tertiary:hover {
+    color: var(--color-coral);
+  }
+
+  .btn-pill {
+    border-radius: var(--radius-pill);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+  }
+
+  .btn-standard {
+    width: 150px;
+    height: 40px;
+    border-radius: var(--radius-btn);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ===========================
+   🃏 CARDS
+   =========================== */
+@layer components {
+  .card {
+    background-color: #fff;
+    border-radius: var(--radius-btn);
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+}
+
+/* ===========================
+   📝 INPUTS / SELECT / CHECKBOX
+   =========================== */
+@layer components {
+  .input {
+    border: 2px solid #ccc;
+    border-radius: var(--radius-btn);
+    padding: 0.5rem 1rem;
+  }
+
+  .select {
+    border: 2px solid #ccc;
+    border-radius: var(--radius-btn);
+    padding: 0.4rem 1rem;
+  }
+
+  .checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 30%;
+    border: 2px solid #999;
+  }
+
+  .radio {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #999;
+  }
+}
+
+/* ===========================
+   🟪 HEADER / SIDEBARS
+   =========================== */
+@layer components {
+  .header-primary {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+
+  .sidebar-left {
+    background: linear-gradient(180deg, var(--color-primary), var(--color-primaryDark));
+    border-radius: var(--radius-xxl);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-soft-1);
+  }
+
+  .shadow-soft-1 {
+    box-shadow: var(--shadow-soft-1);
+  }
+  .shadow-soft-2 {
+    box-shadow: var(--shadow-soft-2);
+  }
+
+  .rounded-xxl { border-radius: var(--radius-xxl); }
+  .rounded-btn { border-radius: var(--radius-btn); }
+
+  .bg-primary { background-color: var(--color-primary); }
+  .bg-primaryDark { background-color: var(--color-primaryDark); }
+  .bg-secondary { background-color: var(--color-secondary); }
+  .bg-paleBlue { background-color: var(--color-paleBlue); }
+  .bg-panel { background-color: var(--color-panel); }
+
+  .text-primary { color: var(--color-primary); }
+  .text-primaryDark { color: var(--color-primaryDark); }
+  .text-secondary { color: var(--color-secondary); }
+  
+  /* Variantes primary avec opacité */
+  .border-primary { border-color: var(--color-primary); }
+  .border-primary\/30 { border-color: rgba(102, 126, 234, 0.3); }
+  .hover\:bg-primary\/90:hover {
+    background-color: rgba(102, 126, 234, 0.9);
+  }
+  .hover\:border-primary:hover {
+    border-color: var(--color-primary);
+  }
+  .hover\:text-primary:hover {
+    color: var(--color-primary);
+  }
+
+  /* Brand colors pour page.html */
+  .bg-brand-blue { background-color: var(--color-brand-blue); }
+  .border-brand-blue { border-color: var(--color-brand-blue); }
+  .border-brand-blue\/30 { border-color: rgba(88, 113, 235, 0.3); }
+  .text-brand-text { color: var(--color-brand-text); }
+  .text-brand-gray { color: var(--color-brand-gray); }
+  .border-brand-purple { border-color: var(--color-brand-purple); }
+  .border-brand-purple\/40 { border-color: rgba(139, 92, 246, 0.4); }
+  .text-brand-purple { color: var(--color-brand-purple); }
+  .border-brand-text { border-color: var(--color-brand-text); }
+  .border-brand-text\/80 { border-color: rgba(44, 45, 73, 0.8); }
+  .bg-brand-bg { background-color: var(--color-brand-bg); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  
+  .hover\:bg-brand-blue\/90:hover {
+    background-color: rgba(88, 113, 235, 0.9);
+  }
+  
+  .hover\:border-brand-blue:hover {
+    border-color: var(--color-brand-blue);
+  }
+  
+  .hover\:text-brand-blue:hover {
+    color: var(--color-brand-blue);
+  }
+  
+  /* Classes spécifiques pour page.html avec anciennes couleurs */
+  .bg-brand-blue-page { background-color: var(--color-brand-blue-page); }
+  .border-brand-blue-page { border-color: var(--color-brand-blue-page); }
+  .border-brand-blue-page\/30 { border-color: rgba(88, 113, 235, 0.3); }
+  .border-brand-purple-page { border-color: var(--color-brand-purple-page); }
+  .text-brand-purple-page { color: var(--color-brand-purple-page); }
+
+  /* Utility classes pour responsive */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* ===========================
+   🟪 BUBBLES / AVATARS
+   =========================== */
+@layer components {
+  .bubble {
+    border-radius: 16px;
+    border: 2px solid rgba(130,113,215,0.25);
+    background: linear-gradient(180deg, #fff, #fafaff);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+  }
+
+  .avatar-ring {
+    width: 48px; height: 48px; border-radius: 9999px;
+    padding: 4px;
+    background: linear-gradient(180deg,#fff,#fff);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatar-inner {
+    width: 36px; height: 36px; border-radius: 9999px; display: inline-block;
+  }
+}

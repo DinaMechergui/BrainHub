@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrainHub – Paquet</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrainHub – Mes Quiz</title>
 
-  <!-- TON TAILWIND COMPILÉ -->
-  <link rel="stylesheet" href="../../src/output.css">
+    <!-- Google Fonts: Poppins pour coller au design moderne -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS compilé -->
+    <link rel="stylesheet" href="../../src/output.css">
+
+ 
 </head>
+<body class="font-sans text-brand-text min-h-screen flex flex-col justify-between">
 
-<body class="bg-white">
-
-  <!-- ================= HEADER ================= -->
- <!-- ================= HEADER ================= -->
-  <header class="w-full bg-primary text-white shadow-md relative">
+    <!-- ================= HEADER ================= -->
+    <header class="w-full bg-primary text-white shadow-md relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
             
             <!-- LOGO à gauche -->
@@ -108,72 +110,160 @@
 
 
 
-  <!-- ================= BREADCRUMB + NOTES ================= -->
-  <div class="max-w-6xl mx-auto mt-6 px-4 flex justify-between">
-       <p class="text-primary mb-4"> Accueil > Matières > <span class="text-black font-semibold">Fiche</span></p>
 
     
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="flex-grow w-full max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
 
-    <button class="btn-primary px-6 py-2 rounded-btn"> <a href="../pages/Note.html">Notes</a> </button>
-  </div>
+        <!-- Titre -->
+        <h1 class="text-2xl sm:text-3xl font-bold text-center text-brand-text mb-6 sm:mb-10">Mes Quiz Et Evaluations</h1>
 
-  <!-- ================= BADGES ================= -->
-  <div class="max-w-5xl mx-auto mt-8 flex justify-between px-4">
-    <div class="bubble w-48 h-20 flex flex-col justify-center items-center shadow-soft-2">
-      <p class="text-gray-700 font-semibold">Apprentissage</p>
-<p class="text-xl text-primary font-bold" id="apprentissage-count">4</p>
-    </div>
+        <!-- Filtres -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
+            <!-- Filter Button: Math -->
+            <div class="relative w-full">
+                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
+                    <span>Math</span>
+                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+             <!-- Filter Button: Chapitre -->
+             <div class="relative w-full">
+                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
+                    <span>Chapitre</span>
+                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+             <!-- Filter Button: Difficulté -->
+             <div class="relative w-full">
+                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
+                    <span>Par difficulté</span>
+                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+             <!-- Filter Button: Type -->
+             <div class="relative w-full">
+                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
+                    <span>Type</span>
+                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+            </div>
+        </div>
 
-    <div class="bubble w-48 h-20 flex flex-col justify-center items-center shadow-soft-2">
-      <p class="text-gray-700 font-semibold">En révision</p>
-<p class="text-xl text-primary font-bold" id="revision-count">20</p>
-    </div>
+        <!-- LISTE DES CARTES -->
+        <div class="space-y-4 sm:space-y-6">
 
-    <div class="bubble w-48 h-20 flex flex-col justify-center items-center shadow-soft-2">
-      <p class="text-gray-700 font-semibold">Connu</p>
-<p class="text-xl text-primary font-bold" id="connu-count">6</p>
-    </div>
+            <!-- CARTE 1 -->
+            <article class="bg-white rounded-[20px] sm:rounded-[30px] border-2 border-primary/30 p-1 shadow-card group hover:border-primary transition duration-300">
+                <div class="rounded-[16px] sm:rounded-[26px] bg-white border border-transparent p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
+                    
+                    <!-- Icon + Text -->
+                    <div class="flex items-start gap-3 sm:gap-5 flex-1 min-w-0">
+                        <!-- Icone Math -->
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white border-2 border-brand-text/80 rounded-lg flex items-center justify-center text-brand-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        
+                        <div class="min-w-0 flex-1">
+                            <h2 class="text-lg sm:text-xl font-bold text-brand-text truncate">Quiz De Mathematique</h2>
+                            <p class="text-sm sm:text-base text-brand-text font-medium mt-1 line-clamp-2">Chapitre 1 : Arithmétique Et Théorie Des Nombres</p>
+                            <p class="text-xs text-brand-gray font-medium mt-1">10 Questions | Avancé</p>
+                        </div>
+                    </div>
 
-    <div class="bubble w-48 h-20 flex flex-col justify-center items-center shadow-soft-2">
-      <p class="text-gray-700 font-semibold">Maitrisé</p>
-<p class="text-xl text-primary font-bold" id="maitrise-count">2</p>
-    </div>
-  </div>
+                    <!-- Actions / Meta Right Side -->
+                    <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1 w-full sm:w-auto sm:min-w-[140px]">
+                        <!-- Time -->
+                        <div class="flex items-center gap-1 text-xs font-bold text-brand-text mb-2 sm:mb-4">
+                            <span>15 Mn</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
 
-  <!-- ================= CARTE QUESTION ================= -->
-  <div class="max-w-3xl mx-auto mt-10 px-4">
-    <div class="bubble rounded-[22px] px-10 py-16 text-center text-2xl font-semibold shadow-soft-2">
-      C’est quoi l’heritage en programmation orientée objet ?
-    </div>
-  </div>
+                        <!-- Link -->
+                        <a href="#" class="text-[11px] font-bold text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-primary mb-2">
+                            Details De Cours
+                        </a>
 
-  <!-- ================= EMOJIS ================= -->
-  <div class="flex justify-center items-center gap-10 mt-6 text-sm">
-    <div class="flex flex-col items-center">
-<div class="w-14 h-14 rounded-full bg-primaryDark flex items-center justify-center text-white text-2xl cursor-pointer" id="btn-connu">😊</div>
-      <p class="mt-2">Bravo !</p>
-    </div>
+                        <!-- Button -->
+                        <button class="bg-primary hover:bg-primary/90 text-white text-xs font-semibold px-4 sm:px-6 py-2 rounded-full flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center">
+                            <span>Commencer</span>
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
+                        </button>
+                    </div>
+                </div>
+            </article>
 
-    <div class="flex flex-col items-center">
-<div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center text-white text-2xl cursor-pointer" id="btn-revision">😐</div>
-      <p class="mt-2">Presque</p>
-    </div>
+            <!-- CARTE 2 (En Cours) -->
+            <article class="bg-white rounded-[20px] sm:rounded-[30px] border border-brand-purple p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 shadow-sm hover:shadow-md transition">
+                <div class="flex items-start gap-3 sm:gap-5 flex-1 min-w-0">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white border-2 border-brand-text/80 rounded-lg flex items-center justify-center text-brand-text">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <h2 class="text-lg sm:text-xl font-bold text-brand-text truncate">Quiz De Mathematique</h2>
+                        <p class="text-sm sm:text-base text-brand-text font-medium mt-1 line-clamp-2">Chapitre 2 : Polynômes Et Équations Du Second Degré</p>
+                        <p class="text-xs text-brand-gray font-medium mt-1">20 Questions | Moyen</p>
+                    </div>
+                </div>
 
-    <div class="flex flex-col items-center">
-<div class="w-14 h-14 rounded-full bg-coral flex items-center justify-center text-white text-2xl cursor-pointer" id="btn-apprentissage">☹️</div>
-      <p class="mt-2">Mauvaise</p>
-    </div>
+                <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1 w-full sm:w-auto sm:min-w-[140px]">
+                    <div class="flex items-center gap-1 text-xs font-bold text-brand-text mb-2 sm:mb-4">
+                        <span>15 Mn</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <a href="#" class="text-[11px] font-bold text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-primary mb-2">
+                        Details De Cours
+                    </a>
+                    <button class="bg-primary hover:bg-primary/90 text-white text-xs font-semibold px-4 sm:px-8 py-2 rounded-full flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center">
+                        <span>En Cours</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </button>
+                </div>
+            </article>
 
-    <p class="text-xl font-bold">◁▷</p>
-  </div>
+            <!-- CARTE 3 (Terminé) -->
+            <article class="bg-white rounded-[20px] sm:rounded-[30px] border border-brand-purple p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 shadow-sm hover:shadow-md transition">
+                <div class="flex items-start gap-3 sm:gap-5 flex-1 min-w-0">
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white border-2 border-brand-text/80 rounded-lg flex items-center justify-center text-brand-text">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="min-w-0 flex-1">
+                        <h2 class="text-lg sm:text-xl font-bold text-brand-text truncate">Quiz De Mathematique</h2>
+                        <p class="text-sm sm:text-base text-brand-text font-medium mt-1 line-clamp-2">Chapitre 3 : Calcul Vectoriel</p>
+                        <p class="text-xs text-brand-gray font-medium mt-1">15 Questions | Débutant</p>
+                    </div>
+                </div>
 
-  <!-- ================= RETOUR ================= -->
-<div class="max-w-5xl mx-auto mt-12 mb-16 px-4">
-      <button class="btn-secondary px-6 py-2 rounded-btn">Retour</button>
-  </div>
+                <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1 w-full sm:w-auto sm:min-w-[140px]">
+                    <div class="flex items-center gap-1 text-xs font-bold text-brand-text mb-2 sm:mb-4">
+                        <span>15 Mn</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <a href="#" class="text-[11px] font-bold text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-primary mb-2">
+                        Details De Cours
+                    </a>
+                    <button class="bg-primary hover:bg-primary/90 text-white text-xs font-semibold px-4 sm:px-8 py-2 rounded-full flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center">
+                        <span>Terminé</span>
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                    </button>
+                </div>
+            </article>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
+        </div>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 border-b border-white/20 pb-6 sm:pb-8">
             
             <!-- Col 1: BrainHub -->
@@ -226,36 +316,23 @@
             <p class="text-xs opacity-70">© 2025 BrainHub - Tous les droits réservés</p>
         </div>
     </footer>
-<script>
-  // === Récupération des compteurs ===
-  const apprentissageCount = document.getElementById("apprentissage-count");
-  const revisionCount = document.getElementById("revision-count");
-  const connuCount = document.getElementById("connu-count");
 
-  // === Récupération des boutons ===
-  const btnConnu = document.getElementById("btn-connu");
-  const btnRevision = document.getElementById("btn-revision");
-  const btnApprentissage = document.getElementById("btn-apprentissage");
 
-  // === Ajout des actions ===
 
-  // 😊 Bravo -> Connu +1
-  btnConnu.addEventListener("click", () => {
-    connuCount.textContent = parseInt(connuCount.textContent) + 1;
-  });
 
-  // 😐 Presque -> En revision +1
-  btnRevision.addEventListener("click", () => {
-    revisionCount.textContent = parseInt(revisionCount.textContent) + 1;
-  });
 
-  // ☹️ Mauvaise -> Apprentissage +1
-  btnApprentissage.addEventListener("click", () => {
-    apprentissageCount.textContent = parseInt(apprentissageCount.textContent) + 1;
-  });
-</script>
 
-     <script>
+
+
+
+
+
+
+    
+
+
+    <!-- JavaScript pour la barre de recherche et le menu mobile -->
+    <script>
         // Éléments DOM
         const searchInput = document.getElementById('searchInput');
         const mobileSearchBtn = document.getElementById('mobileSearchBtn');
@@ -386,6 +463,6 @@
             });
         }
     </script>
-</body>
 
+</body>
 </html>

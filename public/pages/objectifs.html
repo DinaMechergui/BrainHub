@@ -4,62 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BrainHub – Objectifs</title>
-
-  <!-- Tailwind compilé -->
   <link rel="stylesheet" href="../../src/output.css">
 </head>
 
 <body class="bg-white font-raleway">
+  <!-- ============================================================  HEADER  -->
+  <header class="w-full bg-primary text-white shadow-md relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+      <!-- LOGO -->
+      <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32">
 
-  <!-- HEADER - Desktop par défaut -->
- <header class="header-primary w-full py-2 h-16 flex items-center">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full">
-
-      <!-- LOGO à gauche -->
-      <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32 w-auto">
-
-      <!-- NAV centré (visible sur desktop) -->
-      <nav class="hidden md:flex items-center gap-8 mx-auto">
-        <a href="#" class="text-white">Accueil</a>
-        <a href="#" class="text-white">A propos</a>
-        <a href="#" class="text-white">Contact</a>
+      <!-- NAV DESKTOP -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+        <a href="#" class="hover:text-white/80 transition">Accueil</a>
+        <a href="#" class="hover:text-white/80 transition">A propos</a>
+        <a href="#" class="hover:text-white/80 transition">Contact</a>
       </nav>
 
-      <!-- SEARCH + LOGOUT à droite (visible sur desktop) -->
-      <div class="hidden md:flex items-center gap-2">
-        <div class="flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
-          <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-40 lg:w-56">
+      <!-- SEARCH + LOGOUT DESKTOP -->
+      <div class="hidden sm:flex items-center gap-3 lg:gap-4">
+        <div class="hidden md:flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2 w-48 lg:w-64 transition-all focus-within:bg-white/30 focus-within:border-white/40">
+          <svg xmlns="http://www.w3.org/2000/svg " class="h-5 w-5 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search for anything..." class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full" autocomplete="off">
         </div>
-        <button class="w-10 h-10 rounded-full bg-coral flex items-center justify-center hover:bg-coral/80 transition">
-          <img src="../pages/assets/logout.png" class="w-5 h-5" alt="Logout"/>
+        <button class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Logout">
+          <svg xmlns="http://www.w3.org/2000/svg " class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
         </button>
       </div>
 
-      <!-- BURGER MENU (visible seulement sur mobile) -->
-      <button id="mobile-menu-button" class="md:hidden text-white">
-        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
+      <!-- MOBILE -->
+      <div class="flex sm:hidden items-center gap-3">
+        <button id="mobileSearchBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Rechercher">
+          <svg xmlns="http://www.w3.org/2000/svg " class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+        <button id="mobileMenuBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Menu">
+          <svg xmlns="http://www.w3.org/2000/svg " class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
 
+    <!-- Mobile Search Bar -->
+    <div id="mobileSearchBar" class="search-container hidden sm:hidden">
+      <div class="flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2">
+        <svg xmlns="http://www.w3.org/2000/svg " class="h-5 w-5 text-white/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input type="text" id="mobileSearchInput" placeholder="Search for anything..." class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full" autocomplete="off">
+        <button id="closeMobileSearch" class="ml-2 text-white/70 hover:text-white">
+          <svg xmlns="http://www.w3.org/2000/svg " class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden absolute top-full left-0 right-0 bg-primary border-t border-white/20 z-50">
+      <nav class="flex flex-col p-4 space-y-4">
+        <a href="#" class="text-white hover:text-white/80 transition py-2">Accueil</a>
+        <a href="#" class="text-white hover:text-white/80 transition py-2">A propos</a>
+        <a href="#" class="text-white hover:text-white/80 transition py-2">Contact</a>
+        <button class="bg-white/20 p-2 rounded-lg text-white hover:bg-white/30 transition text-left">Déconnexion</button>
+      </nav>
     </div>
   </header>
+  <!-- ========================================================  /HEADER  -->
 
-  <!-- DROPDOWN MENU MOBILE -->
+  <!-- MOBILE DROPDOWN (si tu en as encore besoin) -->
   <div id="mobile-dropdown" class="md:hidden hidden bg-primary shadow-lg">
     <div class="px-6 py-4 space-y-4">
-      <!-- Liens dropdown -->
       <a href="#" class="block text-white py-3 px-4 hover:bg-primaryDark rounded-btn transition">Accueil</a>
       <a href="#" class="block text-white py-3 px-4 hover:bg-primaryDark rounded-btn transition">A propos</a>
       <a href="#" class="block text-white py-3 px-4 hover:bg-primaryDark rounded-btn transition">Contact</a>
-      
-      <!-- Search bar dans dropdown -->
       <div class="pt-4 border-t border-primaryDark">
         <div class="flex items-center gap-2">
           <div class="flex-1 flex items-center gap-2 bg-white text-black px-4 py-2 rounded-btn">
             <input type="text" placeholder="Search for anything..." class="outline-none bg-transparent w-full">
           </div>
-          <button class="w-10 h-10 rounded-full bg-coral flex items-center justify-center hover:bg-coral/80 transition flex-shrink-0">
+          <button class="w-10 h-10 rounded-full bg-coral flex items-center justify-center hover:bg-coral/80 transition">
             <img src="../pages/assets/logout.png" class="w-5 h-5" alt="Logout"/>
           </button>
         </div>
@@ -67,51 +97,54 @@
     </div>
   </div>
 
-  <!-- CONTENT -->
-<main class="max-w-6xl mx-auto px-6 pt-6">
-<div class="max-w-7xl mx-auto mt-6 px-2 md:px-1">
-<p class="text-primary mb-4 text-sm md:text-base flex items-center gap-1">
-  <a href="../../index.html" class="text-primary hover:underline">Accueil ></a>
-  <a href="Note.html" class="text-primary hover:underline">Notes ></a>
-  <span class="text-black font-semibold">Objectifs</span>
-</p>
-</div>
-
+  <!-- ========================================================  CONTENT  -->
+  <main class="max-w-6xl mx-auto px-6 py-10">
+    <div class="max-w-7xl mx-auto mt-6 px-2 md:px-6">
+      <p class="text-primary mb-4 text-sm md:text-base flex items-center gap-1">
+        <a href="../../index.html" class="text-primary hover:underline">Accueil ></a>
+        <a href="Note.html" class="text-primary hover:underline">Notes ></a>
+        <span class="text-black font-semibold">Objectifs</span>
+      </p>
+    </div>
 
     <h2 class="text-3xl font-bold text-center mb-10">Mes Objectifs Du Jour</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-
       <!-- LEFT SIDE: OBJECTIFS -->
       <div class="space-y-4">
-
-        <!-- CONTENEUR DES OBJECTIFS -->
         <div id="objectifs-container" class="space-y-4">
-
+          <!-- objets statiques -->
           <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
             <input type="checkbox" class="checkbox">
             <span>Relire Fiche Java</span>
           </div>
-
           <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
             <input type="checkbox" class="checkbox">
             <span>Faire Un Quiz</span>
           </div>
-
           <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
             <input type="checkbox" class="checkbox">
             <span>Réviser Réseau (30 Minutes)</span>
           </div>
-
           <div class="flex items-center gap-3 border border-primary rounded-btn p-3">
             <input type="checkbox" class="checkbox">
             <span>Finir TD Php</span>
           </div>
-
         </div>
-
         <!-- BOUTON EN DESSOUS SEULEMENT -->
         <button id="add-btn" class="btn btn-primary w-full mt-4">+ Ajouter Un Objectif</button>
+        <div id="new-objective-form" class="mt-3 hidden">
+  <input 
+    id="new-objective-input"
+    type="text" 
+    placeholder="Écrire un nouvel objectif..." 
+    class="w-full border border-primary rounded-btn px-3 py-2 mb-2"
+  >
+  <button id="save-objective-btn" class="btn btn-primary w-full">
+    Ajouter
+  </button>
+</div>
+
       </div>
 
       <!-- RIGHT SIDE IMAGE -->
@@ -121,129 +154,152 @@
     </div>
 
     <!-- ASTUCES + STATISTIQUES -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-14">
-
-      <div class="card flex items-center gap-4 shadow-soft-1">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-14 mb-16">
+      <div class="card flex items-center gap-4 shadow-soft-2">
         <img src="https://img.icons8.com/color/48/idea.png" class="w-12 h-12">
         <p class="font-semibold">Retrouver Des Conseils Pour Optimiser Vos Sessions De Révision</p>
       </div>
-
-      <div class="card flex items-center gap-4 shadow-soft-1">
+      <div class="card flex items-center gap-4 shadow-soft-2">
         <img src="https://img.icons8.com/color/48/combo-chart.png" class="w-12 h-12">
         <p class="font-semibold">Analyser Vos Progrés Au Fil Du Temps</p>
       </div>
-
     </div>
   </main>
+  <!-- ========================================================  /CONTENT  -->
 
-  <!-- FOOTER -->
-  <footer class="bg-primary text-white mt-16 py-10">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
-
+  <!-- ========================================================  FOOTER  -->
+  <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 border-b border-white/20 pb-6 sm:pb-8">
       <div>
-        <h3 class="font-semibold mb-2">BrainHub</h3>
+        <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">BrainHub</h3>
+        <ul class="space-y-2 text-sm opacity-90">
+          <li><a href="#" class="hover:underline">A propos</a></li>
+          <li><a href="#" class="hover:underline">Nos services</a></li>
+        </ul>
       </div>
-
       <div>
-        <h3 class="font-semibold mb-2">BrainHub</h3>
-        <p>A propos</p>
-        <p>Nos services</p>
+        <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Aide</h3>
+        <ul class="space-y-2 text-sm opacity-90">
+          <li><a href="#" class="hover:underline">FAQ</a></li>
+          <li><a href="#" class="hover:underline">Contact</a></li>
+        </ul>
       </div>
-
       <div>
-        <h3 class="font-semibold mb-2">Aide</h3>
-        <p>FAQ</p>
-        <p>Contact</p>
+        <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Suivez-nous</h3>
+        <div class="flex items-center gap-3">
+          <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a3 3 0 100-6 3 3 0 000 6z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M17 7v.01"></path></svg></a>
+          <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+          <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition"><svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg></a>
+        </div>
       </div>
-
       <div>
-        <h3 class="font-semibold mb-2">Contact</h3>
-        <p>+21561771</p>
-        <p>Brainhub@gmail.com</p>
+        <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Contact</h3>
+        <ul class="space-y-2 text-sm opacity-90">
+          <li>+21561771</li>
+          <li>Brainhub@gmail.com</li>
+        </ul>
       </div>
-
     </div>
-
-    <p class="text-center mt-6">© 2025 BrainHub – Tous les droits réservés</p>
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="text-xs opacity-70">© 2025 BrainHub - Tous les droits réservés</p>
+    </div>
   </footer>
+  
+<!-- juste avant </body> -->
+<script>
+/* ---------------  HEADER RESPONSIVE  --------------- */
+const mobileSearchBtn   = document.getElementById('mobileSearchBtn');
+const mobileSearchBar   = document.getElementById('mobileSearchBar');
+const mobileSearchInput = document.getElementById('mobileSearchInput');
+const closeMobileSearch = document.getElementById('closeMobileSearch');
+const mobileMenuBtn     = document.getElementById('mobileMenuBtn');
+const mobileMenu        = document.getElementById('mobileMenu');
 
-  <script>
-    const container = document.getElementById("objectifs-container");
-    const btnAdd = document.getElementById("add-btn");
-    const mobileMenuButton = document.getElementById("mobile-menu-button");
-    const mobileDropdown = document.getElementById("mobile-dropdown");
-    const desktopNav = document.querySelector('nav');
-    const desktopSearch = document.querySelector('.flex.items-center.gap-2');
+mobileSearchBtn?.addEventListener('click', () => {
+  mobileSearchBar.classList.toggle('hidden');
+  if (!mobileSearchBar.classList.contains('hidden')) mobileSearchInput.focus();
+});
+closeMobileSearch?.addEventListener('click', () => {
+  mobileSearchBar.classList.add('hidden');
+  mobileSearchInput.value = '';
+});
+mobileMenuBtn?.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+});
+document.addEventListener('click', e => {
+  if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) mobileMenu.classList.add('hidden');
+});
 
-    // Fonction pour gérer l'affichage responsive
-    function handleResponsive() {
-      if (window.innerWidth <= 768) {
-        // Mode mobile - cacher les éléments desktop
-        desktopNav.style.display = 'none';
-        desktopSearch.style.display = 'none';
-        // Afficher burger menu
-        mobileMenuButton.style.display = 'block';
-      } else {
-        // Mode desktop - afficher les éléments desktop
-        desktopNav.style.display = 'flex';
-        desktopSearch.style.display = 'flex';
-        // Cacher burger menu et dropdown
-        mobileMenuButton.style.display = 'none';
-        mobileDropdown.classList.add('hidden');
-      }
-    }
 
-    // Initialiser au chargement
-    document.addEventListener('DOMContentLoaded', handleResponsive);
-    
-    // Écouter le redimensionnement
-    window.addEventListener('resize', handleResponsive);
+/* ---------------  GESTION DES OBJECTIFS  --------------- */
+const container = document.getElementById('objectifs-container');
+const addBtn = document.getElementById('add-btn');
+const form = document.getElementById("new-objective-form");
+const input = document.getElementById("new-objective-input");
+const saveBtn = document.getElementById("save-objective-btn");
 
-    // Toggle dropdown mobile
-    mobileMenuButton.addEventListener('click', () => {
-      mobileDropdown.classList.toggle('hidden');
-      
-      // Utiliser l'animation depuis le CSS
-      if (!mobileDropdown.classList.contains('hidden')) {
-        mobileDropdown.classList.add('animate-slideDown');
-      } else {
-        mobileDropdown.classList.remove('animate-slideDown');
-      }
-    });
-
-    // Fermer dropdown si on clique ailleurs
-    document.addEventListener('click', (event) => {
-      const isClickInsideMenu = mobileDropdown.contains(event.target);
-      const isClickOnButton = mobileMenuButton.contains(event.target);
-      
-      if (!isClickInsideMenu && !isClickOnButton && !mobileDropdown.classList.contains('hidden')) {
-        mobileDropdown.classList.add('hidden');
-        mobileDropdown.classList.remove('animate-slideDown');
-      }
-    });
-
-    // Fermer dropdown si on clique sur un lien
-    mobileDropdown.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileDropdown.classList.add('hidden');
-        mobileDropdown.classList.remove('animate-slideDown');
-      });
-    });
-
-    // Ajouter un nouvel objectif
-    btnAdd.addEventListener("click", () => {
-      const div = document.createElement("div");
-      div.className = "flex items-center gap-3 border border-primary rounded-btn p-3";
-
-      div.innerHTML = `
-        <input type="checkbox" class="checkbox">
-        <input type="text" placeholder="Nouvel objectif..." 
-               class="outline-none w-full bg-transparent">
-      `;
-
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = JSON.parse(localStorage.getItem('objectifs') || '[]');
+  if (saved.length) {
+    container.innerHTML = '';
+    saved.forEach(text => {
+      const div = renderObjectif(text);
       container.appendChild(div);
     });
-  </script>
+  }
+  attachListeners();
+});
+
+// Afficher le mini-formulaire sous les objectifs
+addBtn.addEventListener("click", () => {
+  form.classList.remove("hidden");
+  input.focus();
+});
+
+// Ajouter un nouvel objectif
+saveBtn.addEventListener("click", () => {
+  const text = input.value.trim();
+  if (!text) return;
+
+  const div = renderObjectif(text);
+  container.appendChild(div);
+
+  input.value = "";
+  form.classList.add("hidden");
+
+  attachListeners();
+  save();
+});
+
+function renderObjectif(text) {
+  const div = document.createElement('div');
+  div.className = 'flex items-center gap-3 border border-primary rounded-btn p-3';
+  div.innerHTML = `
+    <input type="checkbox" class="checkbox">
+    <span class="flex-1">${text}</span>
+    <button class="text-red-500 hover:underline text-sm delete-btn">🗑</button>`;
+  return div;
+}
+
+function attachListeners() {
+  container.querySelectorAll('.checkbox').forEach(cb => {
+    cb.onchange = save;
+  });
+
+  container.querySelectorAll('.delete-btn').forEach(btn => {
+    btn.onclick = e => {
+      e.target.parentElement.remove();
+      save();
+    };
+  });
+}
+
+function save() {
+  const liste = [...container.querySelectorAll('span')].map(s => s.textContent);
+  localStorage.setItem('objectifs', JSON.stringify(liste));
+}
+</script>
+
 
 </body>
 </html>

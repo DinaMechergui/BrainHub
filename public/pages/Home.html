@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BrainHub – Accueil</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS compilé -->
+  <link rel="stylesheet" href="../../src/output.css">
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a2d9b8d3c8.js" crossorigin="anonymous"></script>
+  
+  <style>
+    .hero-image-container {
+      width: 500px;
+      height: 500px;
+    }
+
+    @media (max-width: 1280px) {
+      .hero-image-container {
+        width: 450px;
+        height: 450px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-image-container {
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-image-container {
+        width: 350px;
+        height: 350px;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .hero-section-container {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 3rem;
+        align-items: center;
+        min-height: 600px;
+      }
+    }
+
+    /* TEXTE HERO */
+    .hero-text h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 2rem;
+      font-family: "Raleway", sans-serif;
+    }
+
+    /* Stats */
+    .stats-blocks-container {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      align-items: stretch;
+      margin-top: 60px;
+      flex-wrap: wrap;
+    }
+
+    .stat-block {
+      background: white;
+      border-radius: var(--radius-btn);
+      padding: 24px 20px;
+      box-shadow: var(--shadow-soft-2);
+      flex: 1;
+      min-width: 220px;
+      max-width: 240px;
+      text-align: center;
+      border-top: 4px solid;
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .plus {
+      font-size: 2rem;
+      color: #94a3b8;
+      margin-left: 3px;
+    }
+
+    /* Cartes */
+    .card-quiz {
+      background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primaryDark) 100%);
+      color: white;
+    }
+
+    .card-stats {
+      background: linear-gradient(135deg, var(--color-primary) 0%, #9A6EF2 100%);
+      color: white;
+    }
+
+    .card-arrow {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Cours */
+    .course-card {
+      background: white;
+      border-radius: var(--radius-btn);
+      box-shadow: var(--shadow-soft-2);
+      overflow: hidden;
+    }
+
+    .course-image {
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .course-content {
+      padding: 20px;
+    }
+
+    .course-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .course-description {
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+
+<body class="font-raleway bg-panel text-gray-800 min-h-screen flex flex-col">
+
+  <!-- HEADER -->
+  <header class="fixed top-0 left-0 right-0 h-14 z-50 bg-primary text-white flex items-center px-6 shadow-soft-1">
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+        <img src="https://via.placeholder.com/22/667EEA/FFFFFF?text=B" alt="logo" class="w-5 h-5">
+      </div>
+      <span class="font-bold text-lg tracking-tight">BrainHub</span>
+    </div>
+
+    <nav class="hidden lg:flex gap-8 text-sm justify-center w-full">
+      <a class="hover:underline" href="#">Accueil</a>
+      <a class="hover:underline" href="#">A propos</a>
+      <a class="hover:underline" href="#">Contact</a>
+    </nav>
+
+    <div class="relative w-96">
+      <input
+        type="text"
+        placeholder="Rechercher..."
+        class="w-full pl-10 pr-4 py-2 rounded-pill bg-white text-black shadow-soft-2"
+      />
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="pt-16 flex-grow px-6">
+    <div class="max-w-7xl mx-auto py-12">
+
+      <div class="hero-section-container mb-16">
+        <div class="hero-text flex flex-col justify-center">
+          <h1>
+            Apprends,<br>
+            comprends,<br>
+            et deviens la meilleure<br>
+            version de toi-même
+          </h1>
+
+          <div class="mt-24"></div>
+
+          <div class="stats-blocks-container">
+            <div class="stat-block matiere">
+              <div class="stat-number">50<span class="plus">+</span></div>
+              <div class="stat-label">Matières disponibles</div>
+            </div>
+
+            <div class="stat-block etablissements">
+              <div class="stat-number">500<span class="plus">+</span></div>
+              <div class="stat-label">Établissements inscrits</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-wrapper flex justify-end">
+          <div class="hero-image-container rounded-2xl overflow-hidden shadow-soft-2">
+            <img 
+              src="assets/tree.png" 
+              alt="Arbre de la connaissance"
+              class="w-full h-full object-cover">
+          </div>
+        </div>
+      </div>
+
+      <!-- 🟦 ESPACE AVANT COURS POPULAIRES -->
+      <div class="mt-40"></div>
+
+      <!-- COURS POPULAIRES -->
+      <div class="py-12">
+        <h2 class="text-2xl font-bold text-primaryDark mb-12 text-center">Cours Populaires</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Carte UNIX -->
+          <div class="course-card">
+            <img 
+              src="assets/" 
+              alt="UNIX"
+              class="course-image">
+            <div class="course-content">
+              <h3 class="course-title">UNIX</h3>
+              <p class="course-description">Systèmes d'exploitation avancés et administration système</p>
+            </div>
+          </div>
+
+          <!-- Carte Java -->
+          <div class="course-card">
+            <img 
+              src="assets/java.png" 
+              alt="Java"
+              class="course-image">
+            <div class="course-content">
+              <h3 class="course-title">Java</h3>
+              <p class="course-description">Programmation orientée objet et développement d'applications</p>
+            </div>
+          </div>
+
+          <!-- Carte Python -->
+          <div class="course-card">
+            <img 
+              src="assets/python.png" 
+              alt="Python"
+              class="course-image">
+            <div class="course-content">
+              <h3 class="course-title">Python</h3>
+              <p class="course-description">Programmation moderne pour data science et IA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 🟦 ESPACE APRÈS COURS POPULAIRES -->
+      <div class="mb-20"></div>
+
+      <!-- BOUTON EN SAVOIR PLUS -->
+      <div class="pt-12 pb-12 text-center">
+        <button class="btn btn-pill bg-primary text-white px-8 py-3 text-lg hover:bg-primaryDark transition-colors mx-auto">
+          En savoir plus <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- 🟦 ESPACE APRÈS BOUTON -->
+      <div class="mb-20"></div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-primary text-white py-6 px-8 mt-auto">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+
+      <div>
+        <h2 class="font-semibold text-lg">BrainHub</h2>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">BrainHub</h3>
+        <ul class="mt-3 space-y-1 text-sm">
+          <li><a href="#" class="hover:underline">A propos</a></li>
+          <li><a href="#" class="hover:underline">Nos services</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">Aide</h3>
+        <ul class="mt-3 space-y-1 text-sm">
+          <li><a href="#" class="hover:underline">FAQ</a></li>
+          <li><a href="#" class="hover:underline">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">Suivez-nous</h3>
+        <div class="flex items-center gap-4 mt-3">
+          <div class="p-2 rounded-full border border-white">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" />
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="17" cy="7" r="1" />
+            </svg>
+          </div>
+
+          <div class="p-2 rounded-full border border-white">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+            </svg>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

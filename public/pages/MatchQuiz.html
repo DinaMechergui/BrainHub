@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrainHub – Quiz UX Design</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS avec vos utilitaires -->
+    <link rel="stylesheet" href="../../src/output.css">
+    <style>
+        /* Styles inline pour reproduire votre design exact */
+        body {
+            font-family: 'Raleway', sans-serif;
+            background-color: #F6F8FF;
+            color: #333;
+        }
+        
+        .quiz-option {
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        
+        .quiz-option:hover {
+            background-color: #f0f4ff;
+        }
+        
+        .quiz-option.selected {
+            background-color: #E7EEFF;
+            border-color: #667EEA;
+        }
+        
+        .history-item.current {
+            background-color: rgba(102, 126, 234, 0.1);
+        }
+        
+        /* Animation pour le modal */
+        .modal-enter {
+            animation: slideInRight 0.3s ease-out;
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+    </style>
+</head>
+<body class="bg-panel font-raleway">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 left-0 right-0 h-14 z-50 bg-primary text-white flex items-center px-6 shadow-soft-1">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                <img src="https://via.placeholder.com/22/667EEA/FFFFFF?text=B" alt="logo" class="w-5 h-5">
+            </div>
+            <span class="font-bold text-lg tracking-tight">BrainHub</span>
+        </div>
+
+        <nav class="hidden lg:flex gap-8 text-sm justify-center w-full">
+            <a class="hover:underline" href="#">Accueil</a>
+            <a class="hover:underline" href="#">A propos</a>
+            <a class="hover:underline" href="#">Nos services</a>
+            <a class="hover:underline" href="#">Aide</a>
+            <a class="hover:underline" href="#">FAQ</a>
+            <a class="hover:underline" href="#">Contact</a>
+        </nav>
+
+        <div class="relative w-96">
+            <input
+                type="text"
+                placeholder="Rechercher..."
+                class="w-full pl-10 pr-4 py-2 rounded-pill bg-white text-black shadow-soft-2 focus:outline-none"
+            />
+            <svg xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2"
+                viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Modal de classement à droite - Plus large avec marge -->
+    <div id="rankingModal" class="fixed inset-0 bg-black/50 hidden z-50">
+        <div class="absolute right-4 top-4 bottom-4 w-96 bg-white rounded-xxl shadow-soft-2 modal-enter">
+            <div class="p-5 h-full flex flex-col">
+                <div class="flex justify-between items-center mb-5">
+                    <h3 class="text-lg font-bold text-gray-800">Classement</h3>
+                    <button id="closeRanking" class="text-gray-500 hover:text-gray-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Podium avec couronnes - Liste plus large avec marge à droite -->
+                <div class="space-y-4 overflow-y-auto pr-3 flex-grow">
+                    <!-- 1ère place -->
+                    <div class="flex items-center justify-between p-3 bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-btn border border-yellow-200">
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-white font-bold text-sm">
+                                    1
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-800 text-sm">Mohamed Ben Ali</div>
+                                <div class="text-xs text-gray-600">950 pts</div>
+                            </div>
+                        </div>
+                        <!-- Couronne grande à droite pour la 1ère place -->
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- 2ème place -->
+                    <div class="flex items-center justify-between p-3 bg-gradient-to-r from-gray-50 to-gray-100 rounded-btn border border-gray-200">
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-gray-400 to-gray-600 flex items-center justify-center text-white font-bold text-sm">
+                                    2
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-800 text-sm">Fatma Chaabane</div>
+                                <div class="text-xs text-gray-600">880 pts</div>
+                            </div>
+                        </div>
+                        <!-- Couronne moyenne à droite pour la 2ème place -->
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <!-- 3ème place -->
+                    <div class="flex items-center justify-between p-3 bg-gradient-to-r from-amber-50 to-amber-100 rounded-btn border border-amber-200">
+                        <div class="flex items-center gap-3">
+                            <div class="relative">
+                                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white font-bold text-sm">
+                                    3
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-800 text-sm">Ahmed Trabelsi</div>
+                                <div class="text-xs text-gray-600">820 pts</div>
+                            </div>
+                        </div>
+                        <!-- Couronne petite à droite pour la 3ème place -->
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Autres classements (noms tunisiens) -->
+                    <div class="pt-2">
+                        <div class="text-xs text-gray-500 font-semibold mb-2">Autres participants</div>
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-600">4</div>
+                                    <div class="text-sm text-gray-700">Samira Bouazizi</div>
+                                </div>
+                                <div class="text-xs text-gray-600">780 pts</div>
+                            </div>
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-600">5</div>
+                                    <div class="text-sm text-gray-700">Karim Abidi</div>
+                                </div>
+                                <div class="text-xs text-gray-600">750 pts</div>
+                            </div>
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-600">6</div>
+                                    <div class="text-sm text-gray-700">Noura Saadi</div>
+                                </div>
+                                <div class="text-xs text-gray-600">720 pts</div>
+                            </div>
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-600">7</div>
+                                    <div class="text-sm text-gray-700">Rami Chihi</div>
+                                </div>
+                                <div class="text-xs text-gray-600">690 pts</div>
+                            </div>
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-600">8</div>
+                                    <div class="text-sm text-gray-700">Amina Gharbi</div>
+                                </div>
+                                <div class="text-xs text-gray-600">650 pts</div>
+                            </div>
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-600">9</div>
+                                    <div class="text-sm text-gray-700">Salah Jlassi</div>
+                                </div>
+                                <div class="text-xs text-gray-600">620 pts</div>
+                            </div>
+                            <div class="flex items-center justify-between p-2 hover:bg-gray-50 rounded">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-6 h-6 rounded-full bg-gray-200 flex items-center justify-center text-xs text-gray-600">10</div>
+                                    <div class="text-sm text-gray-700">Leila Baccouche</div>
+                                </div>
+                                <div class="text-xs text-gray-600">590 pts</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="pt-16 flex gap-6 px-6">
+
+        <!-- QUIZ SECTION (GAUCHE) -->
+        <main class="flex-1">
+            <div class="bg-white rounded-xxl p-8 shadow-soft-2">
+                <!-- Titre du quiz -->
+                <div class="mb-6">
+                    <h1 class="text-2xl font-bold text-gray-800">MatchQuiz</h1>
+                    <div class="text-lg text-primary font-semibold mt-1">Quiz UX Design</div>
+                </div>
+
+                <!-- Progression -->
+                <div class="mb-8">
+                    <div class="text-gray-600 mb-2">
+                        Question <span class="font-bold text-primary">1</span>/10
+                    </div>
+                    <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="h-full bg-primary" style="width: 10%"></div>
+                    </div>
+                </div>
+
+                <!-- Question -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800 mb-6">Qu'est-ce que l'UX Design ?</h2>
+                    
+                    <!-- Options en disposition 2x2 -->
+                    <div class="space-y-4">
+                        <!-- Première ligne - 2 options côte à côte -->
+                        <div class="flex gap-4">
+                            <div class="quiz-option flex-1 border border-gray-300 rounded-btn p-4" data-option="1">
+                                <div class="flex items-center">
+                                    <div class="w-5 h-5 rounded-full border border-gray-400 mr-3 flex items-center justify-center"></div>
+                                    <span>La conception des interfaces visuelles uniquement</span>
+                                </div>
+                            </div>
+                            
+                            <div class="quiz-option flex-1 border border-primary rounded-btn p-4 bg-paleBlue selected" data-option="2">
+                                <div class="flex items-center">
+                                    <div class="w-5 h-5 rounded-full border border-primary bg-primary mr-3 flex items-center justify-center">
+                                        <div class="w-2 h-2 rounded-full bg-white"></div>
+                                    </div>
+                                    <span class="font-medium">L'expérience globale vécue par l'utilisateur lors de l'utilisation d'un produit</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Deuxième ligne - 2 options côte à côte -->
+                        <div class="flex gap-4">
+                            <div class="quiz-option flex-1 border border-gray-300 rounded-btn p-4" data-option="3">
+                                <div class="flex items-center">
+                                    <div class="w-5 h-5 rounded-full border border-gray-400 mr-3 flex items-center justify-center"></div>
+                                    <span>Le codage du site Web</span>
+                                </div>
+                            </div>
+                            
+                            <div class="quiz-option flex-1 border border-gray-300 rounded-btn p-4" data-option="4">
+                                <div class="flex items-center">
+                                    <div class="w-5 h-5 rounded-full border border-gray-400 mr-3 flex items-center justify-center"></div>
+                                    <span>La création du Logo du site Web</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouton Valider avec espace ajouté -->
+                <div class="flex justify-center mt-12 mb-4">
+                    <button id="validateBtn" class="btn btn-primary px-10 py-4 rounded-btn font-semibold shadow-soft-1 hover:shadow-soft-2 transition text-lg">
+                        Valider
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- HISTORY SECTION (DROITE) -->
+        <aside class="w-80">
+            <div class="bg-white rounded-xxl p-6 shadow-soft-2 h-full flex flex-col">
+                <h3 class="text-lg font-bold text-gray-800 mb-6 pb-3 border-b border-gray-200">Historique des questions</h3>
+                
+                <!-- Liste des questions -->
+                <div class="space-y-3 max-h-[400px] overflow-y-auto pr-2 flex-grow">
+                    <div class="history-item current p-3 rounded-btn">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-bold mr-3">
+                                1
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-sm font-medium text-gray-800">Qu'est-ce que l'UX Design ?</p>
+                                <p class="text-xs text-gray-500 mt-1">En cours</p>
+                            </div>
+                            <div class="w-5 h-5 rounded-full border border-primary flex items-center justify-center">
+                                <div class="w-2 h-2 rounded-full bg-primary"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item p-3 rounded-btn hover:bg-gray-50">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold mr-3">
+                                2
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-sm text-gray-700">Principes de base de l'UX</p>
+                                <p class="text-xs text-gray-500 mt-1">Non répondu</p>
+                            </div>
+                            <div class="w-5 h-5 rounded-full border border-gray-300"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item p-3 rounded-btn hover:bg-gray-50">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold mr-3">
+                                3
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-sm text-gray-700">Différence entre UX et UI</p>
+                                <p class="text-xs text-gray-500 mt-1">Non répondu</p>
+                            </div>
+                            <div class="w-5 h-5 rounded-full border border-gray-300"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item p-3 rounded-btn hover:bg-gray-50">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold mr-3">
+                                4
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-sm text-gray-700">Méthodes de recherche UX</p>
+                                <p class="text-xs text-gray-500 mt-1">Non répondu</p>
+                            </div>
+                            <div class="w-5 h-5 rounded-full border border-gray-300"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item p-3 rounded-btn hover:bg-gray-50">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold mr-3">
+                                5
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-sm text-gray-700">Personas et scénarios</p>
+                                <p class="text-xs text-gray-500 mt-1">Non répondu</p>
+                            </div>
+                            <div class="w-5 h-5 rounded-full border border-gray-300"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item p-3 rounded-btn hover:bg-gray-50">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold mr-3">
+                                6
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-sm text-gray-700">Tests d'utilisabilité</p>
+                                <p class="text-xs text-gray-500 mt-1">Non répondu</p>
+                            </div>
+                            <div class="w-5 h-5 rounded-full border border-gray-300"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="history-item p-3 rounded-btn hover:bg-gray-50">
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold mr-3">
+                                7
+                            </div>
+                            <div class="flex-grow">
+                                <p class="text-sm text-gray-700">Architecture de l'information</p>
+                                <p class="text-xs text-gray-500 mt-1">Non répondu</p>
+                            </div>
+                            <div class="w-5 h-5 rounded-full border border-gray-300"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouton Classement sans icône -->
+                <div class="mt-8 pt-6 border-t border-gray-200">
+                    <button id="rankingBtn" class="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-btn font-semibold shadow-soft-1 hover:shadow-soft-2 transition duration-200 flex items-center justify-center border border-gray-300">
+                        Classement
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- FOOTER MODIFIÉ -->
+    <footer class="bg-primary text-white py-6 px-8 mt-12">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    
+            <!-- Logo -->
+            <div>
+                <h2 class="font-semibold text-lg">BrainHub</h2>
+            </div>
+    
+            <!-- Brainhub -->
+            <div>
+                <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">BrainHub</h3>
+                <ul class="mt-3 space-y-1 text-sm">
+                    <li><a href="#" class="hover:underline">A propos</a></li>
+                    <li><a href="#" class="hover:underline">Nos services</a></li>
+                </ul>
+            </div>
+    
+            <!-- Aide -->
+            <div>
+                <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">Aide</h3>
+                <ul class="mt-3 space-y-1 text-sm">
+                    <li><a href="#" class="hover:underline">FAQ</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
+    
+            <!-- Suivez-nous -->
+            <div>
+                <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">Suivez-nous</h3>
+                <div class="flex items-center gap-4 mt-3">
+    
+                    <!-- Instagram -->
+                    <div class="p-2 rounded-full border border-white">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" 
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" />
+                            <circle cx="12" cy="12" r="3" />
+                            <circle cx="17" cy="7" r="1" />
+                        </svg>
+                    </div>
+    
+                    <!-- Facebook -->
+                    <div class="p-2 rounded-full border border-white">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                        </svg>
+                    </div>
+    
+                    <!-- Email -->
+                    <div class="p-2 rounded-full border border-white">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                            stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4 4h16v16H4z" />
+                            <path d="M4 4l8 8 8-8" />
+                        </svg>
+                    </div>
+    
+                </div>
+            </div>
+    
+        </div>
+    
+        <!-- Bas du footer -->
+        <div class="text-center mt-8 text-sm opacity-90">
+            © 2025 BrainHub - Tous les droits réservés
+        </div>
+    </footer>
+
+    <script>
+        // Gestion de la sélection des options
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Retirer la sélection de toutes les options
+                document.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected', 'bg-paleBlue');
+                    opt.classList.add('border-gray-300');
+                    
+                    // Réinitialiser l'indicateur
+                    const indicator = opt.querySelector('.w-5.h-5');
+                    if (indicator) {
+                        indicator.classList.remove('border-primary', 'bg-primary');
+                        indicator.classList.add('border-gray-400');
+                        const innerDot = indicator.querySelector('.w-2.h-2');
+                        if (innerDot) innerDot.remove();
+                    }
+                });
+                
+                // Sélectionner l'option cliquée
+                this.classList.add('selected', 'bg-paleBlue');
+                this.classList.remove('border-gray-300');
+                this.classList.add('border-primary');
+                
+                // Mettre à jour l'indicateur
+                const indicator = this.querySelector('.w-5.h-5');
+                if (indicator) {
+                    indicator.classList.remove('border-gray-400');
+                    indicator.classList.add('border-primary', 'bg-primary');
+                    
+                    // Ajouter le point intérieur
+                    if (!indicator.querySelector('.w-2.h-2')) {
+                        const innerDot = document.createElement('div');
+                        innerDot.className = 'w-2 h-2 rounded-full bg-white';
+                        indicator.appendChild(innerDot);
+                    }
+                }
+            });
+        });
+        
+        // Gestion de la validation
+        document.getElementById('validateBtn').addEventListener('click', function() {
+            const selectedOption = document.querySelector('.quiz-option.selected');
+            
+            if (!selectedOption) {
+                alert('Veuillez sélectionner une réponse avant de valider.');
+                return;
+            }
+            
+            const selectedValue = selectedOption.getAttribute('data-option');
+            const correctAnswer = '2'; // La bonne réponse est l'option 2
+            
+            // Mettre à jour l'historique
+            const currentHistoryItem = document.querySelector('.history-item.current');
+            const nextHistoryItem = currentHistoryItem.nextElementSibling;
+            
+            // Mettre à jour le statut
+            const statusElement = currentHistoryItem.querySelector('.text-xs');
+            const indicator = currentHistoryItem.querySelector('.w-5.h-5');
+            
+            if (selectedValue === correctAnswer) {
+                // Bonne réponse
+                statusElement.textContent = 'Correct';
+                statusElement.classList.remove('text-gray-500');
+                statusElement.classList.add('text-green-600');
+                
+                if (indicator) {
+                    indicator.innerHTML = '✓';
+                    indicator.classList.remove('border-gray-300', 'border-primary');
+                    indicator.classList.add('border-green-500', 'bg-green-100', 'text-green-600');
+                }
+                
+                alert('Bonne réponse ! ✅');
+            } else {
+                // Mauvaise réponse
+                statusElement.textContent = 'Incorrect';
+                statusElement.classList.remove('text-gray-500');
+                statusElement.classList.add('text-red-600');
+                
+                if (indicator) {
+                    indicator.innerHTML = '✗';
+                    indicator.classList.remove('border-gray-300', 'border-primary');
+                    indicator.classList.add('border-red-500', 'bg-red-100', 'text-red-600');
+                }
+                
+                alert('Mauvaise réponse ❌\nLa bonne réponse est : "L\'expérience globale vécue par l\'utilisateur lors de l\'utilisation d\'un produit"');
+            }
+            
+            // Passer à la question suivante
+            setTimeout(() => {
+                if (nextHistoryItem) {
+                    currentHistoryItem.classList.remove('current');
+                    nextHistoryItem.classList.add('current');
+                    
+                    // Mettre à jour la progression
+                    const progressBar = document.querySelector('.h-full.bg-primary');
+                    const currentWidth = parseInt(progressBar.style.width) || 10;
+                    progressBar.style.width = `${currentWidth + 10}%`;
+                    
+                    const questionCount = document.querySelector('.font-bold.text-primary');
+                    const currentNum = parseInt(questionCount.textContent);
+                    questionCount.textContent = currentNum + 1;
+                    
+                    // Réinitialiser les options
+                    document.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected', 'bg-paleBlue');
+                        opt.classList.add('border-gray-300');
+                        
+                        const indicator = opt.querySelector('.w-5.h-5');
+                        if (indicator) {
+                            indicator.classList.remove('border-primary', 'bg-primary');
+                            indicator.classList.add('border-gray-400');
+                            const innerDot = indicator.querySelector('.w-2.h-2');
+                            if (innerDot) innerDot.remove();
+                        }
+                    });
+                    
+                    // Mettre à jour la question (simulation)
+                    const questionText = document.querySelector('.text-xl.font-bold.text-gray-800.mb-6');
+                    const nextQuestionText = nextHistoryItem.querySelector('.text-sm').textContent;
+                    questionText.textContent = nextQuestionText;
+                } else {
+                    alert('Quiz terminé !');
+                    this.disabled = true;
+                    this.textContent = 'Terminé';
+                    this.classList.remove('bg-primary');
+                    this.classList.add('bg-gray-400');
+                }
+            }, 1000);
+        });
+        
+        // Gestion du bouton de classement
+        const rankingBtn = document.getElementById('rankingBtn');
+        const rankingModal = document.getElementById('rankingModal');
+        const closeRanking = document.getElementById('closeRanking');
+        
+        rankingBtn.addEventListener('click', function() {
+            rankingModal.classList.remove('hidden');
+        });
+        
+        function closeRankingModal() {
+            rankingModal.classList.add('hidden');
+        }
+        
+        closeRanking.addEventListener('click', closeRankingModal);
+        
+        // Fermer le modal en cliquant à l'extérieur
+        rankingModal.addEventListener('click', function(e) {
+            if (e.target === rankingModal) {
+                closeRankingModal();
+            }
+        });
+        
+        // Fermer le modal avec la touche Échap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !rankingModal.classList.contains('hidden')) {
+                closeRankingModal();
+            }
+        });
+    </script>
+</body>
+</html>

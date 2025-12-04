@@ -1,236 +1,445 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <title>BrainHub - Pomodoro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#4B5CF0',
-            violet: '#6366F1'
-          }
-        }
+<html lang="fr" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro | BrainHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="C:\Users\zaabi\Desktop\web manel\mon-projet-tailwind\BrainHub\src\input.css"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#667EEA",
+              secondary: "#764BA2",
+              accent: "#00D4FF",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
       }
-    }
-  </script>
-</head>
+      h1,
+      h2,
+      h3 {
+        font-family: "Raleway", sans-serif;
+      }
+    </style>
+  </head>
 
-<body class="min-h-screen flex flex-col bg-gray-50 font-sans text-base leading-normal">
+  <body class="min-h-screen flex flex-col bg-gray-50">
+    <!-- Bouton hamburger (même principe que Répartition Matière) -->
+    <button
+      id="sidebar-toggle"
+      class="fixed top-20 left-6 z-50 p-3 bg-primary text-white rounded-full shadow-xl hover:bg-secondary transition"
+    >
+      <svg
+        class="w-7 h-7"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.5"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
 
-  <!-- HEADER -->
-  <header class="bg-primary text-white shadow-lg">
-    <div class="max-w-7xl mx-auto flex items-center justify-between py-3 px-6">
-      <div class="flex items-center space-x-12">
-        <div class="flex items-center space-x-1 font-semibold tracking-wide">
-          <span class="text-lg">Brain</span>
-          <span class="text-lg text-red-300">Lab</span>
-        </div>
-        <nav class="hidden md:flex space-x-8 text-sm">
-          <a href="#" class="hover:underline">Accueil</a>
-          <a href="#" class="hover:underline">A propos</a>
-          <a href="#" class="hover:underline">Contact</a>
+    <!-- HEADER identique -->
+    <header class="w-full py-2 h-16 flex items-center bg-primary">
+      <div
+        class="max-w-7xl mx-auto flex items-center justify-between px-6 w-full"
+      >
+        <img
+          src="C:\Users\slima\Desktop\BrainHub\public\pages\assets\logo.png"
+          alt="BrainHub Logo"
+          class="max-h-20"
+        />
+        <nav class="hidden md:flex items-center gap-8 text-white font-medium">
+          <a href="#" class="hover:opacity-80">Accueil</a>
+          <a href="#" class="hover:opacity-80">À propos</a>
+          <a href="#" class="hover:opacity-80">Contact</a>
         </nav>
-      </div>
-      <div class="flex items-center space-x-3">
-        <div class="hidden md:block w-80">
+        <div
+          class="hidden md:flex items-center gap-2 bg-white text-black px-4 py-2 rounded-full shadow-md"
+        >
           <input
             type="text"
             placeholder="Search for anything..."
-            class="w-full rounded-full px-5 py-2 text-xs text-gray-800 bg-white outline-none"
+            class="outline-none bg-transparent w-56 text-sm"
           />
+          <svg
+            class="w-5 h-5 text-gray-600"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
         </div>
-        <button class="w-8 h-8 rounded-full border border-white flex items-center justify-center text-xs hover:bg-white hover:bg-opacity-20">
-          Refresh
-        </button>
       </div>
+    </header>
+
+    <!-- SIDEBAR identique -->
+    <aside
+      id="sidebar"
+      class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out rounded-r-2xl"
+    >
+      <div class="p-6 space-y-4 mt-20">
+        <a
+          href="#"
+          class="block w-full py-3 bg-primary text-white text-center rounded-full font-medium hover:bg-secondary"
+          >Matières</a
+        >
+        <a
+          href="#"
+          class="block w-full py-3 bg-primary text-white text-center rounded-full font-medium hover:bg-secondary"
+          >Progression</a
+        >
+        <a
+          href="#"
+          class="block w-full py-3 bg-primary text-white text-center rounded-full font-medium hover:bg-secondary"
+          >Favoris</a
+        >
+        <a
+          href="#"
+          class="block w-full py-3 bg-primary text-white text-center rounded-full font-medium hover:bg-secondary"
+          >Quiz</a
+        >
+      </div>
+    </aside>
+    <div id="overlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>
+
+    <!-- BREADCRUMB -->
+    <div class="max-w-7xl mx-auto px-6 py-4 text-sm text-gray-600">
+      <a href="#" class="hover:text-primary">Accueil</a> >
+      <a href="#" class="hover:text-primary">Statistique</a> >
+      <span class="text-primary">Pomodoro</span>
     </div>
-  </header>
 
-  <!-- MAIN -->
-  <main class="flex-1 bg-white">
-    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row py-8 px-6 lg:space-x-12">
+    <!-- CONTENU PRINCIPAL -->
+    <main class="flex-1 max-w-7xl mx-auto px-6 py-8">
+      <!-- Titre -->
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-10 gap-4">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900">
+          Pomodoro <span class="text-primary mx-3">|</span> gestion du temps
+        </h1>
+        <select
+          class="px-8 py-3 bg-white border-2 border-primary text-primary rounded-full font-medium shadow-sm text-sm"
+        >
+          <option>Mode standard</option>
+          <option>Mode révision</option>
+          <option>Mode examen</option>
+        </select>
+      </div>
 
-      <!-- SIDEBAR -->
-      <aside class="w-full lg:w-64 bg-white rounded-3xl shadow-md p-4 lg:p-6 flex flex-col space-y-3 mb-4 lg:mb-0">
-        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
-          Matières
-        </button>
-        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
-          Progression
-        </button>
-        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
-          Favoris
-        </button>
-        <button class="w-full py-3 rounded-2xl bg-primary text-white text-xs lg:text-sm font-medium hover:bg-opacity-90 transition flex items-center justify-center h-12">
-          Quiz
-        </button>
-        <div class="flex items-center justify-end mt-2 text-gray-400 text-lg">&lt;</div>
-      </aside>
+      <!-- Bloc Pomodoro (travail + pause dans une carte proche du style Progress Block) -->
+      <section
+        class="bg-white rounded-3xl shadow-2xl border-4 border-primary p-8 md:p-10 mb-12"
+      >
+        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">
+          Session Pomodoro
+        </h2>
 
-      <!-- CONTENU -->
-      <section class="flex-1">
-        <p class="text-[11px] lg:text-xs text-gray-500 mb-2">
-          Accueil &gt; Statistique &gt; <span class="font-semibold text-black">Pomodoro</span>
-        </p>
-        <h1 class="text-xl lg:text-2xl font-semibold text-black mb-6">Pomodoro</h1>
-
-        <!-- TEMPS TRAVAIL -->
-        <div class="mb-16">
-          <h2 class="text-center text-violet font-medium text-sm mb-5">Temps travail</h2>
-          <div class="max-w-3xl mx-auto bg-white border-2 border-gray-300 rounded-[32px] py-5 px-6 lg:px-10 flex items-center justify-between shadow-md">
-
-            <!-- Plus / Moins -->
-            <div class="flex bg-primary rounded-full overflow-hidden">
-              <!-- Plus -->
-              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
-                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                </svg>
-              </button>
-              <div class="w-px bg-indigo-300"></div>
-              <!-- Moins -->
-              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
-                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19 13H5v-2h14v2z"></path>
-                </svg>
-              </button>
+        <div class="space-y-10 max-w-4xl mx-auto">
+          <!-- Temps de travail -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xl md:text-2xl font-semibold text-gray-700">
+                Temps de travail
+              </span>
+              <!-- Indication simple comme une barre de progression -->
+              <div
+                class="w-56 md:w-72 bg-gray-200 rounded-full h-6 relative overflow-hidden"
+              >
+                <div
+                  class="absolute inset-y-0 left-0 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-end pr-4 text-white font-semibold text-sm"
+                  style="width: 100%"
+                >
+                  25 min
+                </div>
+              </div>
             </div>
 
-            <!-- Temps -->
-            <span class="text-3xl lg:text-4xl font-bold text-[rgb(55,_179,_172)] tracking-widest">
-              25:00
-            </span>
+            <!-- Timer travail -->
+            <div
+              class="flex flex-col md:flex-row items-center justify-between gap-6 bg-gray-50 rounded-3xl border border-gray-200 px-6 py-5"
+            >
+              <!-- Plus / Moins -->
+              <div class="flex bg-primary rounded-full overflow-hidden">
+                <button
+                  class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
+                >
+                  <!-- Plus -->
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="w-px bg-indigo-300"></div>
+                <button
+                  class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
+                >
+                  <!-- Moins -->
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M19 13H5v-2h14v2z"></path>
+                  </svg>
+                </button>
+              </div>
 
-            <!-- Play / Pause / Reset -->
-            <div class="flex bg-primary rounded-full overflow-hidden">
-              <!-- Play -->
-              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
-                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7L8 5z"></path>
-                </svg>
-              </button>
-              <div class="w-px bg-indigo-300"></div>
-              <!-- Pause -->
-              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
-                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
-                </svg>
-              </button>
-              <div class="w-px bg-indigo-300"></div>
-              <!-- Reset -->
-              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
-                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C20.85 9.56 16.91 6 12.5 6v2z"></path>
-                </svg>
-              </button>
+              <!-- Affichage temps -->
+              <span
+                class="text-4xl md:text-5xl font-bold text-teal-500 tracking-widest"
+              >
+                25:00
+              </span>
+
+              <!-- Play / Pause / Reset -->
+              <div class="flex bg-primary rounded-full overflow-hidden">
+                <button
+                  class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
+                >
+                  <!-- Play -->
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 5v14l11-7L8 5z"></path>
+                  </svg>
+                </button>
+                <div class="w-px bg-indigo-300"></div>
+                <button
+                  class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
+                >
+                  <!-- Pause -->
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="w-px bg-indigo-300"></div>
+                <button
+                  class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
+                >
+                  <!-- Reset -->
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C20.85 9.56 16.91 6 12.5 6v2z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Temps de pause -->
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xl md:text-2xl font-semibold text-gray-700">
+                Temps de pause
+              </span>
+              <div
+                class="w-56 md:w-72 bg-gray-200 rounded-full h-6 relative overflow-hidden"
+              >
+                <div
+                  class="absolute inset-y-0 left-0 bg-gradient-to-r from-accent to-primary rounded-full flex items-center justify-end pr-4 text-white font-semibold text-sm"
+                  style="width: 100%"
+                >
+                  5 min
+                </div>
+              </div>
             </div>
 
+            <!-- Timer pause -->
+            <div
+              class="flex flex-col md:flex-row items-center justify-between gap-6 bg-gray-50 rounded-3xl border border-gray-200 px-6 py-5"
+            >
+              <div class="flex bg-primary rounded-full overflow-hidden">
+                <button
+                  class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="w-px bg-indigo-300"></div>
+                <button
+                  class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M19 13H5v-2h14v2z"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <span
+                class="text-4xl md:text-5xl font-bold text-teal-500 tracking-widest"
+              >
+                05:00
+              </span>
+
+              <div class="flex bg-primary rounded-full overflow-hidden">
+                <button
+                  class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M8 5v14l11-7L8 5z"></path>
+                  </svg>
+                </button>
+                <div class="w-px bg-indigo-300"></div>
+                <button
+                  class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"
+                    ></path>
+                  </svg>
+                </button>
+                <div class="w-px bg-indigo-300"></div>
+                <button
+                  class="w-12 h-10 flex items-center justify-center text-white hover:bg-secondary"
+                >
+                  <svg
+                    class="w-4 h-4"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C20.85 9.56 16.91 6 12.5 6v2z"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-
-        <!-- TEMPS PAUSE -->
-        <div class="mb-8">
-          <h2 class="text-center text-violet font-medium text-sm mb-5">Temps Pause</h2>
-          <div class="max-w-3xl mx-auto bg-white border-2 border-gray-300 rounded-[32px] py-5 px-6 lg:px-10 flex items-center justify-between shadow-md">
-
-            <!-- Plus / Moins -->
-            <div class="flex bg-primary rounded-full overflow-hidden">
-              <!-- Plus -->
-              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
-                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
-                </svg>
-              </button>
-              <div class="w-px bg-indigo-300"></div>
-              <!-- Moins -->
-              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
-                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M19 13H5v-2h14v2z"></path>
-                </svg>
-              </button>
-            </div>
-
-            <!-- Temps pause -->
-            <span class="text-3xl lg:text-4xl font-bold text-[rgb(55,_179,_172)] tracking-widest">
-              05:00
-            </span>
-
-            <!-- Play / Pause / Reset -->
-            <div class="flex bg-primary rounded-full overflow-hidden">
-              <!-- Play -->
-              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
-                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5v14l11-7L8 5z"></path>
-                </svg>
-              </button>
-              <div class="w-px bg-indigo-300"></div>
-              <!-- Pause -->
-              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
-                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"></path>
-                </svg>
-              </button>
-              <div class="w-px bg-indigo-300"></div>
-              <!-- Reset -->
-              <button class="w-12 h-9 flex items-center justify-center text-white hover:bg-violet">
-                <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C20.85 9.56 16.91 6 12.5 6v2z"></path>
-                </svg>
-              </button>
-            </div>
-
-          </div>
-        </div>
-
       </section>
-    </div>
-  </main>
 
-  <!-- FOOTER -->
-  <footer class="mt-auto bg-primary text-white text-[11px] lg:text-xs">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-4 py-6 px-6">
-      <div>
-        <h3 class="font-semibold mb-2">BrainHub</h3>
-        <p class="mb-1">A propos</p>
-        <p>Nos services</p>
+      <!-- Bouton Suivant (cohérent avec la deuxième page) -->
+      <div class="flex justify-end mt-4">
+        <button
+          class="bg-white border-4 border-primary text-primary font-bold px-10 md:px-12 py-4 rounded-full hover:bg-primary hover:text-white transition flex items-center gap-4 shadow-2xl text-lg"
+        >
+          Suivant
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="3"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
       </div>
-      <div>
-        <h3 class="font-semibold mb-2">Aide</h3>
-        <p class="mb-1">FAQ</p>
-        <p>Contact</p>
-      </div>
-      <div>
-        <h3 class="font-semibold mb-2">Suivez-nous</h3>
-        <div class="flex space-x-4 mt-2">
-          <!-- Instagram -->
-          <a href="#" class="hover:opacity-80">
-            <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 3.838a6.324 6.324 0 0 0-6.324 6.324A6.324 6.324 0 0 0 12 18.649a6.324 6.324 0 0 0 6.324-6.324A6.324 6.324 0 0 0 12 6.001zm7.406-1.345a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"></path>
-            </svg>
-          </a>
-          <!-- Facebook -->
-          <a href="#" class="hover:opacity-80">
-            <svg class="w-6 h-6 fill-white" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.326v21.348C0 23.403.597 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.657-4.788 1.325 0 2.463.099 2.794.143v3.24l-1.918.001c-1.504 0-1.796.715-1.796 1.763v2.313h3.588l-.467 3.622h-3.121V24h6.116C23.403 24 24 23.403 24 22.674V1.326C24 .597 23.403 0 22.675 0z"></path>
-            </svg>
-          </a>
+    </main>
+
+    <!-- FOOTER identique -->
+    <footer class="bg-primary text-white mt-16 py-10">
+      <div
+        class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left"
+      >
+        <div><h3 class="font-semibold text-lg mb-4">BrainHub</h3></div>
+        <div>
+          <h3 class="font-semibold text-lg mb-4">BrainHub</h3>
+          <p class="text-sm">À propos<br />Nos services</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Aide</h3>
+          <p class="text-sm">FAQ<br />Contact</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg mb-4">Contact</h3>
+          <p class="text-sm">+21651771<br />Brainhub@gmail.com</p>
         </div>
       </div>
-      <div>
-        <h3 class="font-semibold mb-2">Contact</h3>
-        <p class="mb-1">+21 561771</p>
-        <p>Brainhub@gmail.com</p>
+      <div class="text-center mt-8 pt-6 border-t border-white/20">
+        <p class="text-sm">© 2025 BrainHub – Tous les droits réservés</p>
       </div>
-    </div>
-    <div class="border-t border-white border-opacity-20 pt-4 text-center text-xs">
-      © 2025 BrainHub. Tous droits réservés.
-    </div>
-  </footer>
+    </footer>
 
-</body>
+    <!-- Script sidebar -->
+    <script>
+      const toggleBtn = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      toggleBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+      });
+
+      overlay.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+      });
+    </script>
+  </body>
 </html>

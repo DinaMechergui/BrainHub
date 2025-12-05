@@ -109,14 +109,22 @@
 
 
   <!-- ================= BREADCRUMB + NOTES ================= -->
-  <div class="max-w-6xl mx-auto mt-6 px-4 flex justify-between">
-       <p class="text-primary mb-4"> Accueil > Matières > <span class="text-black font-semibold">Fiche</span></p>
+  <!-- Fil d'Ariane + bouton -->
+<div class="max-w-6xl mx-auto mt-6 px-4 flex items-center justify-between mb-6">
+  <nav class="text-sm text-gray-500 flex items-center gap-2">
+    <span>Accueil</span>
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+    <span>Matières</span>
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+    <span class="text-primary font-bold">Fiche</span>
+  </nav>
 
-    
-
-    <button class="btn-primary px-6 py-2 rounded-btn"> <a href="../pages/Note.html">Notes</a> </button>
-  </div>
-
+  <a href="../pages/Note.html" class="btn-primary px-6 py-2 rounded-btn">Notes</a>
+</div>
   <!-- ================= BADGES ================= -->
   <div class="max-w-5xl mx-auto mt-8 flex justify-between px-4">
     <div class="bubble w-48 h-20 flex flex-col justify-center items-center shadow-soft-2">

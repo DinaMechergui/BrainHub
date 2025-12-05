@@ -260,16 +260,16 @@
         const timerText = document.getElementById('timerText');
 
         // Données mock des questions (10 items)
-        const questions = [
-          { id: 'q2', text: 'Combien font 5 + 7 ?', options: ['10', '11', '12', '13'], correctIndex: 2 },
-          { id: 'q3', text: 'La dérivée de x² est ?', options: ['x', '2x', 'x²', '2'], correctIndex: 1 },
-          { id: 'q4', text: 'Le périmètre d’un carré de côté 4 est ?', options: ['8', '12', '14', '16'], correctIndex: 3 },
-          { id: 'q5', text: 'π est approximativement ?', options: ['2.14', '3.14', '3.41', '4.13'], correctIndex: 1 },
-          { id: 'q6', text: 'La solution de 2x = 10 est ?', options: ['2', '4', '5', '10'], correctIndex: 2 },
-          { id: 'q7', text: 'Le log base 10 de 100 est ?', options: ['1', '2', '3', '10'], correctIndex: 1 },
-          { id: 'q8', text: 'Une fonction linéaire a pour forme ?', options: ['ax + b', 'ax² + b', 'a/x', 'a^x'], correctIndex: 0 },
-          { id: 'q9', text: 'La racine carrée de 81 est ?', options: ['7', '8', '9', '10'], correctIndex: 2 },
-          { id: 'q10', text: 'Combien de degrés dans un triangle ?', options: ['90', '120', '180', '360'], correctIndex: 2 }
+         const questions = [
+          { id: 'q1', text: "Quelle est la formule de l'aire d'un cercle ?", options: ['2r', '2πr', 'πr', 'πr²'], correctIndex: 3, image: '../public/pages/assets/question-aire-cercle.png' },
+          { id: 'q2', text: 'La dérivée de x² est ?', options: ['x', '2x', 'x²', '2'], correctIndex: 1 },
+          { id: 'q3', text: 'Le périmètre d’un carré de côté 4 est ?', options: ['8', '12', '14', '16'], correctIndex: 3 },
+          { id: 'q4', text: 'π est approximativement ?', options: ['2.14', '3.14', '3.41', '4.13'], correctIndex: 1 },
+          { id: 'q5', text: 'La solution de 2x = 10 est ?', options: ['2', '4', '5', '10'], correctIndex: 2 },
+          { id: 'q6', text: 'Le log base 10 de 100 est ?', options: ['1', '2', '3', '10'], correctIndex: 1 },
+          { id: 'q7', text: 'Une fonction linéaire a pour forme ?', options: ['ax + b', 'ax² + b', 'a/x', 'a^x'], correctIndex: 0 },
+          { id: 'q8', text: 'La racine carrée de 81 est ?', options: ['7', '8', '9', '10'], correctIndex: 2 },
+          { id: 'q9', text: 'Combien de degrés dans un triangle ?', options: ['90', '120', '180', '360'], correctIndex: 2 }
         ];
 
         let currentIndex = 0;

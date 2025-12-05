@@ -1,19 +1,26 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>BrainHub – Mes Quiz</title>
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../output.css">
-<body class="font-raleway bg-panel text-gray-800">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrainHub – Score</title>
+  
+  <!-- Police Google Fonts (Inter) pour un rendu fidèle -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- HEADER identique à Note.html -->
+  <!-- Tailwind CSS compilé -->
+  <link rel="stylesheet" href="output.css">
+  
+</head>
+
+<body class="bg-brand-bg font-sans text-gray-800 flex flex-col min-h-screen">
+
+  <!-- ================= HEADER ================= -->
   <header class="w-full bg-primary text-white shadow-md relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
             
-             <!-- LOGO à gauche --><a href="Home.html">
-            <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32"></a>
+           <!-- LOGO à gauche --><a href="Home.html">
+            <img  src="../public/pages/assets/logo.png"  alt="Logo" class="max-h-32"></a>
 
             <!-- NAV centré (desktop) -->
             <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
@@ -101,112 +108,129 @@
         </div>
     </header>
 
-  <main class="max-w-6xl mx-auto pt-20 pb-16 px-6 space-y-10">
-    <div class="text-center space-y-4">
-      <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900">Mes Quiz Et Evaluations</h1>
-    </div>
 
-    <section class="bg-white rounded-btn shadow-soft-2 p-8 space-y-8">
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div class="relative">
-          <select class="w-full bg-panel border border-[#8271D7] text-gray-700 rounded-btn px-4 py-2 pr-10 focus:outline-none">
-            <option>Matière</option>
-            <option>math</option>
-              <option>ux/ui</option>
-              <option>java</option>
-              <option>data</option>
-              <option>ip</option>
-          </select>
-          <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-primary text-xs"></span>
-        </div>
-        <div class="relative">
-          <select class="w-full bg-panel border border-[#8271D7] text-gray-700 rounded-btn px-4 py-2 pr-10 focus:outline-none">
-            <option>Chapitre</option>
-            <option>Analyse</option>
-              <option>Structures</option>
-              <option>Réseaux</option>
-              <option>Algorithmes</option>
-          </select>
-          <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-primary text-xs"></span>
-        </div>
-        <div class="relative">
-          <select class="w-full bg-panel border border-[#8271D7] text-gray-700 rounded-btn px-4 py-2 pr-10 focus:outline-none">
-            <option>Par difficulté</option>
-            <option>Débutant</option>
-              <option>Intermédiaire</option>
-              <option>Avancé</option>
-          </select>
-          <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-primary text-xs"></span>
-        </div>
-        <div class="relative">
-          <select class="w-full bg-panel border border-[#8271D7] text-gray-700 rounded-btn px-4 py-2 pr-10 focus:outline-none">
-            <option>Type</option>
-            <option>Quiz</option>
-              <option>Evaluation</option>
-              <option>Entrainement</option>
-          </select>
-          <span class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-primary text-xs"></span>
-        </div>
+
+
+
+  <!-- ================= MAIN CONTENU ================= -->
+  <main class="flex-grow pt-8 pb-16 max-w-6xl mx-auto px-4 sm:px-6 w-full">
+
+    <!-- Fil d'Ariane -->
+    <nav class="text-sm text-gray-500 mb-6 flex items-center gap-2">
+      <a href="Home.html" class="hover:text-gray-700">Accueil</a> 
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      <a href="page.html" class="hover:text-gray-700">Quiz</a>
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      <span class="text-black font-bold cursor-default">Score</span>
+    </nav>
+
+    <!-- Carte Score Principal -->
+    <section class="bg-white rounded-3xl border border-brand-purple/40 shadow-sm px-6 sm:px-10 py-6 sm:py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between mb-8">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2">Votre Score : 8/10</h1>
+        <p class="text-sm sm:text-base text-gray-600 font-medium">
+          8 Bonnes Reponse | 2 Mauvaises Reponse
+        </p>
       </div>
-
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center text-primary font-semibold bg-panel rounded-btn border border-[#8271D7] py-6 px-4">
-        <div>
-          <p class="text-3xl font-extrabold text-gray-900">100+</p>
-          <p class="text-sm text-gray-500">Quiz disponibles</p>
-        </div>
-        <div>
-          <p class="text-3xl font-extrabold text-gray-900">50+</p>
-          <p class="text-sm text-gray-500">Matières couvertes</p>
-        </div>
-        <div>
-          <p class="text-3xl font-extrabold text-gray-900">45+</p>
-          <p class="text-sm text-gray-500">Chapitres organisés</p>
-        </div>
-        <div>
-          <p class="text-3xl font-extrabold text-gray-900">30+</p>
-          <p class="text-sm text-gray-500">Cours interactifs</p>
-        </div>
-        <div>
-          <p class="text-3xl font-extrabold text-gray-900">15+</p>
-          <p class="text-sm text-gray-500">Entraîneurs disponibles</p>
-        </div>
+      <div class="mt-4 sm:mt-0">
+        <p class="text-2xl sm:text-3xl font-bold text-brand-purple">Bravo !</p>
       </div>
     </section>
 
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <article class="bg-white rounded-btn border border-[#8271D7] p-8 flex flex-col justify-between">
-        <div class="flex items-center gap-6">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/PHP-logo.svg" alt="PHP" class="w-24 h-24 object-contain">
-          <div>
-            <h3 class="text-2xl font-bold text-gray-900">PHP</h3>
-            <p class="text-sm text-gray-500">Programmation web</p>
+    <!-- Liste des questions -->
+    <section class="space-y-4">
+
+      <!-- Question 1 -->
+      <article class="bg-white rounded-3xl border border-brand-purple/40 px-6 sm:px-8 py-5 flex items-center justify-between shadow-sm transition hover:shadow-md">
+        <div class="pr-4">
+          <h3 class="font-medium text-base sm:text-lg text-gray-800 mb-2">
+            Question 1 : Quelle Est La Formule De L’aire D’un Cercle ?
+          </h3>
+          <p class="text-sm sm:text-base text-gray-500">
+            Votre Reponse : A &nbsp;|&nbsp; <span class="font-semibold text-gray-700">Bonne Reponse : A</span>
+          </p>
+        </div>
+        <div class="flex-shrink-0">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#8B5CF6] flex items-center justify-center text-white shadow-md">
+            <!-- Smiley Happy SVG -->
+            <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
           </div>
         </div>
       </article>
 
-      <article class="bg-white rounded-btn border border-[#8271D7] p-8 flex flex-col justify-between">
-        <div class="flex items-center gap-6">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Tux.svg" alt="UNIX" class="w-24 h-24 object-contain">
-          <div>
-            <h3 class="text-2xl font-bold text-gray-900">UNIX</h3>
-            <p class="text-sm text-gray-500">Administration shell</p>
+      <!-- Question 2 -->
+      <article class="bg-white rounded-3xl border border-brand-purple/40 px-6 sm:px-8 py-5 flex items-center justify-between shadow-sm transition hover:shadow-md">
+        <div class="pr-4">
+          <h3 class="font-medium text-base sm:text-lg text-gray-800 mb-2">
+            Question 2 : Quelle Est La Formule De L’aire D’un Cercle ?
+          </h3>
+          <p class="text-sm sm:text-base text-gray-500">
+            Votre Reponse : B &nbsp;|&nbsp; <span class="font-semibold text-gray-700">Bonne Reponse : A</span>
+          </p>
+        </div>
+        <div class="flex-shrink-0">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#8B5CF6] flex items-center justify-center text-white shadow-md">
+             <!-- Smiley Sad SVG -->
+             <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
           </div>
         </div>
       </article>
 
-      <article class="bg-white rounded-btn border border-[#8271D7] p-8 flex flex-col justify-between">
-        <div class="flex items-center gap-6">
-          <img src="https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg" alt="Java" class="w-24 h-24 object-contain">
-          <div>
-            <h3 class="text-2xl font-bold text-gray-900">Java</h3>
-            <p class="text-sm text-gray-500">POO Avancée</p>
+      <!-- Question 3 -->
+      <article class="bg-white rounded-3xl border border-brand-purple/40 px-6 sm:px-8 py-5 flex items-center justify-between shadow-sm transition hover:shadow-md">
+        <div class="pr-4">
+          <h3 class="font-medium text-base sm:text-lg text-gray-800 mb-2">
+            Question 3 : Quelle Est La Formule De L’aire D’un Cercle ?
+          </h3>
+          <p class="text-sm sm:text-base text-gray-500">
+            Votre Reponse : B &nbsp;|&nbsp; <span class="font-semibold text-gray-700">Bonne Reponse : A</span>
+          </p>
+        </div>
+        <div class="flex-shrink-0">
+          <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#8B5CF6] flex items-center justify-center text-white shadow-md">
+             <!-- Smiley Sad SVG -->
+             <svg class="w-6 h-6 sm:w-7 sm:h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
           </div>
         </div>
       </article>
+
     </section>
+
+    <!-- Boutons d'action -->
+    <section class="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4">
+      
+      <!-- Bouton Retour -->
+      <a href="page.html" class="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 rounded-full border border-gray-300 bg-white text-gray-700 font-medium shadow-sm hover:bg-gray-50 transition">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        <span>Retour</span>
+      </a>
+
+      <div class="w-full sm:w-auto flex flex-col sm:flex-row gap-4">
+        <!-- Bouton Revoir Les Erreurs -->
+        <button class="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-white font-medium shadow-md hover:bg-primaryDark transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+          <span>Revoir Les Erreurs</span>
+        </button>
+
+        <!-- Bouton Accès Aux Cours Associés -->
+        <button class="flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary text-white font-medium shadow-md hover:bg-primaryDark transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+          <span><a href="Matières.html">Accès Aux Cours Associés</span></a>
+        </button>
+      </div>
+    </section>
+
   </main>
 
- <!-- ================= FOOTER ================= -->
+  <!-- ================= FOOTER ================= -->
   <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
         <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 border-b border-white/20 pb-6 sm:pb-8">
             
@@ -272,26 +296,6 @@
 
     <!-- Script mobile menu simple -->
    <script>
-    // Fonction pour vérifier si tous les sélecteurs sont remplis
-        function checkSelectCompletion() {
-          const selects = document.querySelectorAll('select');
-          let allSelected = true;
-
-          selects.forEach(select => {
-            if (!select.value || select.value === 'Matière' || select.value === 'Chapitre' || select.value === 'Par difficulté' || select.value === 'Type') {
-              allSelected = false;
-            }
-          });
-
-          if (allSelected) {
-            window.location.href = 'page.html';
-          }
-        }
-
-        // Ajouter des écouteurs d'événements à tous les éléments select
-        document.querySelectorAll('select').forEach(select => {
-          select.addEventListener('change', checkSelectCompletion);
-        });
         // Éléments DOM
         const searchInput = document.getElementById('searchInput');
         const mobileSearchBtn = document.getElementById('mobileSearchBtn');
@@ -421,8 +425,29 @@
                 searchInput.value = e.target.value;
             });
         }
+
+        // Afficher le score depuis localStorage
+        const scoreData = localStorage.getItem('quizScore');
+        if (scoreData) {
+            try {
+                const { score, total, correct, incorrect } = JSON.parse(scoreData);
+                const scoreTitle = document.querySelector('h1');
+                const scoreDetails = document.querySelector('p.text-sm');
+                
+                if (scoreTitle) {
+                    scoreTitle.textContent = `Votre Score : ${score}/${total}`;
+                }
+                if (scoreDetails) {
+                    scoreDetails.textContent = `${correct} Bonnes Reponse | ${incorrect} Mauvaises Reponse`;
+                }
+                
+                // Nettoyer localStorage après affichage
+                localStorage.removeItem('quizScore');
+            } catch (e) {
+                console.error('Erreur lors de la lecture du score:', e);
+            }
+        }
     </script>
 
-    
 </body>
 </html>

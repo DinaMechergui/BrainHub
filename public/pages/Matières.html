@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BrainHub – Accueil</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS compilé -->
+  <link rel="stylesheet" href="../../src/output.css">
+  
+  <!-- Styles supplémentaires -->
+  <style>
+    .subject-card {
+      transition: all 0.3s ease;
+    }
+    .subject-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(102,126,234,0.15);
+    }
+    .subject-card.active {
+      border: 2px solid #667EEA;
+      background-color: #F6F8FF;
+    }
+    .chapter-card {
+      transition: all 0.3s ease;
+    }
+    .chapter-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(102,126,234,0.15);
+    }
+    .progress-bar {
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      background-color: #E5E7EB !important; /* Force la couleur de fond */
+    }
+    .progress-fill {
+      height: 100%;
+      transition: width 0.5s ease;
+    }
+    /* Couleurs pour la barre de progression */
+    .bg-progress-green {
+      background-color: #10B981 !important; /* Vert */
+    }
+    .bg-progress-blue {
+      background-color: #3B82F6 !important; /* Bleu */
+    }
+    .bg-progress-orange {
+      background-color: #F59E0B !important; /* Orange */
+    }
+    .bg-progress-gray {
+      background-color: #9CA3AF !important; /* Gris */
+    }
+    
+    .favorite-star {
+      transition: all 0.2s ease;
+    }
+    .favorite-star:hover {
+      transform: scale(1.2);
+    }
+    .favorite-star.active {
+      color: #FFD700;
+      fill: #FFD700;
+    }
+    .subject-icon {
+      width: 70px;  /* Augmenté de 60px à 70px */
+      height: 70px; /* Augmenté de 60px à 70px */
+      border-radius: 18px; /* Légèrement arrondi */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Ajout d'une ombre */
+    }
+    .subject-icon img {
+      width: 85%;  /* Augmenté de 70% à 85% */
+      height: 85%; /* Augmenté de 70% à 85% */
+      object-fit: contain;
+    }
+  </style>
+</head>
+<body class="font-raleway bg-panel text-gray-800">
+
+  <header class="w-full bg-primary text-white shadow-md relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            
+          <!-- LOGO à gauche --><a href="Home.html">
+            <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32"></a>
+            <!-- NAV centré (desktop) -->
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-white/80 transition"><a href="Home.html">Accueil</a>
+                <a href="#" class="hover:text-white/80 transition">A propos</a>
+                <a href="#" class="hover:text-white/80 transition">Contact</a>
+            </nav>
+
+            <!-- SEARCH + LOGOUT (desktop) -->
+            <div class="hidden sm:flex items-center gap-3 lg:gap-4">
+                <!-- Search Bar -->
+                <div class="hidden md:flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2 w-48 lg:w-64 transition-all focus-within:bg-white/30 focus-within:border-white/40">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="Search for anything..." 
+                        class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <!-- Logout Icon -->
+                <button class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Logout"><a href="signin.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    </a>
+                </button>
+            </div>
+
+            <!-- Mobile: Menu button + Search icon -->
+            <div class="flex sm:hidden items-center gap-3">
+                <!-- Mobile Search Button -->
+                <button id="mobileSearchBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Rechercher">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        
+        <!-- Mobile Search Bar (hidden by default) -->
+        <div id="mobileSearchBar" class="search-container hidden sm:hidden">
+            <div class="flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input 
+                    type="text" 
+                    id="mobileSearchInput"
+                    placeholder="Search for anything..." 
+                    class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                    autocomplete="off"
+                >
+                <button id="closeMobileSearch" class="ml-2 text-white/70 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobileMenu" class="hidden absolute top-full left-0 right-0 bg-primary border-t border-white/20 z-50">
+            <nav class="flex flex-col p-4 space-y-4">
+                <a href="#" class="text-white hover:text-white/80 transition py-2">Accueil</a>
+                <a href="#" class="text-white hover:text-white/80 transition py-2">A propos</a>
+                <a href="#" class="text-white hover:text-white/80 transition py-2">Contact</a>
+                <button class="bg-white/20 p-2 rounded-lg text-white hover:bg-white/30 transition text-left">
+                    Déconnexion
+                </button>
+            </nav>
+        </div>
+    </header>
+
+  <div class="pt-16">
+    <!-- MAIN CONTENT -->
+    <main class="max-w-6xl mx-auto px-6 py-8">
+      <!-- Breadcrumb -->
+      <div class="text-sm text-gray-500 mb-6">
+       <a href="Home.html"> Accueil ></a> <span class="text-black font-medium">Matières</span>
+      </div>
+
+      <!-- Section Vos Matières -->
+      <h1 class="text-3xl font-bold text-gray-800 mb-8">Vos Matières</h1>
+      
+      <!-- Cartes des matières -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+        <!-- PHP -->
+        <div class="subject-card bg-white rounded-2xl p-5 shadow-soft-2 active cursor-pointer" data-subject="php">
+          <div class="flex items-start gap-4">
+            <div class="subject-icon">
+              <!-- Image PHP depuis assets -->
+              <img src="assets/php.png" alt="PHP" class="w-full h-full">
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-start mb-2">
+                <h2 class="text-lg font-bold text-gray-800">PHP</h2>
+                <span class="text-primary text-xs font-medium bg-paleBlue px-2 py-1 rounded-full">10 Ch.</span>
+              </div>
+              <p class="text-gray-600 text-xs mb-3">Programmation web, Laravel, Symfony</p>
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-500">Prog: 45%</span>
+                <i class="fas fa-chevron-right text-primary text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unix -->
+        <div class="subject-card bg-white rounded-2xl p-5 shadow-soft-2 cursor-pointer" data-subject="unix">
+          <div class="flex items-start gap-4">
+            <div class="subject-icon">
+              <!-- Image Unix depuis assets -->
+              <img src="assets/unix.png" alt="Unix" class="w-full h-full">
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-start mb-2">
+                <h2 class="text-lg font-bold text-gray-800">Unix</h2>
+                <span class="text-primary text-xs font-medium bg-paleBlue px-2 py-1 rounded-full">8 Ch.</span>
+              </div>
+              <p class="text-gray-600 text-xs mb-3">Terminal, scripts shell, administration</p>
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-500">Prog: 30%</span>
+                <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Java -->
+        <div class="subject-card bg-white rounded-2xl p-5 shadow-soft-2 cursor-pointer" data-subject="java">
+          <div class="flex items-start gap-4">
+            <div class="subject-icon">
+              <!-- Image Java depuis assets -->
+              <img src="assets/java.png" alt="Java" class="w-full h-full">
+            </div>
+            <div class="flex-1">
+              <div class="flex justify-between items-start mb-2">
+                <h2 class="text-lg font-bold text-gray-800">Java</h2>
+                <span class="text-primary text-xs font-medium bg-paleBlue px-2 py-1 rounded-full">12 Ch.</span>
+              </div>
+              <p class="text-gray-600 text-xs mb-3">POO, Spring Boot, applications</p>
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-500">Prog: 65%</span>
+                <i class="fas fa-chevron-right text-gray-400 text-sm"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ligne de séparation -->
+      <div class="border-t border-gray-300 my-8"></div>
+
+      <!-- Chapitres de la matière sélectionnée -->
+      <div id="chapters-section">
+        <!-- En-tête avec titre et filtres -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+          <h2 id="subject-title" class="text-xl font-bold text-gray-800 mb-3 md:mb-0">Chapitres - PHP</h2>
+          
+          <div class="flex flex-wrap gap-2">
+            <!-- Boutons de filtre avec texte plus grand -->
+            <button class="filter-btn px-4 py-2 rounded-full bg-primary text-white text-sm font-medium" data-filter="all">Tous</button>
+            <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 text-sm font-medium" data-filter="in-progress">En cours</button>
+            <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 text-sm font-medium" data-filter="completed">Terminés</button>
+            <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 text-gray-700 text-sm font-medium" data-filter="favorites">Favoris</button>
+          </div>
+        </div>
+        
+        <!-- Grille des chapitres (cartes compactes) -->
+        <div id="chapters-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Les cartes de chapitres seront générées ici dynamiquement -->
+        </div>
+      </div>
+    </main>
+  </div>
+
+   <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 border-b border-white/20 pb-6 sm:pb-8">
+            
+            <!-- Col 1: BrainHub -->
+            <div>
+                
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">BrainHub</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li><a href="#" class="hover:underline">A propos</a></li>
+                    <li><a href="#" class="hover:underline">Nos services</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 2: Aide -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Aide</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li><a href="#" class="hover:underline">FAQ</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Suivez-nous -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Suivez-nous</h3>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a3 3 0 100-6 3 3 0 000 6z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M17 7v.01"></path></svg>
+                    </a>
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+                    </a>
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 4: Contact -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Contact</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li>+21561771</li>
+                    <li>Brainhub@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Copyright centré -->
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-xs opacity-70">© 2025 BrainHub - Tous les droits réservés</p>
+        </div>
+    </footer>
+
+  <script src="https://kit.fontawesome.com/a2d9b8d3c8.js" crossorigin="anonymous"></script>
+
+  <script>
+    // Données des matières et leurs chapitres
+    const subjectsData = {
+      php: {
+        title: "PHP",
+        chapters: [
+          { number: 1, title: "Intro PHP", description: "Syntaxe, variables", progress: 100, isFavorite: true, status: "completed", duration: "45m" },
+          { number: 2, title: "Contrôle", description: "Conditions, boucles", progress: 100, isFavorite: false, status: "completed", duration: "60m" },
+          { number: 3, title: "Fonctions", description: "Création et portée", progress: 80, isFavorite: true, status: "in-progress", duration: "75m" },
+          { number: 4, title: "Tableaux", description: "Tableaux associatifs", progress: 60, isFavorite: false, status: "in-progress", duration: "90m" },
+          { number: 5, title: "Formulaires", description: "Gestion HTML", progress: 30, isFavorite: false, status: "in-progress", duration: "80m" },
+          { number: 6, title: "Sessions", description: "Cookies, sessions", progress: 0, isFavorite: false, status: "not-started", duration: "70m" },
+          { number: 7, title: "MySQL", description: "Base de données", progress: 0, isFavorite: false, status: "not-started", duration: "120m" },
+          { number: 8, title: "POO PHP", description: "Classes, objets", progress: 0, isFavorite: false, status: "not-started", duration: "110m" },
+          { number: 9, title: "Laravel", description: "Framework MVC", progress: 0, isFavorite: false, status: "not-started", duration: "150m" },
+          { number: 10, title: "Projet final", description: "App web complète", progress: 0, isFavorite: false, status: "not-started", duration: "180m" }
+        ],
+        description: "Programmation web, Laravel, Symfony",
+        totalProgress: 45
+      },
+      unix: {
+        title: "Unix",
+        chapters: [
+          { number: 1, title: "Intro Unix", description: "Historique, distros", progress: 100, isFavorite: true, status: "completed", duration: "40m" },
+          { number: 2, title: "Navigation", description: "cd, ls, pwd", progress: 100, isFavorite: false, status: "completed", duration: "50m" },
+          { number: 3, title: "Fichiers", description: "cp, mv, rm", progress: 75, isFavorite: false, status: "in-progress", duration: "65m" },
+          { number: 4, title: "Permissions", description: "chmod, chown", progress: 50, isFavorite: false, status: "in-progress", duration: "70m" },
+          { number: 5, title: "Éditeurs", description: "Vim, Nano", progress: 25, isFavorite: true, status: "in-progress", duration: "55m" },
+          { number: 6, title: "Scripts", description: "Bash scripting", progress: 0, isFavorite: false, status: "not-started", duration: "90m" },
+          { number: 7, title: "Processus", description: "ps, kill, jobs", progress: 0, isFavorite: false, status: "not-started", duration: "80m" },
+          { number: 8, title: "Réseau", description: "ssh, scp, ping", progress: 0, isFavorite: false, status: "not-started", duration: "85m" }
+        ],
+        description: "Terminal, scripts shell, administration",
+        totalProgress: 30
+      },
+    java: {
+      title: "Java",
+      chapters: [
+        { number: 1, title: "Intro Java", description: "JVM, installation", progress: 100, isFavorite: false, status: "completed", duration: "50m" },
+        { number: 2, title: "Syntaxe", description: "Variables, opérateurs", progress: 100, isFavorite: true, status: "completed", duration: "60m" },
+        { number: 3, title: "Contrôle", description: "If/else, boucles", progress: 100, isFavorite: false, status: "completed", duration: "70m" },
+        { number: 4, title: "Collections", description: "Arrays, ArrayList", progress: 90, isFavorite: false, status: "in-progress", duration: "80m" },
+        { number: 5, title: "POO base", description: "Classes, objets", progress: 85, isFavorite: true, status: "in-progress", duration: "95m" },
+        { number: 6, title: "Héritage", description: "extends, super", progress: 80, isFavorite: false, status: "in-progress", duration: "100m", clickable: true, link: "fiche.html?matiere=java&chapitre=6" },
+        { number: 7, title: "Interfaces", description: "interface, abstract", progress: 70, isFavorite: false, status: "in-progress", duration: "85m" },
+        { number: 8, title: "Exceptions", description: "try/catch, throws", progress: 60, isFavorite: false, status: "in-progress", duration: "75m" },
+        { number: 9, title: "Fichiers", description: "File, Scanner", progress: 40, isFavorite: false, status: "in-progress", duration: "90m" },
+        { number: 10, title: "Threads", description: "Multithreading", progress: 20, isFavorite: false, status: "in-progress", duration: "110m" },
+        { number: 11, title: "Spring Boot", description: "Framework", progress: 0, isFavorite: false, status: "not-started", duration: "150m" },
+        { number: 12, title: "Projet", description: "App complète", progress: 0, isFavorite: false, status: "not-started", duration: "200m" }
+      ],
+      description: "POO, Spring Boot, applications",
+      totalProgress: 65
+    }
+  };
+
+  // --- Écouteurs pour sélectionner une matière (garde une seule version) ---
+  document.querySelectorAll('.subject-card').forEach(card => {
+    card.addEventListener('click', function() {
+      const subjectId = this.getAttribute('data-subject');
+
+      // Retirer la classe active de toutes les cartes
+      document.querySelectorAll('.subject-card').forEach(c => {
+        c.classList.remove('active');
+        const chevron = c.querySelector('.fa-chevron-right');
+        if (chevron) {
+          chevron.classList.remove('text-primary');
+          chevron.classList.add('text-gray-400');
+        }
+      });
+
+      // Ajouter la classe active à la carte cliquée
+      this.classList.add('active');
+      const thisChevron = this.querySelector('.fa-chevron-right');
+      if (thisChevron) {
+        thisChevron.classList.remove('text-gray-400');
+        thisChevron.classList.add('text-primary');
+      }
+
+      // Mettre à jour les chapitres
+      updateChapters(subjectId);
+
+      // Réinitialiser le filtre à "Tous"
+      resetFilterButtons();
+    });
+  });
+
+  // Fonction pour réinitialiser les boutons de filtre
+  function resetFilterButtons() {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.classList.remove('bg-primary', 'text-white');
+      btn.classList.add('bg-gray-200', 'text-gray-700');
+    });
+    const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+    if (allBtn) {
+      allBtn.classList.remove('bg-gray-200', 'text-gray-700');
+      allBtn.classList.add('bg-primary', 'text-white');
+    }
+  }
+
+  // Gestion des boutons de filtre
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const filter = this.getAttribute('data-filter');
+
+      // Mettre à jour l'apparence des boutons
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-primary', 'text-white');
+        b.classList.add('bg-gray-200', 'text-gray-700');
+      });
+      this.classList.remove('bg-gray-200', 'text-gray-700');
+      this.classList.add('bg-primary', 'text-white');
+
+      // Filtrer les chapitres
+      filterChapters(filter);
+    });
+  });
+
+  // Fonction pour filtrer les chapitres
+  function filterChapters(filter) {
+    const chapters = document.querySelectorAll('.chapter-card');
+
+    chapters.forEach(chapter => {
+      const status = chapter.getAttribute('data-status');
+      const fav = chapter.querySelector('.favorite-star');
+      const isFavorite = fav ? fav.classList.contains('active') : false;
+
+      switch(filter) {
+        case 'all':
+          chapter.style.display = '';
+          break;
+        case 'in-progress':
+          chapter.style.display = (status === 'in-progress') ? '' : 'none';
+          break;
+        case 'completed':
+          chapter.style.display = (status === 'completed') ? '' : 'none';
+          break;
+        case 'favorites':
+          chapter.style.display = isFavorite ? '' : 'none';
+          break;
+      }
+    });
+  }
+
+  // Fonction pour mettre à jour l'affichage des chapitres (corrigée pour gérer les liens)
+  function updateChapters(subjectId) {
+    const subject = subjectsData[subjectId];
+    if (!subject) return;
+    const subjectTitle = document.getElementById('subject-title');
+    const chaptersGrid = document.getElementById('chapters-grid');
+
+    // Mettre à jour le titre
+    if (subjectTitle) subjectTitle.textContent = `Chapitres - ${subject.title}`;
+
+    // Vider la grille
+    if (!chaptersGrid) return;
+    chaptersGrid.innerHTML = '';
+
+    // Générer les cartes de chapitres
+    subject.chapters.forEach(chapter => {
+      const progressColor = getProgressColor(chapter.progress);
+      const statusClass = getStatusClass(chapter.status);
+      const progressWidth = chapter.progress === 0 ? '6px' : `${chapter.progress}%`;
+
+      // Construire le HTML interne de la card (bouton favoris + contenu)
+      const starSvg = chapter.isFavorite
+        ? '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24"><path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>'
+        : '<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>';
+
+      const innerHTML = `
+        <div class="flex justify-between items-start mb-3">
+          <div>
+            <span class="text-xs font-medium text-gray-500">Ch. ${chapter.number}</span>
+            <h3 class="font-bold text-sm text-gray-800 mt-1 line-clamp-1">${chapter.title}</h3>
+            <p class="text-xs text-gray-500 mt-1 line-clamp-1">${chapter.description}</p>
+          </div>
+          <button class="favorite-star ${chapter.isFavorite ? 'active' : ''}" data-chapter="${chapter.number}">
+            ${starSvg}
+          </button>
+        </div>
+
+        <div class="mb-3">
+          <div class="flex justify-between text-xs text-gray-500 mb-1">
+            <span>Progression</span>
+            <span>${chapter.progress}%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill ${progressColor}" style="width: ${progressWidth};"></div>
+          </div>
+        </div>
+
+        <div class="flex justify-between items-center">
+          <span class="text-xs ${statusClass} px-2 py-0.5 rounded-full">${getStatusText(chapter.status)}</span>
+          <div class="flex items-center gap-2">
+            <span class="text-xs text-gray-500">${chapter.duration}</span>
+            <button class="text-primary text-xs font-medium hover:underline">${getButtonText(chapter.status)}</button>
+          </div>
+        </div>
+      `;
+
+      // Si le chapitre est cliquable on crée un <a>, sinon une <div>
+      if (chapter.clickable && chapter.link) {
+        // L'élément cliquable conserve la classe "chapter-card" et l'attribut data-status pour le filtre
+        const a = document.createElement('a');
+        a.href = chapter.link;
+        a.className = 'chapter-card bg-white rounded-xl p-4 shadow-soft-2 relative';
+        a.setAttribute('data-status', chapter.status);
+        a.style.textDecoration = 'none';
+        a.style.color = 'inherit';
+        a.innerHTML = innerHTML;
+        chaptersGrid.appendChild(a);
+      } else {
+        const div = document.createElement('div');
+        div.className = 'chapter-card bg-white rounded-xl p-4 shadow-soft-2 relative';
+        div.setAttribute('data-status', chapter.status);
+        div.innerHTML = innerHTML;
+        chaptersGrid.appendChild(div);
+      }
+    });
+
+    // Ajouter des événements aux nouvelles étoiles
+    addFavoriteEvents();
+  }
+
+  // Fonctions utilitaires (inchangées)
+  function getProgressColor(progress) {
+    if (progress === 100) return 'bg-progress-green';
+    if (progress >= 50) return 'bg-progress-blue';
+    if (progress > 0) return 'bg-progress-orange';
+    return 'bg-progress-gray';
+  }
+
+  function getStatusClass(status) {
+    switch(status) {
+      case 'completed': return 'bg-green-100 text-green-800';
+      case 'in-progress': return 'bg-blue-100 text-blue-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  }
+
+  function getStatusText(status) {
+    switch(status) {
+      case 'completed': return 'Terminé';
+      case 'in-progress': return 'En cours';
+      default: return 'À venir';
+    }
+  }
+
+  function getButtonText(status) {
+    switch(status) {
+      case 'completed': return 'Revoir';
+      case 'in-progress': return 'Continuer';
+      default: return 'Commencer';
+    }
+  }
+
+  // Ajouter des événements aux étoiles de favoris (inchangée, compatible <a> ou <div>)
+  function addFavoriteEvents() {
+    document.querySelectorAll('.favorite-star').forEach(star => {
+      // Retirer les listeners précédents pour éviter duplication
+      star.replaceWith(star.cloneNode(true));
+    });
+    // Re-sélection après clonage
+    document.querySelectorAll('.favorite-star').forEach(star => {
+      star.addEventListener('click', function(e) {
+        e.stopPropagation(); // Empêcher la propagation (utile si l'élément est dans un <a>)
+        e.preventDefault && e.preventDefault(); // ne casse pas le lien parent si on clique l'étoile
+
+        const btn = this;
+        btn.classList.toggle('active');
+
+        const svg = btn.querySelector('svg');
+        if (!svg) return;
+
+        if (btn.classList.contains('active')) {
+          svg.classList.remove('text-gray-300');
+          svg.classList.add('text-yellow-400');
+          svg.setAttribute('fill', 'currentColor');
+          svg.removeAttribute('stroke');
+          svg.removeAttribute('stroke-width');
+          svg.innerHTML = '<path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />';
+        } else {
+          svg.classList.remove('text-yellow-400');
+          svg.classList.add('text-gray-300');
+          svg.removeAttribute('fill');
+          svg.setAttribute('stroke', 'currentColor');
+          svg.setAttribute('stroke-width', '1.5');
+          svg.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />';
+        }
+      });
+    });
+  }
+
+  // Initialiser avec PHP par défaut
+  updateChapters('php');
+</script>
+
+
+   <!-- Script mobile menu simple -->
+   <script>
+        // Éléments DOM
+        const searchInput = document.getElementById('searchInput');
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+        const mobileSearchBar = document.getElementById('mobileSearchBar');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        const closeMobileSearch = document.getElementById('closeMobileSearch');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        // Données de recherche (exemple - à remplacer par vos vraies données)
+        const quizData = [
+            { title: 'Quiz De Mathematique', chapter: 'Chapitre 1 : Arithmétique Et Théorie Des Nombres', questions: '10 Questions', level: 'Avancé' },
+            { title: 'Quiz De Mathematique', chapter: 'Chapitre 2 : Polynômes Et Équations Du Second Degré', questions: '20 Questions', level: 'Moyen' },
+            { title: 'Quiz De Mathematique', chapter: 'Chapitre 3 : Calcul Vectoriel', questions: '15 Questions', level: 'Débutant' }
+        ];
+
+        // Fonction de recherche
+        function performSearch(query) {
+            if (!query.trim()) {
+                return quizData;
+            }
+
+            const lowerQuery = query.toLowerCase();
+            return quizData.filter(quiz => 
+                quiz.title.toLowerCase().includes(lowerQuery) ||
+                quiz.chapter.toLowerCase().includes(lowerQuery) ||
+                quiz.level.toLowerCase().includes(lowerQuery)
+            );
+        }
+
+        // Fonction pour filtrer les cartes visuellement
+        function filterCards(query) {
+            const cards = document.querySelectorAll('article');
+            const results = performSearch(query);
+            
+            cards.forEach((card, index) => {
+                if (index < results.length) {
+                    card.style.display = '';
+                    card.classList.remove('hidden');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Si aucun résultat, afficher un message
+            const cardsContainer = document.querySelector('.space-y-4, .space-y-6');
+            let noResultsMsg = document.getElementById('noResultsMsg');
+            
+            if (results.length === 0 && query.trim()) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.id = 'noResultsMsg';
+                    noResultsMsg.className = 'text-center py-12 text-brand-gray';
+                    noResultsMsg.innerHTML = '<p class="text-lg font-semibold mb-2">Aucun résultat trouvé</p><p class="text-sm">Essayez avec d\'autres mots-clés</p>';
+                    cardsContainer.appendChild(noResultsMsg);
+                }
+            } else if (noResultsMsg) {
+                noResultsMsg.remove();
+            }
+        }
+
+        // Écouteur pour la recherche desktop
+        if (searchInput) {
+            let searchTimeout;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    filterCards(e.target.value);
+                }, 300);
+            });
+        }
+
+        // Écouteur pour la recherche mobile
+        if (mobileSearchInput) {
+            let mobileSearchTimeout;
+            mobileSearchInput.addEventListener('input', (e) => {
+                clearTimeout(mobileSearchTimeout);
+                mobileSearchTimeout = setTimeout(() => {
+                    filterCards(e.target.value);
+                }, 300);
+            });
+        }
+
+        // Toggle mobile search bar
+        if (mobileSearchBtn && mobileSearchBar) {
+            mobileSearchBtn.addEventListener('click', () => {
+                mobileSearchBar.classList.toggle('hidden');
+                if (!mobileSearchBar.classList.contains('hidden')) {
+                    mobileSearchInput.focus();
+                }
+            });
+        }
+
+        // Fermer la barre de recherche mobile
+        if (closeMobileSearch && mobileSearchBar) {
+            closeMobileSearch.addEventListener('click', () => {
+                mobileSearchBar.classList.add('hidden');
+                mobileSearchInput.value = '';
+                filterCards('');
+            });
+        }
+
+        // Toggle mobile menu
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                // Fermer la recherche si ouverte
+                if (mobileSearchBar && !mobileSearchBar.classList.contains('hidden')) {
+                    mobileSearchBar.classList.add('hidden');
+                }
+            });
+        }
+
+        // Fermer les menus au clic en dehors
+        document.addEventListener('click', (e) => {
+            if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Synchroniser les deux champs de recherche
+        if (searchInput && mobileSearchInput) {
+            searchInput.addEventListener('input', (e) => {
+                mobileSearchInput.value = e.target.value;
+            });
+            mobileSearchInput.addEventListener('input', (e) => {
+                searchInput.value = e.target.value;
+            });
+        }
+    </script>
+</body>
+</html>

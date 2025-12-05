@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BrainHub | Tâches</title>
+    <link rel="stylesheet" href="C:\Users\zaabi\Desktop\web manel\mon-projet-tailwind\BrainHub\src\input.css" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#667EEA",
+              secondary: "#764BA2",
+              accent: "#00D4FF",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+    
+    <!-- HEADER -->
+<header class="w-full bg-primary text-white shadow-md relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            
+             <!-- LOGO à gauche --><a href="Home.html">
+            <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32"></a>
+
+            <!-- NAV centré (desktop) -->
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-white/80 transition"><a href="Home.html">Accueil</a>
+                <a href="#" class="hover:text-white/80 transition">A propos</a>
+                <a href="#" class="hover:text-white/80 transition">Contact</a>
+            </nav>
+
+            <!-- SEARCH + LOGOUT (desktop) -->
+            <div class="hidden sm:flex items-center gap-3 lg:gap-4">
+                <!-- Search Bar -->
+                <div class="hidden md:flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2 w-48 lg:w-64 transition-all focus-within:bg-white/30 focus-within:border-white/40">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="Search for anything..." 
+                        class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                        autocomplete="off"
+                    >
+                </div>
+                
+                 <!-- Logout Icon -->
+                <button class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Logout"><a href="signin.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    </a>
+                </button>
+            </div>
+
+            <!-- Mobile: Menu button + Search icon -->
+            <div class="flex sm:hidden items-center gap-3">
+                <!-- Mobile Search Button -->
+                <button id="mobileSearchBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Rechercher">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        
+        <!-- Mobile Search Bar (hidden by default) -->
+        <div id="mobileSearchBar" class="search-container hidden sm:hidden">
+            <div class="flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input 
+                    type="text" 
+                    id="mobileSearchInput"
+                    placeholder="Search for anything..." 
+                    class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                    autocomplete="off"
+                >
+                <button id="closeMobileSearch" class="ml-2 text-white/70 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobileMenu" class="hidden absolute top-full left-0 right-0 bg-primary border-t border-white/20 z-50">
+            <nav class="flex flex-col p-4 space-y-4">
+                <a href="#" class="text-white hover:text-white/80 transition py-2">Accueil</a>
+                <a href="#" class="text-white hover:text-white/80 transition py-2">A propos</a>
+                <a href="#" class="text-white hover:text-white/80 transition py-2">Contact</a>
+                <button class="bg-white/20 p-2 rounded-lg text-white hover:bg-white/30 transition text-left">
+                    Déconnexion
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-8xl mx-auto px-6 py-8">
+      <!-- Titre -->
+      <h1 class="text-4xl font-bold text-gray-900 mb-8">
+        Taches <span class="text-[#667EEA] mx-3">|</span> UX/UI Design
+      </h1>
+
+      <!-- Barre haute -->
+      <div
+        class="w-full border-2 border-[#667EEA] rounded-full flex items-center px-6 py-3 mb-12 bg-white"
+      >
+        <input
+          type="text"
+          value="UX/UI Design"
+          class="flex-1 text-base text-gray-800 bg-transparent focus:outline-none"
+          readonly
+        />
+        <div class="flex items-center gap-4 ml-4">
+          <button
+            id="add-task-btn"
+            class="px-8 py-2 border-2 border-[#667EEA] text-[#667EEA] text-sm font-medium rounded-full bg-white hover:bg-[#667EEA] hover:text-white flex items-center gap-2 shadow-md"
+          >
+            Ajouter
+            <span class="text-xl leading-none">+</span>
+          </button>
+
+          <button
+            id="search-task-btn"
+            class="px-6 py-2 border-2 border-[#667EEA] text-[#667EEA] text-sm font-medium rounded-full bg-white hover:bg-[#667EEA] hover:text-white flex items-center gap-2"
+          >
+            <span>rechercher</span>
+            <svg
+              class="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Grille des cartes ÉDITABLES -->
+      <section
+        id="cards-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-x-24 gap-y-16 mb-10"
+      >
+        <!-- Carte modèle -->
+        <div class="task-card flex items-start gap-6">
+          <div
+            class="w-56 h-72 bg-white rounded-3xl shadow-2xl border-8 border-gray-500 flex flex-col"
+          >
+            <!-- Zone texte editable -->
+            <div class="flex-1 px-4 pt-4">
+              <textarea
+                class="w-full h-40 resize-none border border-dashed border-gray-400 rounded-md p-2 text-xs text-gray-700 focus:outline-none focus:ring-1 focus:ring-[#667EEA]"
+                placeholder="Écrire la tâche ici..."
+              ></textarea>
+            </div>
+            <!-- Date -->
+            <div class="flex items-center justify-end px-4 pb-3">
+              <input
+                type="date"
+                class="text-xs text-gray-700 font-semibold border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[#667EEA]"
+              />
+            </div>
+          </div>
+          <!-- Boutons à droite (desktop) -->
+          <div class="hidden lg:flex flex-col gap-3 pt-4 text-[11px]">
+            <button
+              class="btn-delete px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
+            >
+              SUPPRIMER
+            </button>
+            <button
+              class="btn-edit px-6 py-2 rounded-full bg-[#667EEA] text-white font-semibold hover:bg-[#764BA2]"
+            >
+              MODIFIER
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Boutons mobiles sous les cartes -->
+      <div class="grid grid-cols-2 gap-4 lg:hidden mt-6">
+        <button
+          class="btn-delete-all w-full px-4 py-3 rounded-full bg-[#667EEA] text-white text-xs font-semibold hover:bg-[#764BA2]"
+        >
+          SUPPRIMER la carte sélectionnée
+        </button>
+        <button
+          class="btn-edit-focus w-full px-4 py-3 rounded-full bg-[#667EEA] text-white text-xs font-semibold hover:bg-[#764BA2]"
+        >
+          MODIFIER (focus texte)
+        </button>
+      </div>
+    </main>
+    <!-- Bouton Suivant -->
+      <div class="flex justify-end mt-4">
+        <button
+          id="btn-suivant"
+          class="bg-white border-4 border-primary text-primary font-bold px-10 md:px-12 py-4 rounded-full hover:bg-primary hover:text-white transition flex items-center gap-4 shadow-2xl text-lg"
+        >
+          Suivant
+          <svg
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="3"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      </div>
+      
+
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 border-b border-white/20 pb-6 sm:pb-8">
+            
+            <!-- Col 1: BrainHub -->
+            <div>
+                
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">BrainHub</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li><a href="#" class="hover:underline">A propos</a></li>
+                    <li><a href="#" class="hover:underline">Nos services</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 2: Aide -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Aide</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li><a href="#" class="hover:underline">FAQ</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Suivez-nous -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Suivez-nous</h3>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a3 3 0 100-6 3 3 0 000 6z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M17 7v.01"></path></svg>
+                    </a>
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+                    </a>
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 4: Contact -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Contact</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li>+21561771</li>
+                    <li>Brainhub@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Copyright centré -->
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-xs opacity-70">© 2025 BrainHub - Tous les droits réservés</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+      // Sidebar
+      const toggleBtn = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      const logoutBtn = document.getElementById("logout-btn");
+
+      if (toggleBtn && sidebar && overlay) {
+        toggleBtn.addEventListener("click", () => {
+          sidebar.classList.toggle("-translate-x-full");
+          overlay.classList.toggle("hidden");
+        });
+        overlay.addEventListener("click", () => {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("hidden");
+        });
+      }
+
+      if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+          alert("Déconnexion");
+        });
+      }
+
+      const cardsGrid = document.getElementById("cards-grid");
+      const cardTemplate = cardsGrid ? cardsGrid.querySelector(".task-card") : null;
+      const addBtn = document.getElementById("add-task-btn");
+      const searchBtn = document.getElementById("search-task-btn");
+      const searchInput = document.getElementById("search-input");
+
+      // Fonction pour brancher les boutons d'une carte
+      function attachCardButtons(card) {
+        const deleteBtn = card.querySelector(".btn-delete");
+        const editBtn = card.querySelector(".btn-edit");
+
+        if (deleteBtn) {
+          deleteBtn.addEventListener("click", () => {
+            card.remove();
+          });
+        }
+
+        if (editBtn) {
+          editBtn.addEventListener("click", () => {
+            const ta = card.querySelector("textarea");
+            if (ta) ta.focus();
+          });
+        }
+      }
+
+      // Brancher la carte initiale
+      if (cardTemplate) {
+        attachCardButtons(cardTemplate);
+      }
+
+      // Ajouter une nouvelle carte
+      if (addBtn && cardsGrid && cardTemplate) {
+        addBtn.addEventListener("click", () => {
+          const clone = cardTemplate.cloneNode(true);
+          const textarea = clone.querySelector("textarea");
+          const dateInput = clone.querySelector("input[type='date']");
+
+          if (textarea) textarea.value = "";
+          if (dateInput) dateInput.value = "";
+          attachCardButtons(clone);
+          cardsGrid.appendChild(clone);
+        });
+      }
+
+      // Rechercher : filtre sur le texte de la tâche
+      if (searchBtn && searchInput) {
+        searchBtn.addEventListener("click", () => {
+          const query = searchInput.value.trim().toLowerCase();
+          const allCards = document.querySelectorAll(".task-card");
+          allCards.forEach((card) => {
+            const ta = card.querySelector("textarea");
+            const text = ta ? ta.value.toLowerCase() : "";
+            if (!query || text.includes(query)) {
+              card.classList.remove("opacity-30");
+            } else {
+              card.classList.add("opacity-30");
+            }
+          });
+        });
+      }
+
+      // Boutons mobiles
+      const deleteMobile = document.querySelector(".btn-delete-all");
+      const editMobile = document.querySelector(".btn-edit-focus");
+
+      if (deleteMobile) {
+        deleteMobile.addEventListener("click", () => {
+          const firstCard = document.querySelector(".task-card");
+          if (firstCard) firstCard.remove();
+        });
+      }
+
+      if (editMobile) {
+        editMobile.addEventListener("click", () => {
+          const firstTextarea = document.querySelector(".task-card textarea");
+          if (firstTextarea) firstTextarea.focus();
+        });
+      }
+  const btnSuivant = document.getElementById('btn-suivant');
+  btnSuivant.addEventListener('click', () => {
+    window.location.href = 'index2.html';
+  
+  });
+
+    </script>
+  </body>
+</html>

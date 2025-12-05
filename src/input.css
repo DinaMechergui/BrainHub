@@ -22,6 +22,20 @@
 
   --font-roboto: "Roboto", sans-serif;
   --font-raleway: "Raleway", sans-serif;
+  /* Brand colors pour page.html */
+  --color-brand-blue: #5871eb;
+  --color-brand-purple: #9d8df1;
+  --color-brand-text: #2c2d49;
+  --color-brand-gray: #787994;
+  --color-brand-bg: #F8F9FD;
+  
+  /* Couleurs spécifiques pour page.html (anciennes valeurs) */
+  --color-brand-blue-page: #5871eb;
+  --color-brand-purple-page: #9d8df1;
+
+  --font-roboto: "Roboto", sans-serif;
+  --font-raleway: "Raleway", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
 
   --radius-xxl: 22px;
   --radius-pill: 9999px;
@@ -38,6 +52,8 @@
 
   --shadow-soft-1: 0 6px 18px rgba(102,126,234,0.12);
   --shadow-soft-2: 0 6px 20px rgba(0,0,0,0.08);
+  --border-color: #8271D7;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 /* ===========================
@@ -62,6 +78,7 @@
   .btn-secondary {
     background-color: transparent;
     border: 1px solid var(--color-primary);
+    border: 2px solid var(--color-primary);
     color: var(--color-primary);
   }
   .btn-secondary:hover {
@@ -112,12 +129,15 @@
 @layer components {
   .input {
     border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: var(--radius-btn);
     padding: 0.5rem 1rem;
   }
 
   .select {
+    border: 1px solid var(--border-color);
     border: 1px solid #ccc;
+    border: 2px solid #ccc;
     border-radius: var(--radius-btn);
     padding: 0.4rem 1rem;
   }
@@ -126,14 +146,18 @@
     width: 20px;
     height: 20px;
     border-radius: 30%;
+    border: 1px solid var(--border-color);
     border: 1px solid #999;
+    border: 2px solid #999;
   }
 
   .radio {
     width: 18px;
     height: 18px;
     border-radius: 50%;
+    border: 1px solid var(--border-color);
     border: 1px solid #999;
+    border: 2px solid #999;
   }
 }
 
@@ -172,6 +196,61 @@
   .text-primary { color: var(--color-primary); }
   .text-primaryDark { color: var(--color-primaryDark); }
   .text-secondary { color: var(--color-secondary); }
+  
+  /* Variantes primary avec opacité */
+  .border-primary { border-color: var(--color-primary); }
+  .border-primary\/30 { border-color: rgba(102, 126, 234, 0.3); }
+  .hover\:bg-primary\/90:hover {
+    background-color: rgba(102, 126, 234, 0.9);
+  }
+  .hover\:border-primary:hover {
+    border-color: var(--color-primary);
+  }
+  .hover\:text-primary:hover {
+    color: var(--color-primary);
+  }
+
+  /* Brand colors pour page.html */
+  .bg-brand-blue { background-color: var(--color-brand-blue); }
+  .border-brand-blue { border-color: var(--color-brand-blue); }
+  .border-brand-blue\/30 { border-color: rgba(88, 113, 235, 0.3); }
+  .text-brand-text { color: var(--color-brand-text); }
+  .text-brand-gray { color: var(--color-brand-gray); }
+  .border-brand-purple { border-color: var(--color-brand-purple); }
+  .border-brand-purple\/40 { border-color: rgba(139, 92, 246, 0.4); }
+  .text-brand-purple { color: var(--color-brand-purple); }
+  .border-brand-text { border-color: var(--color-brand-text); }
+  .border-brand-text\/80 { border-color: rgba(44, 45, 73, 0.8); }
+  .bg-brand-bg { background-color: var(--color-brand-bg); }
+  .shadow-card { box-shadow: var(--shadow-card); }
+  
+  .hover\:bg-brand-blue\/90:hover {
+    background-color: rgba(88, 113, 235, 0.9);
+  }
+  
+  .hover\:border-brand-blue:hover {
+    border-color: var(--color-brand-blue);
+  }
+  
+  .hover\:text-brand-blue:hover {
+    color: var(--color-brand-blue);
+  }
+  
+  /* Classes spécifiques pour page.html avec anciennes couleurs */
+  .bg-brand-blue-page { background-color: var(--color-brand-blue-page); }
+  .border-brand-blue-page { border-color: var(--color-brand-blue-page); }
+  .border-brand-blue-page\/30 { border-color: rgba(88, 113, 235, 0.3); }
+  .border-brand-purple-page { border-color: var(--color-brand-purple-page); }
+  .text-brand-purple-page { color: var(--color-brand-purple-page); }
+
+  /* Utility classes pour responsive */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
 }
 
 /* ===========================
@@ -181,6 +260,7 @@
   .bubble {
     border-radius: 16px;
     border: 1.6px solid rgba(130,113,215,0.25);
+    border: 2px solid rgba(130,113,215,0.25);
     background: linear-gradient(180deg, #fff, #fafaff);
     box-shadow: 0 6px 14px rgba(0,0,0,0.06);
   }
@@ -198,3 +278,104 @@
     width: 36px; height: 36px; border-radius: 9999px; display: inline-block;
   }
 }
+
+/* ===========================
+   🎬 ANIMATIONS
+   =========================== */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Classe utilitaire pour l'animation */
+.animate-slideDown {
+  animation: slideDown 0.3s ease-out;
+}
+ .card-3d {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 
+      0 10px 30px rgba(102, 126, 234, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(130, 113, 215, 0.1);
+    position: relative;
+  }
+  .card-3d::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-primaryDark));
+    border-radius: 20px 20px 0 0;
+  }
+
+  /* Code block avec effet 3D */
+  .code-3d {
+    background: linear-gradient(145deg, #f0f4ff, #e7eeff);
+    border-radius: 16px;
+    box-shadow: 
+      8px 8px 16px rgba(102, 126, 234, 0.1),
+      -8px -8px 16px rgba(255, 255, 255, 0.8),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(130, 113, 215, 0.15);
+  }
+
+  /* Bubble avec effet 3D */
+  .bubble-3d {
+    background: linear-gradient(145deg, #ffffff, #fafaff);
+    border-radius: 16px;
+    box-shadow: 
+      4px 4px 12px rgba(130, 113, 215, 0.15),
+      -4px -4px 12px rgba(255, 255, 255, 0.8);
+    border: 1.6px solid rgba(130, 113, 215, 0.25);
+  }
+
+  /* Chat messages alignment */
+  .message-left { justify-content: flex-start; }
+  .message-right { justify-content: flex-end; }
+
+  /* Boutons avec effet 3D */
+  .btn-3d {
+    background: linear-gradient(145deg, var(--color-primary), var(--color-primaryDark));
+    box-shadow: 
+      4px 4px 8px rgba(102, 126, 234, 0.3),
+      -2px -2px 4px rgba(255, 255, 255, 0.5);
+    border: none;
+    transition: all 0.2s ease;
+  }
+  .btn-3d:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      6px 6px 12px rgba(102, 126, 234, 0.4),
+      -4px -4px 8px rgba(255, 255, 255, 0.6);
+  }
+  .btn-3d:active {
+    transform: translateY(1px);
+    box-shadow: 
+      2px 2px 4px rgba(102, 126, 234, 0.2),
+      -1px -1px 2px rgba(255, 255, 255, 0.4);
+  }
+
+  .btn-outline-3d {
+    background: white;
+    border: 2px solid var(--color-primary);
+    box-shadow: 
+      3px 3px 6px rgba(102, 126, 234, 0.15),
+      -2px -2px 4px rgba(255, 255, 255, 0.8);
+    transition: all 0.2s ease;
+  }
+  .btn-outline-3d:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      5px 5px 10px rgba(102, 126, 234, 0.25),
+      -4px -4px 8px rgba(255, 255, 255, 0.9);
+  }

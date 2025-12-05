@@ -52,17 +52,17 @@
       }
     }
 
-    /* TEXTE HERO */
+    /* TEXTE HERO : très grand, très gras, centré */
     .hero-text h1 {
-      font-size: 3rem;
-      font-weight: 600;
-      text-align: center;
-      line-height: 1.2;
+      font-size: 3rem;       /* très grand */
+      font-weight: 600;      /* très gras */
+      text-align: center;    /* centré horizontalement */
+      line-height: 1.2;      /* espacement vertical serré */
       margin-bottom: 2rem;
       font-family: "Raleway", sans-serif;
     }
-
-    /* Stats */
+    
+    /* Style pour les blocs de statistiques côte à côte */
     .stats-blocks-container {
       display: flex;
       gap: 30px;
@@ -71,7 +71,7 @@
       margin-top: 60px;
       flex-wrap: wrap;
     }
-
+    
     .stat-block {
       background: white;
       border-radius: var(--radius-btn);
@@ -82,106 +82,260 @@
       max-width: 240px;
       text-align: center;
       border-top: 4px solid;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
+    
+    .stat-block:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+    }
+    
+    .stat-block.matiere {
+      border-color: var(--color-primary);
+    }
+    
+    .stat-block.etablissements {
+      border-color: var(--color-secondary);
+    }
+    
     .stat-number {
       font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 5px;
+      line-height: 1;
     }
-
+    
+    .stat-block.matiere .stat-number {
+      color: var(--color-primary);
+    }
+    
+    .stat-block.etablissements .stat-number {
+      color: var(--color-secondary);
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      color: #334155;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+    
     .plus {
       font-size: 2rem;
+      vertical-align: text-top;
       color: #94a3b8;
+      font-weight: 300;
       margin-left: 3px;
     }
-
-    /* Cartes */
+    
+    /* Styles pour les cartes modifiées */
     .card-quiz {
       background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-primaryDark) 100%);
       color: white;
     }
-
+    
     .card-stats {
       background: linear-gradient(135deg, var(--color-primary) 0%, #9A6EF2 100%);
       color: white;
     }
-
-    .card-arrow {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    
+    .card-quiz h3,
+    .card-stats h3 {
+      color: white;
     }
-
-    /* Cours */
+    
+    .card-quiz p,
+    .card-stats p {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .card-quiz .icon-container,
+    .card-stats .icon-container {
+      background-color: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+    }
+    
+    .card-quiz .icon-container i,
+    .card-stats .icon-container i {
+      color: white;
+    }
+    
+    /* Styles pour les cartes de cours */
     .course-card {
       background: white;
       border-radius: var(--radius-btn);
       box-shadow: var(--shadow-soft-2);
       overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
+    
+    .course-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    }
+    
     .course-image {
       height: 180px;
       width: 100%;
       object-fit: cover;
     }
-
+    
     .course-content {
       padding: 20px;
     }
-
+    
     .course-title {
       font-size: 1.25rem;
       font-weight: 600;
       color: #1e293b;
+      margin-bottom: 8px;
     }
-
+    
     .course-description {
       color: #64748b;
       font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    
+    @media (max-width: 768px) {
+      .stats-blocks-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+      
+      .stat-block {
+        min-width: 240px;
+      }
+      
+      .stat-number {
+        font-size: 2.3rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .stat-block {
+        min-width: 100%;
+        padding: 20px 16px;
+      }
+      
+      .stat-number {
+        font-size: 2.1rem;
+      }
+      
+      .stat-label {
+        font-size: 1rem;
+      }
+      
+      .course-image {
+        height: 150px;
+      }
     }
   </style>
 </head>
-
 <body class="font-raleway bg-panel text-gray-800 min-h-screen flex flex-col">
 
-  <!-- HEADER -->
-  <header class="fixed top-0 left-0 right-0 h-14 z-50 bg-primary text-white flex items-center px-6 shadow-soft-1">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-        <img src="https://via.placeholder.com/22/667EEA/FFFFFF?text=B" alt="logo" class="w-5 h-5">
-      </div>
-      <span class="font-bold text-lg tracking-tight">BrainHub</span>
-    </div>
+  <header class="w-full bg-primary text-white shadow-md relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            
+            <!-- LOGO à gauche --><a href="Home.html">
+            <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32"></a>
 
-    <nav class="hidden lg:flex gap-8 text-sm justify-center w-full">
-      <a class="hover:underline" href="#">Accueil</a>
-      <a class="hover:underline" href="#">A propos</a>
-      <a class="hover:underline" href="#">Contact</a>
-    </nav>
+            <!-- NAV centré (desktop) -->
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-white/80 transition"><a href="Home.html">Accueil</a>
+                <a href="#" class="hover:text-white/80 transition">A propos</a>
+                <a href="#" class="hover:text-white/80 transition">Contact</a>
+            </nav>
 
-    <div class="relative w-96">
-      <input
-        type="text"
-        placeholder="Rechercher..."
-        class="w-full pl-10 pr-4 py-2 rounded-pill bg-white text-black shadow-soft-2"
-      />
-    </div>
-  </header>
+            <!-- SEARCH + LOGOUT (desktop) -->
+            <div class="hidden sm:flex items-center gap-3 lg:gap-4">
+                <!-- Search Bar -->
+                <div class="hidden md:flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2 w-48 lg:w-64 transition-all focus-within:bg-white/30 focus-within:border-white/40">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="Search for anything..." 
+                        class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                        autocomplete="off"
+                    >
+                </div>
+                
+                 <!-- Logout Icon -->
+                <button class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Logout"><a href="signin.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    </a>
+                </button>
+            </div>
+
+            <!-- Mobile: Menu button + Search icon -->
+            <div class="flex sm:hidden items-center gap-3">
+                <!-- Mobile Search Button -->
+                <button id="mobileSearchBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Rechercher">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        
+        <!-- Mobile Search Bar (hidden by default) -->
+        <div id="mobileSearchBar" class="search-container hidden sm:hidden">
+            <div class="flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input 
+                    type="text" 
+                    id="mobileSearchInput"
+                    placeholder="Search for anything..." 
+                    class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                    autocomplete="off"
+                >
+                <button id="closeMobileSearch" class="ml-2 text-white/70 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobileMenu" class="hidden absolute top-full left-0 right-0 bg-primary border-t border-white/20 z-50">
+            <nav class="flex flex-col p-4 space-y-4">
+                <a href="#" class="text-white hover:text-white/80 transition py-2">Accueil</a>
+                <a href="#" class="text-white hover:text-white/80 transition py-2">A propos</a>
+                <a href="#" class="text-white hover:text-white/80 transition py-2">Contact</a>
+                <button class="bg-white/20 p-2 rounded-lg text-white hover:bg-white/30 transition text-left">
+                    Déconnexion
+                </button>
+            </nav>
+        </div>
+    </header>
 
   <!-- MAIN -->
   <main class="pt-16 flex-grow px-6">
     <div class="max-w-7xl mx-auto py-12">
 
       <div class="hero-section-container mb-16">
+
+        <!-- TEXTE HERO -->
         <div class="hero-text flex flex-col justify-center">
+
           <h1>
             Apprends,<br>
             comprends,<br>
@@ -189,14 +343,16 @@
             version de toi-même
           </h1>
 
+          <!-- GRAND ESPACE -->
           <div class="mt-24"></div>
 
+          <!-- BLOCS CÔTE À CÔTE MODIFIÉS -->
           <div class="stats-blocks-container">
             <div class="stat-block matiere">
               <div class="stat-number">50<span class="plus">+</span></div>
               <div class="stat-label">Matières disponibles</div>
             </div>
-
+            
             <div class="stat-block etablissements">
               <div class="stat-number">500<span class="plus">+</span></div>
               <div class="stat-label">Établissements inscrits</div>
@@ -204,124 +360,324 @@
           </div>
         </div>
 
+        <!-- IMAGE -->
         <div class="hero-image-wrapper flex justify-end">
           <div class="hero-image-container rounded-2xl overflow-hidden shadow-soft-2">
             <img 
               src="assets/tree.png" 
-              alt="Arbre de la connaissance"
-              class="w-full h-full object-cover">
+              alt="Arbre de la connaissance" 
+              class="w-full h-full object-cover"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1546146830-2cca9512c68e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'">
           </div>
         </div>
+
       </div>
 
-      <!-- 🟦 ESPACE AVANT COURS POPULAIRES -->
-      <div class="mt-40"></div>
+      <!-- RESTE DE LA PAGE MODIFIÉ -->
+      <div class="mt-40">
 
-      <!-- COURS POPULAIRES -->
-      <div class="py-12">
-        <h2 class="text-2xl font-bold text-primaryDark mb-12 text-center">Cours Populaires</h2>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <!-- Carte UNIX -->
-          <div class="course-card">
-            <img 
-              src="assets/" 
-              alt="UNIX"
-              class="course-image">
-            <div class="course-content">
-              <h3 class="course-title">UNIX</h3>
-              <p class="course-description">Systèmes d'exploitation avancés et administration système</p>
-            </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
+          <!-- CARTE QUIZ - DÉGRADÉ MAUVE -->
+          <div class="card shadow-soft-2 hover:shadow-lg transition-shadow duration-300 card-quiz" >
+            <div class="text-center p-6"><a href="MesQuiz.html">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 icon-container">
+                <i class="fas fa-question-circle text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">Quiz</h3>
+              <p>Évaluer vos connaissances</p>
+            </div></a>
           </div>
 
-          <!-- Carte Java -->
-          <div class="course-card">
-            <img 
-              src="assets/java.png" 
-              alt="Java"
-              class="course-image">
-            <div class="course-content">
-              <h3 class="course-title">Java</h3>
-              <p class="course-description">Programmation orientée objet et développement d'applications</p>
-            </div>
+          <!-- CARTE MATIÈRES - BLANCHE -->
+          <div class="card shadow-soft-2 hover:shadow-lg transition-shadow duration-300 card-matiere">
+            <div class="text-center p-6"> <a href="Matières.html">
+              <div class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-book text-white text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold text-primary mb-3">Matières</h3>
+              <p class="text-gray-600">Découvrir les cours disponibles</p>
+            </div></a>
           </div>
 
-          <!-- Carte Python -->
-          <div class="course-card">
-            <img 
-              src="assets/python.png" 
-              alt="Python"
-              class="course-image">
-            <div class="course-content">
-              <h3 class="course-title">Python</h3>
-              <p class="course-description">Programmation moderne pour data science et IA</p>
+          <!-- CARTE STATISTIQUES - DÉGRADÉ BLEU -->
+          <div class="card shadow-soft-2 hover:shadow-lg transition-shadow duration-300 card-stats">
+            <div class="text-center p-6"><a href="statics.html">
+              <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 icon-container">
+                <i class="fas fa-chart-bar text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-3">Statistiques</h3>
+              <p>Consulter votre temps en révision</p>
+            </div></a>
+          </div>
+        </div>
+
+        <!-- COURS POPULAIRES AVEC TITRE BLEU FONCÉ ET ESPACE RÉDUIT -->
+        <div class="mt-20 mb-20">
+          <h2 class="text-2xl font-bold text-primaryDark mb-8 text-center">Cours Populaires</h2>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <!-- Carte UNIX -->
+            <div class="course-card">
+              <img 
+                src="assets/unix.png" 
+                alt="UNIX" 
+                class="course-image"
+              >
+              <div class="course-content">
+                <h3 class="course-title">UNIX</h3>
+                <p class="course-description">Systèmes d'exploitation avancés et administration système</p>
+              </div>
+            </div>
+            
+            <!-- Carte Java -->
+            <div class="course-card">
+              <img 
+                src="assets/java.png" 
+                alt="Java" 
+                class="course-image"
+              >
+              <div class="course-content">
+                <h3 class="course-title">Java</h3>
+                <p class="course-description">Programmation orientée objet et développement d'applications</p>
+              </div>
+            </div>
+            
+            <!-- Carte Python -->
+            <div class="course-card">
+              <img 
+                src="assets/python.png" 
+                alt="Python" 
+                class="course-image"
+              >
+              <div class="course-content">
+                <h3 class="course-title">Python</h3>
+                <p class="course-description">Programmation moderne pour data science et intelligence artificielle</p>
+              </div>
             </div>
           </div>
         </div>
+
+        <!-- BOUTON "EN SAVOIR PLUS" AVEC ESPACE -->
+        <div class="mt-20 mb-20 text-center">
+          <button class="btn btn-pill bg-primary text-white px-8 py-3 text-lg hover:bg-primaryDark transition-colors duration-300 flex items-center gap-2 mx-auto">
+            En savoir plus <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
       </div>
-
-      <!-- 🟦 ESPACE APRÈS COURS POPULAIRES -->
-      <div class="mb-20"></div>
-
-      <!-- BOUTON EN SAVOIR PLUS -->
-      <div class="pt-12 pb-12 text-center">
-        <button class="btn btn-pill bg-primary text-white px-8 py-3 text-lg hover:bg-primaryDark transition-colors mx-auto">
-          En savoir plus <i class="fas fa-arrow-right"></i>
-        </button>
-      </div>
-
-      <!-- 🟦 ESPACE APRÈS BOUTON -->
-      <div class="mb-20"></div>
-
     </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-primary text-white py-6 px-8 mt-auto">
-    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+   <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 border-b border-white/20 pb-6 sm:pb-8">
+            
+            <!-- Col 1: BrainHub -->
+            <div>
+                
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">BrainHub</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li><a href="#" class="hover:underline">A propos</a></li>
+                    <li><a href="#" class="hover:underline">Nos services</a></li>
+                </ul>
+            </div>
 
-      <div>
-        <h2 class="font-semibold text-lg">BrainHub</h2>
-      </div>
+            <!-- Col 2: Aide -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Aide</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li><a href="#" class="hover:underline">FAQ</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
 
-      <div>
-        <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">BrainHub</h3>
-        <ul class="mt-3 space-y-1 text-sm">
-          <li><a href="#" class="hover:underline">A propos</a></li>
-          <li><a href="#" class="hover:underline">Nos services</a></li>
-        </ul>
-      </div>
+            <!-- Col 3: Suivez-nous -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Suivez-nous</h3>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a3 3 0 100-6 3 3 0 000 6z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M17 7v.01"></path></svg>
+                    </a>
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+                    </a>
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
+                </div>
+            </div>
 
-      <div>
-        <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">Aide</h3>
-        <ul class="mt-3 space-y-1 text-sm">
-          <li><a href="#" class="hover:underline">FAQ</a></li>
-          <li><a href="#" class="hover:underline">Contact</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3 class="font-semibold text-lg border-b border-white/40 w-fit pb-1">Suivez-nous</h3>
-        <div class="flex items-center gap-4 mt-3">
-          <div class="p-2 rounded-full border border-white">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z" />
-              <circle cx="12" cy="12" r="3" />
-              <circle cx="17" cy="7" r="1" />
-            </svg>
-          </div>
-
-          <div class="p-2 rounded-full border border-white">
-            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-            </svg>
-          </div>
-
+            <!-- Col 4: Contact -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Contact</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li>+21561771</li>
+                    <li>Brainhub@gmail.com</li>
+                </ul>
+            </div>
         </div>
-      </div>
-
-    </div>
-  </footer>
-
+        
+        <!-- Copyright centré -->
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-xs opacity-70">© 2025 BrainHub - Tous les droits réservés</p>
+        </div>
+    </footer>
+ <script>
+        // Gestion de la sélection des options
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                // Retirer la sélection de toutes les options
+                document.querySelectorAll('.quiz-option').forEach(opt => {
+                    opt.classList.remove('selected', 'bg-paleBlue');
+                    opt.classList.add('border-gray-300');
+                    
+                    // Réinitialiser l'indicateur
+                    const indicator = opt.querySelector('.w-5.h-5');
+                    if (indicator) {
+                        indicator.classList.remove('border-primary', 'bg-primary');
+                        indicator.classList.add('border-gray-400');
+                        const innerDot = indicator.querySelector('.w-2.h-2');
+                        if (innerDot) innerDot.remove();
+                    }
+                });
+                
+                // Sélectionner l'option cliquée
+                this.classList.add('selected', 'bg-paleBlue');
+                this.classList.remove('border-gray-300');
+                this.classList.add('border-primary');
+                
+                // Mettre à jour l'indicateur
+                const indicator = this.querySelector('.w-5.h-5');
+                if (indicator) {
+                    indicator.classList.remove('border-gray-400');
+                    indicator.classList.add('border-primary', 'bg-primary');
+                    
+                    // Ajouter le point intérieur
+                    if (!indicator.querySelector('.w-2.h-2')) {
+                        const innerDot = document.createElement('div');
+                        innerDot.className = 'w-2 h-2 rounded-full bg-white';
+                        indicator.appendChild(innerDot);
+                    }
+                }
+            });
+        });
+        
+        // Gestion de la validation
+        document.getElementById('validateBtn').addEventListener('click', function() {
+            const selectedOption = document.querySelector('.quiz-option.selected');
+            
+            if (!selectedOption) {
+                alert('Veuillez sélectionner une réponse avant de valider.');
+                return;
+            }
+            
+            const selectedValue = selectedOption.getAttribute('data-option');
+            const correctAnswer = '2'; // La bonne réponse est l'option 2
+            
+            // Mettre à jour l'historique
+            const currentHistoryItem = document.querySelector('.history-item.current');
+            const nextHistoryItem = currentHistoryItem.nextElementSibling;
+            
+            // Mettre à jour le statut
+            const statusElement = currentHistoryItem.querySelector('.text-xs');
+            const indicator = currentHistoryItem.querySelector('.w-5.h-5');
+            
+            if (selectedValue === correctAnswer) {
+                // Bonne réponse
+                statusElement.textContent = 'Correct';
+                statusElement.classList.remove('text-gray-500');
+                statusElement.classList.add('text-green-600');
+                
+                if (indicator) {
+                    indicator.innerHTML = '✓';
+                    indicator.classList.remove('border-gray-300', 'border-primary');
+                    indicator.classList.add('border-green-500', 'bg-green-100', 'text-green-600');
+                }
+                
+                alert('Bonne réponse ! ✅');
+            } else {
+                // Mauvaise réponse
+                statusElement.textContent = 'Incorrect';
+                statusElement.classList.remove('text-gray-500');
+                statusElement.classList.add('text-red-600');
+                
+                if (indicator) {
+                    indicator.innerHTML = '✗';
+                    indicator.classList.remove('border-gray-300', 'border-primary');
+                    indicator.classList.add('border-red-500', 'bg-red-100', 'text-red-600');
+                }
+                
+                alert('Mauvaise réponse ❌\nLa bonne réponse est : "L\'expérience globale vécue par l\'utilisateur lors de l\'utilisation d\'un produit"');
+            }
+            
+            // Passer à la question suivante
+            setTimeout(() => {
+                if (nextHistoryItem) {
+                    currentHistoryItem.classList.remove('current');
+                    nextHistoryItem.classList.add('current');
+                    
+                    // Mettre à jour la progression
+                    const progressBar = document.querySelector('.h-full.bg-primary');
+                    const currentWidth = parseInt(progressBar.style.width) || 10;
+                    progressBar.style.width = `${currentWidth + 10}%`;
+                    
+                    const questionCount = document.querySelector('.font-bold.text-primary');
+                    const currentNum = parseInt(questionCount.textContent);
+                    questionCount.textContent = currentNum + 1;
+                    
+                    // Réinitialiser les options
+                    document.querySelectorAll('.quiz-option').forEach(opt => {
+                        opt.classList.remove('selected', 'bg-paleBlue');
+                        opt.classList.add('border-gray-300');
+                        
+                        const indicator = opt.querySelector('.w-5.h-5');
+                        if (indicator) {
+                            indicator.classList.remove('border-primary', 'bg-primary');
+                            indicator.classList.add('border-gray-400');
+                            const innerDot = indicator.querySelector('.w-2.h-2');
+                            if (innerDot) innerDot.remove();
+                        }
+                    });
+                    
+                    // Mettre à jour la question (simulation)
+                    const questionText = document.querySelector('.text-xl.font-bold.text-gray-800.mb-6');
+                    const nextQuestionText = nextHistoryItem.querySelector('.text-sm').textContent;
+                    questionText.textContent = nextQuestionText;
+                } else {
+                    alert('Quiz terminé !');
+                    this.disabled = true;
+                    this.textContent = 'Terminé';
+                    this.classList.remove('bg-primary');
+                    this.classList.add('bg-gray-400');
+                }
+            }, 1000);
+        });
+        
+        // Gestion du bouton de classement
+        const rankingBtn = document.getElementById('rankingBtn');
+        const rankingModal = document.getElementById('rankingModal');
+        const closeRanking = document.getElementById('closeRanking');
+        
+        rankingBtn.addEventListener('click', function() {
+            rankingModal.classList.remove('hidden');
+        });
+        
+        function closeRankingModal() {
+            rankingModal.classList.add('hidden');
+        }
+        
+        closeRanking.addEventListener('click', closeRankingModal);
+        
+        // Fermer le modal en cliquant à l'extérieur
+        rankingModal.addEventListener('click', function(e) {
+            if (e.target === rankingModal) {
+                closeRankingModal();
+            }
+        });
+        
+        // Fermer le modal avec la touche Échap
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !rankingModal.classList.contains('hidden')) {
+                closeRankingModal();
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BrainHub – Quiz Mathématique</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../src/output.css">
+</head>
+<body class="font-raleway bg-panel text-gray-800">
+
+   <!-- ================= HEADER ================= -->
+  <header class="w-full bg-primary text-white shadow-md relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between">
+            
+            <!-- LOGO à gauche --><a href="Home.html">
+            <img src="../pages/assets/logo.png" alt="Logo" class="max-h-32"></a>
+
+            <!-- NAV centré (desktop) -->
+            <nav class="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+                <a href="#" class="hover:text-white/80 transition"><a href="Home.html">Accueil</a>
+                <a href="#" class="hover:text-white/80 transition">A propos</a>
+                <a href="#" class="hover:text-white/80 transition">Contact</a>
+            </nav>
+
+            <!-- SEARCH + LOGOUT (desktop) -->
+            <div class="hidden sm:flex items-center gap-3 lg:gap-4">
+                <!-- Search Bar -->
+                <div class="hidden md:flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2 w-48 lg:w-64 transition-all focus-within:bg-white/30 focus-within:border-white/40">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="Search for anything..." 
+                        class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                        autocomplete="off"
+                    >
+                </div>
+                
+                <!-- Logout Icon -->
+                <button class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Logout"><a href="signin.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                    </svg>
+                    </a>
+                </button>
+            </div>
+
+            <!-- Mobile: Menu button + Search icon -->
+            <div class="flex sm:hidden items-center gap-3">
+                <!-- Mobile Search Button -->
+                <button id="mobileSearchBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Rechercher">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="bg-white/20 p-2 rounded-full hover:bg-white/30 transition border border-white/30" aria-label="Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+
+        
+        <!-- Mobile Search Bar (hidden by default) -->
+        <div id="mobileSearchBar" class="search-container hidden sm:hidden">
+            <div class="flex items-center bg-white/20 border border-white/30 rounded-lg px-3 py-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input 
+                    type="text" 
+                    id="mobileSearchInput"
+                    placeholder="Search for anything..." 
+                    class="bg-transparent border-none outline-none text-white placeholder-white/70 text-sm ml-2 w-full"
+                    autocomplete="off"
+                >
+                <button id="closeMobileSearch" class="ml-2 text-white/70 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (hidden by default) -->
+        <div id="mobileMenu" class="hidden absolute top-full left-0 right-0 bg-primary border-t border-white/20 z-50">
+            <nav class="flex flex-col p-4 space-y-4">
+                <a href="#" class="text-white hover:text-white/80 transition py-2">Accueil</a>
+                <a href="#" class="text-white hover:text-white/80 transition py-2">A propos</a>
+                <a href="#" class="text-white hover:text-white/80 transition py-2">Contact</a>
+                <button class="bg-white/20 p-2 rounded-lg text-white hover:bg-white/30 transition text-left">
+                    Déconnexion
+                </button>
+            </nav>
+        </div>
+    </header>
+
+  <main class="max-w-5xl mx-auto pt-20 pb-16 px-6 space-y-8">
+    <nav class="text-sm text-gray-500">Accueil &gt; <span class="text-black font-medium">Quiz</span></nav>
+    
+    <div class="flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <p class="text-xl md:text-2xl text-black font-bold">Question 1/10 – Quiz Mathématique</p>
+      </div>
+      <div class="flex items-center gap-2 text-primary font-semibold">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
+          <path d="M12 6v6l3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+        12:25 Min
+      </div>
+    </div>
+
+    <section class="bg-white rounded-btn border-2 border-[#8271D7] shadow-soft-2 p-6">
+      <!-- Question au-dessus -->
+      <h1 class="text-2xl font-bold text-gray-900 mb-6">Quelle est la formule de l'aire d'un cercle ?</h1>
+      
+      <!-- Contenu aligné: Image à gauche, Options à droite -->
+      <div class="flex flex-col lg:flex-row gap-8 items-start">
+        <!-- Section gauche: Image -->
+        <div class="flex-1">
+          <div class="bg-panel rounded-btn border-2 border-[#8271D7] p-6 flex items-center justify-center min-h-[200px]">
+            <img src="./assets/question-aire-cercle.png" alt="Illustration cercle" class="w-full max-w-sm">
+          </div>
+        </div>
+
+        <!-- Section droite: Options de réponse - Alignées avec l'image -->
+        <div class="flex-1">
+          <div class="w-full space-y-3">
+            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
+              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
+              <span class="font-semibold text-gray-900 text-lg">2r</span>
+            </label>
+            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
+              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
+              <span class="font-semibold text-gray-900 text-lg">2πr</span>
+            </label>
+            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
+              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
+              <span class="font-semibold text-gray-900 text-lg">πr</span>
+            </label>
+            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
+              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
+              <span class="font-semibold text-gray-900 text-lg">πr²</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Boutons de navigation et validation - Disposition 2x2 centrés -->
+    <div class="flex flex-col gap-4 items-center justify-center">
+      <!-- Première ligne: Précédent et Suivant -->
+      <div class="flex items-center gap-4">
+        <button class="flex items-center gap-2 bg-white border-2 border-[#8271D7] text-gray-900 rounded-btn px-5 py-2 font-semibold hover:bg-panel transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Précédent
+        </button>
+        <button class="flex items-center gap-2 bg-white border-2 border-[#8271D7] text-gray-900 rounded-btn px-5 py-2 font-semibold hover:bg-panel transition">
+          Suivant
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </button>
+      </div>
+      <!-- Deuxième ligne: Valider l'état et Validation du quiz -->
+      <div class="flex items-center gap-4">
+        <button class="flex items-center gap-2 bg-primary text-white rounded-btn px-6 py-3 font-semibold hover:bg-primaryDark transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M9 9l6 6M15 9l-6 6"/>
+          </svg>
+          Valider l'état
+        </button>
+        <button class="flex items-center gap-2 bg-primary text-white rounded-btn px-6 py-3 font-semibold hover:bg-primaryDark transition">
+          <a href="Score.html">Validation du quiz</a>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 6L9 17l-5-5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </main>
+
+ <!-- ================= FOOTER ================= -->
+  <footer class="bg-primary text-white py-8 sm:py-12 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-6 sm:mb-8 border-b border-white/20 pb-6 sm:pb-8">
+            
+            <!-- Col 1: BrainHub -->
+            <div>
+                
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">BrainHub</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li><a href="#" class="hover:underline">A propos</a></li>
+                    <li><a href="#" class="hover:underline">Nos services</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 2: Aide -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Aide</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li><a href="#" class="hover:underline">FAQ</a></li>
+                    <li><a href="#" class="hover:underline">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Suivez-nous -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Suivez-nous</h3>
+                <div class="flex items-center gap-3">
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 12a3 3 0 100-6 3 3 0 000 6z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M17 7v.01"></path></svg>
+                    </a>
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
+                    </a>
+                    <a href="#" class="p-2 border border-white rounded-lg hover:bg-white/10 transition">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 4: Contact -->
+            <div>
+                <h3 class="font-bold text-lg mb-4 border-b border-white/30 w-fit pb-1">Contact</h3>
+                <ul class="space-y-2 text-sm opacity-90">
+                    <li>+21561771</li>
+                    <li>Brainhub@gmail.com</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Copyright centré -->
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-xs opacity-70">© 2025 BrainHub - Tous les droits réservés</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+
+    <!-- Script mobile menu simple -->
+   <script>
+        // Éléments DOM
+        const searchInput = document.getElementById('searchInput');
+        const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+        const mobileSearchBar = document.getElementById('mobileSearchBar');
+        const mobileSearchInput = document.getElementById('mobileSearchInput');
+        const closeMobileSearch = document.getElementById('closeMobileSearch');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        // Données de recherche (exemple - à remplacer par vos vraies données)
+        const quizData = [
+            { title: 'Quiz De Mathematique', chapter: 'Chapitre 1 : Arithmétique Et Théorie Des Nombres', questions: '10 Questions', level: 'Avancé' },
+            { title: 'Quiz De Mathematique', chapter: 'Chapitre 2 : Polynômes Et Équations Du Second Degré', questions: '20 Questions', level: 'Moyen' },
+            { title: 'Quiz De Mathematique', chapter: 'Chapitre 3 : Calcul Vectoriel', questions: '15 Questions', level: 'Débutant' }
+        ];
+
+        // Fonction de recherche
+        function performSearch(query) {
+            if (!query.trim()) {
+                return quizData;
+            }
+
+            const lowerQuery = query.toLowerCase();
+            return quizData.filter(quiz => 
+                quiz.title.toLowerCase().includes(lowerQuery) ||
+                quiz.chapter.toLowerCase().includes(lowerQuery) ||
+                quiz.level.toLowerCase().includes(lowerQuery)
+            );
+        }
+
+        // Fonction pour filtrer les cartes visuellement
+        function filterCards(query) {
+            const cards = document.querySelectorAll('article');
+            const results = performSearch(query);
+            
+            cards.forEach((card, index) => {
+                if (index < results.length) {
+                    card.style.display = '';
+                    card.classList.remove('hidden');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Si aucun résultat, afficher un message
+            const cardsContainer = document.querySelector('.space-y-4, .space-y-6');
+            let noResultsMsg = document.getElementById('noResultsMsg');
+            
+            if (results.length === 0 && query.trim()) {
+                if (!noResultsMsg) {
+                    noResultsMsg = document.createElement('div');
+                    noResultsMsg.id = 'noResultsMsg';
+                    noResultsMsg.className = 'text-center py-12 text-brand-gray';
+                    noResultsMsg.innerHTML = '<p class="text-lg font-semibold mb-2">Aucun résultat trouvé</p><p class="text-sm">Essayez avec d\'autres mots-clés</p>';
+                    cardsContainer.appendChild(noResultsMsg);
+                }
+            } else if (noResultsMsg) {
+                noResultsMsg.remove();
+            }
+        }
+
+        // Écouteur pour la recherche desktop
+        if (searchInput) {
+            let searchTimeout;
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    filterCards(e.target.value);
+                }, 300);
+            });
+        }
+
+        // Écouteur pour la recherche mobile
+        if (mobileSearchInput) {
+            let mobileSearchTimeout;
+            mobileSearchInput.addEventListener('input', (e) => {
+                clearTimeout(mobileSearchTimeout);
+                mobileSearchTimeout = setTimeout(() => {
+                    filterCards(e.target.value);
+                }, 300);
+            });
+        }
+
+        // Toggle mobile search bar
+        if (mobileSearchBtn && mobileSearchBar) {
+            mobileSearchBtn.addEventListener('click', () => {
+                mobileSearchBar.classList.toggle('hidden');
+                if (!mobileSearchBar.classList.contains('hidden')) {
+                    mobileSearchInput.focus();
+                }
+            });
+        }
+
+        // Fermer la barre de recherche mobile
+        if (closeMobileSearch && mobileSearchBar) {
+            closeMobileSearch.addEventListener('click', () => {
+                mobileSearchBar.classList.add('hidden');
+                mobileSearchInput.value = '';
+                filterCards('');
+            });
+        }
+
+        // Toggle mobile menu
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                // Fermer la recherche si ouverte
+                if (mobileSearchBar && !mobileSearchBar.classList.contains('hidden')) {
+                    mobileSearchBar.classList.add('hidden');
+                }
+            });
+        }
+
+        // Fermer les menus au clic en dehors
+        document.addEventListener('click', (e) => {
+            if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Synchroniser les deux champs de recherche
+        if (searchInput && mobileSearchInput) {
+            searchInput.addEventListener('input', (e) => {
+                mobileSearchInput.value = e.target.value;
+            });
+            mobileSearchInput.addEventListener('input', (e) => {
+                searchInput.value = e.target.value;
+            });
+        }
+    </script>
+</body>
+</html>
+

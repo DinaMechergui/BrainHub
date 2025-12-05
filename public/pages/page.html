@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS compilé -->
-    <link rel="stylesheet" href="../../src/output.css">
+  <link rel="stylesheet" href="../output.css">
 
  
 </head>
@@ -120,146 +120,45 @@
 
         <!-- Filtres -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
-            <!-- Filter Button: Math -->
             <div class="relative w-full">
-                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
-                    <span>Math</span>
-                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
+              
+                <select id="subjectFilter" class="w-full px-4 sm:px-6 py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                    <option value="">Matière</option>
+                    <option value="Mathématiques">Mathématiques</option>
+                    <option value="Physique">Physique</option>
+                    <option value="Chimie">Chimie</option>
+                    <option value="Informatique">Informatique</option>
+                </select>
             </div>
-             <!-- Filter Button: Chapitre -->
-             <div class="relative w-full">
-                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
-                    <span>Chapitre</span>
-                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
+            <div class="relative w-full">
+                <select id="chapterFilter" class="w-full px-4 sm:px-6 py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                    <option value="">Chapitre</option>
+                    <option value="Nombres et calcul">Nombres et calcul</option>
+                    <option value="Polynômes">Polynômes</option>
+                    <option value="Vecteurs">Vecteurs</option>
+                    <option value="Électricité">Électricité</option>
+                </select>
             </div>
-             <!-- Filter Button: Difficulté -->
-             <div class="relative w-full">
-                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
-                    <span>Par difficulté</span>
-                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
+            <div class="relative w-full">
+                <select id="difficultyFilter" class="w-full px-4 sm:px-6 py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                    <option value="">Par difficulté</option>
+                    <option value="Débutant">Débutant</option>
+                    <option value="Moyen">Moyen</option>
+                    <option value="Avancé">Avancé</option>
+                </select>
             </div>
-             <!-- Filter Button: Type -->
-             <div class="relative w-full">
-                <button class="w-full flex items-center justify-between px-4 sm:px-6 py-2 sm:py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm hover:bg-gray-50 transition group">
-                    <span>Type</span>
-                    <svg class="w-4 h-4 text-brand-purple group-hover:translate-y-0.5 transition flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </button>
+            <div class="relative w-full">
+                <select id="typeFilter" class="w-full px-4 sm:px-6 py-3 bg-white border border-brand-purple rounded-full text-brand-text font-semibold text-sm sm:text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary">
+                    <option value="">Type</option>
+                    <option value="Quiz">Quiz</option>
+                    <option value="Évaluation">Évaluation</option>
+                    <option value="Examen blanc">Examen blanc</option>
+                </select>
             </div>
         </div>
 
         <!-- LISTE DES CARTES -->
-        <div class="space-y-4 sm:space-y-6">
-
-            <!-- CARTE 1 -->
-            <article class="bg-white rounded-[20px] sm:rounded-[30px] border-2 border-primary/30 p-1 shadow-card group hover:border-primary transition duration-300">
-                <div class="rounded-[16px] sm:rounded-[26px] bg-white border border-transparent p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6">
-                    
-                    <!-- Icon + Text -->
-                    <div class="flex items-start gap-3 sm:gap-5 flex-1 min-w-0">
-                        <!-- Icone Math -->
-                        <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white border-2 border-brand-text/80 rounded-lg flex items-center justify-center text-brand-text">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                            </svg>
-                        </div>
-                        
-                        <div class="min-w-0 flex-1">
-                            <h2 class="text-lg sm:text-xl font-bold text-brand-text truncate">Quiz De Mathematique</h2>
-                            <p class="text-sm sm:text-base text-brand-text font-medium mt-1 line-clamp-2">Chapitre 1 : Arithmétique Et Théorie Des Nombres</p>
-                            <p class="text-xs text-brand-gray font-medium mt-1">10 Questions | Avancé</p>
-                        </div>
-                    </div>
-
-                    <!-- Actions / Meta Right Side -->
-                    <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1 w-full sm:w-auto sm:min-w-[140px]">
-                        <!-- Time -->
-                        <div class="flex items-center gap-1 text-xs font-bold text-brand-text mb-2 sm:mb-4">
-                            <span>15 Mn</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-
-                        <!-- Link -->
-                        <a href="#" class="text-[11px] font-bold text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-primary mb-2">
-                            Details De Cours
-                        </a>
-
-                        <!-- Button -->
-                        <button class="bg-primary hover:bg-primary/90 text-white text-xs font-semibold px-4 sm:px-6 py-2 rounded-full flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center">
-                            <span>Commencer</span>
-                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>
-                        </button>
-                    </div>
-                </div>
-            </article>
-
-            <!-- CARTE 2 (En Cours) -->
-            <article class="bg-white rounded-[20px] sm:rounded-[30px] border border-brand-purple p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 shadow-sm hover:shadow-md transition">
-                <div class="flex items-start gap-3 sm:gap-5 flex-1 min-w-0">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white border-2 border-brand-text/80 rounded-lg flex items-center justify-center text-brand-text">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <div class="min-w-0 flex-1">
-                        <h2 class="text-lg sm:text-xl font-bold text-brand-text truncate">Quiz De Mathematique</h2>
-                        <p class="text-sm sm:text-base text-brand-text font-medium mt-1 line-clamp-2">Chapitre 2 : Polynômes Et Équations Du Second Degré</p>
-                        <p class="text-xs text-brand-gray font-medium mt-1">20 Questions | Moyen</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1 w-full sm:w-auto sm:min-w-[140px]">
-                    <div class="flex items-center gap-1 text-xs font-bold text-brand-text mb-2 sm:mb-4">
-                        <span>15 Mn</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </div>
-                    <a href="#" class="text-[11px] font-bold text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-primary mb-2">
-                        Details De Cours
-                    </a>
-                    <button class="bg-primary hover:bg-primary/90 text-white text-xs font-semibold px-4 sm:px-8 py-2 rounded-full flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center">
-                        <span>En Cours</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 animate-spin" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                        </svg>
-                    </button>
-                </div>
-            </article>
-
-            <!-- CARTE 3 (Terminé) -->
-            <article class="bg-white rounded-[20px] sm:rounded-[30px] border border-brand-purple p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 shadow-sm hover:shadow-md transition">
-                <div class="flex items-start gap-3 sm:gap-5 flex-1 min-w-0">
-                    <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white border-2 border-brand-text/80 rounded-lg flex items-center justify-center text-brand-text">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <div class="min-w-0 flex-1">
-                        <h2 class="text-lg sm:text-xl font-bold text-brand-text truncate">Quiz De Mathematique</h2>
-                        <p class="text-sm sm:text-base text-brand-text font-medium mt-1 line-clamp-2">Chapitre 3 : Calcul Vectoriel</p>
-                        <p class="text-xs text-brand-gray font-medium mt-1">15 Questions | Débutant</p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1 w-full sm:w-auto sm:min-w-[140px]">
-                    <div class="flex items-center gap-1 text-xs font-bold text-brand-text mb-2 sm:mb-4">
-                        <span>15 Mn</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </div>
-                    <a href="#" class="text-[11px] font-bold text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-primary mb-2">
-                        Details De Cours
-                    </a>
-                    <button class="bg-primary hover:bg-primary/90 text-white text-xs font-semibold px-4 sm:px-8 py-2 rounded-full flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center">
-                        <span>Terminé</span>
-                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
-                    </button>
-                </div>
-            </article>
-
-        </div>
+        <div id="quizList" class="space-y-4 sm:space-y-6"></div>
     </main>
 
     <!-- ================= FOOTER ================= -->
@@ -341,80 +240,147 @@
         const closeMobileSearch = document.getElementById('closeMobileSearch');
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
+        const quizList = document.getElementById('quizList');
+        const subjectFilter = document.getElementById('subjectFilter');
+        const chapterFilter = document.getElementById('chapterFilter');
+        const difficultyFilter = document.getElementById('difficultyFilter');
+        const typeFilter = document.getElementById('typeFilter');
 
-        // Données de recherche (exemple - à remplacer par vos vraies données)
+        // Données mock de quiz (côté front uniquement)
         const quizData = [
-            { title: 'Quiz De Mathematique', chapter: 'Chapitre 1 : Arithmétique Et Théorie Des Nombres', questions: '10 Questions', level: 'Avancé' },
-            { title: 'Quiz De Mathematique', chapter: 'Chapitre 2 : Polynômes Et Équations Du Second Degré', questions: '20 Questions', level: 'Moyen' },
-            { title: 'Quiz De Mathematique', chapter: 'Chapitre 3 : Calcul Vectoriel', questions: '15 Questions', level: 'Débutant' }
+            { id: 'math-1', title: 'Quiz de Mathématiques', subject: 'Mathématiques', chapter: 'Nombres et calcul', questions: 10, level: 'Avancé', type: 'Quiz', duration: '15 Mn', status: 'not-started' },
+            { id: 'phys-1', title: 'Évaluation Physique', subject: 'Physique', chapter: 'Électricité', questions: 20, level: 'Moyen', type: 'Évaluation', duration: '20 Mn', status: 'in-progress' },
+            { id: 'math-2', title: 'Examen blanc Maths', subject: 'Mathématiques', chapter: 'Polynômes', questions: 25, level: 'Avancé', type: 'Examen blanc', duration: '30 Mn', status: 'not-started' },
+            { id: 'chim-1', title: 'Quiz Chimie', subject: 'Chimie', chapter: 'Nombres et calcul', questions: 12, level: 'Débutant', type: 'Quiz', duration: '12 Mn', status: 'not-started' },
+            { id: 'info-1', title: 'Évaluation Informatique', subject: 'Informatique', chapter: 'Vecteurs', questions: 15, level: 'Moyen', type: 'Évaluation', duration: '18 Mn', status: 'done' }
         ];
 
-        // Fonction de recherche
-        function performSearch(query) {
-            if (!query.trim()) {
-                return quizData;
-            }
+        let currentSearch = '';
 
-            const lowerQuery = query.toLowerCase();
-            return quizData.filter(quiz => 
-                quiz.title.toLowerCase().includes(lowerQuery) ||
-                quiz.chapter.toLowerCase().includes(lowerQuery) ||
-                quiz.level.toLowerCase().includes(lowerQuery)
-            );
+        function getButtonProps(quiz) {
+            if (quiz.status === 'not-started') {
+                return {
+                    label: 'Commencer',
+                    href: `Quiz.html?id=${quiz.id}`,
+                    icon: '<svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" /></svg>'
+                };
+            }
+            if (quiz.status === 'in-progress') {
+                return {
+                    label: 'En Cours',
+                    href: `Quiz.html?id=${quiz.id}&resume=true`,
+                    icon: '<svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>'
+                };
+            }
+            return {
+                label: 'Terminé',
+                href: `Score.html?id=${quiz.id}`,
+                icon: '<svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>'
+            };
         }
 
-        // Fonction pour filtrer les cartes visuellement
-        function filterCards(query) {
-            const cards = document.querySelectorAll('article');
-            const results = performSearch(query);
-            
-            cards.forEach((card, index) => {
-                if (index < results.length) {
-                    card.style.display = '';
-                    card.classList.remove('hidden');
-                } else {
-                    card.style.display = 'none';
-                }
+        function renderQuizzes(list) {
+            quizList.innerHTML = '';
+
+            if (!list.length) {
+                const empty = document.createElement('div');
+                empty.className = 'text-center py-12 text-brand-gray';
+                empty.innerHTML = '<p class="text-lg font-semibold mb-2">Aucun résultat</p><p class="text-sm">Modifiez vos filtres ou la recherche.</p>';
+                quizList.appendChild(empty);
+                return;
+            }
+
+            list.forEach((quiz) => {
+                const { label, href, icon } = getButtonProps(quiz);
+                const article = document.createElement('article');
+                article.className = 'bg-white rounded-[20px] sm:rounded-[30px] border border-brand-purple p-4 sm:p-6 flex flex-col lg:flex-row lg:items-center justify-between gap-4 sm:gap-6 shadow-sm hover:shadow-md transition';
+
+                article.innerHTML = `
+                    <div class="flex items-start gap-3 sm:gap-5 flex-1 min-w-0">
+                        <div class="w-10 h-10 sm:w-12 sm:h-12 flex-shrink-0 bg-white border-2 border-brand-text/80 rounded-lg flex items-center justify-center text-brand-text">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-7 sm:w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <h2 class="text-lg sm:text-xl font-bold text-brand-text truncate">${quiz.title}</h2>
+                            <p class="text-sm sm:text-base text-brand-text font-medium mt-1 line-clamp-2">${quiz.chapter}</p>
+                            <p class="text-xs text-brand-gray font-medium mt-1">${quiz.questions} Questions | ${quiz.level} | ${quiz.type}</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-start sm:items-end gap-2 sm:gap-1 w-full sm:w-auto sm:min-w-[160px]">
+                        <div class="flex items-center gap-1 text-xs font-bold text-brand-text mb-2 sm:mb-4">
+                            <span>${quiz.duration}</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        </div>
+                        <a href="#" class="text-[11px] font-bold text-gray-600 underline decoration-gray-400 underline-offset-2 hover:text-primary mb-2">Détails du cours</a>
+                        <a class="bg-primary hover:bg-primary/90 text-white text-xs font-semibold px-4 sm:px-8 py-2 rounded-full flex items-center gap-2 shadow-md transition w-full sm:w-auto justify-center" href="${href}">
+                            <span>${label}</span>
+                            ${icon}
+                        </a>
+                    </div>
+                `;
+
+                quizList.appendChild(article);
+            });
+        }
+
+        function applyFilters() {
+            const query = currentSearch.toLowerCase();
+            const subjectValue = subjectFilter?.value || '';
+            const chapterValue = chapterFilter?.value || '';
+            const difficultyValue = difficultyFilter?.value || '';
+            const typeValue = typeFilter?.value || '';
+
+            const filtered = quizData.filter((quiz) => {
+                const matchesSearch = !query || [
+                    quiz.title,
+                    quiz.chapter,
+                    quiz.subject,
+                    quiz.level,
+                    quiz.type
+                ].some((field) => field.toLowerCase().includes(query));
+
+                const matchesSubject = !subjectValue || quiz.subject === subjectValue;
+                const matchesChapter = !chapterValue || quiz.chapter === chapterValue;
+                const matchesDifficulty = !difficultyValue || quiz.level === difficultyValue;
+                const matchesType = !typeValue || quiz.type === typeValue;
+
+                return matchesSearch && matchesSubject && matchesChapter && matchesDifficulty && matchesType;
             });
 
-            // Si aucun résultat, afficher un message
-            const cardsContainer = document.querySelector('.space-y-4, .space-y-6');
-            let noResultsMsg = document.getElementById('noResultsMsg');
-            
-            if (results.length === 0 && query.trim()) {
-                if (!noResultsMsg) {
-                    noResultsMsg = document.createElement('div');
-                    noResultsMsg.id = 'noResultsMsg';
-                    noResultsMsg.className = 'text-center py-12 text-brand-gray';
-                    noResultsMsg.innerHTML = '<p class="text-lg font-semibold mb-2">Aucun résultat trouvé</p><p class="text-sm">Essayez avec d\'autres mots-clés</p>';
-                    cardsContainer.appendChild(noResultsMsg);
-                }
-            } else if (noResultsMsg) {
-                noResultsMsg.remove();
-            }
+            renderQuizzes(filtered);
         }
 
-        // Écouteur pour la recherche desktop
+        function handleSearchInput(value) {
+            currentSearch = value.trim();
+            applyFilters();
+        }
+
+        // Écouteurs recherche desktop
         if (searchInput) {
             let searchTimeout;
             searchInput.addEventListener('input', (e) => {
                 clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    filterCards(e.target.value);
-                }, 300);
+                searchTimeout = setTimeout(() => handleSearchInput(e.target.value), 250);
             });
         }
 
-        // Écouteur pour la recherche mobile
+        // Écouteurs recherche mobile
         if (mobileSearchInput) {
             let mobileSearchTimeout;
             mobileSearchInput.addEventListener('input', (e) => {
                 clearTimeout(mobileSearchTimeout);
-                mobileSearchTimeout = setTimeout(() => {
-                    filterCards(e.target.value);
-                }, 300);
+                mobileSearchTimeout = setTimeout(() => handleSearchInput(e.target.value), 250);
             });
         }
+
+        // Filtres dropdown
+        [subjectFilter, chapterFilter, difficultyFilter, typeFilter].forEach((select) => {
+            if (select) {
+                select.addEventListener('change', applyFilters);
+            }
+        });
 
         // Toggle mobile search bar
         if (mobileSearchBtn && mobileSearchBar) {
@@ -431,7 +397,9 @@
             closeMobileSearch.addEventListener('click', () => {
                 mobileSearchBar.classList.add('hidden');
                 mobileSearchInput.value = '';
-                filterCards('');
+                if (searchInput) searchInput.value = '';
+                currentSearch = '';
+                applyFilters();
             });
         }
 
@@ -439,7 +407,6 @@
         if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
-                // Fermer la recherche si ouverte
                 if (mobileSearchBar && !mobileSearchBar.classList.contains('hidden')) {
                     mobileSearchBar.classList.add('hidden');
                 }
@@ -462,6 +429,9 @@
                 searchInput.value = e.target.value;
             });
         }
+
+        // Initial render
+        renderQuizzes(quizData);
     </script>
 
 </body>

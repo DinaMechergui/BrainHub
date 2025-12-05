@@ -8,10 +8,9 @@
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17"
   },
-  "scripts": {
-    "dev": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css"
-  }
+"scripts": {
+  "build": "npx tailwindcss -i ./src/input.css -o ./public/style.css --minify"
+}
 }
 
 

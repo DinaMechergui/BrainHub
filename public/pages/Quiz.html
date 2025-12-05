@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>BrainHub – Quiz Mathématique</title>
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../src/output.css">
-</head>
+  <link rel="stylesheet" href="../output.css">
 <body class="font-raleway bg-panel text-gray-800">
 
    <!-- ================= HEADER ================= -->
@@ -107,87 +106,67 @@
     
     <div class="flex flex-wrap items-start justify-between gap-4">
       <div>
-        <p class="text-xl md:text-2xl text-black font-bold">Question 1/10 – Quiz Mathématique</p>
+        <p id="questionTitle" class="text-xl md:text-2xl text-black font-bold">Question 1/10 – Quiz Mathématique</p>
       </div>
-      <div class="flex items-center gap-2 text-primary font-semibold">
+      <div class="flex items-center gap-2 text-primary font-semibold" id="timerDisplay">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <circle cx="12" cy="12" r="10" stroke-width="2"></circle>
           <path d="M12 6v6l3 3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
-        12:25 Min
+        <span id="timerText">15:00 Min</span>
       </div>
     </div>
 
     <section class="bg-white rounded-btn border-2 border-[#8271D7] shadow-soft-2 p-6">
       <!-- Question au-dessus -->
-      <h1 class="text-2xl font-bold text-gray-900 mb-6">Quelle est la formule de l'aire d'un cercle ?</h1>
+      <h1 id="questionText" class="text-2xl font-bold text-gray-900 mb-6">Question</h1>
       
-      <!-- Contenu aligné: Image à gauche, Options à droite -->
+      <!-- Contenu aligné: Image (si présente) + Options -->
       <div class="flex flex-col lg:flex-row gap-8 items-start">
-        <!-- Section gauche: Image -->
-        <div class="flex-1">
+        <div id="questionImageWrapper" class="flex-1 hidden">
           <div class="bg-panel rounded-btn border-2 border-[#8271D7] p-6 flex items-center justify-center min-h-[200px]">
-            <img src="./assets/question-aire-cercle.png" alt="Illustration cercle" class="w-full max-w-sm">
+            <img id="questionImage" src="" alt="Illustration question" class="w-full max-w-sm">
           </div>
         </div>
-
-        <!-- Section droite: Options de réponse - Alignées avec l'image -->
         <div class="flex-1">
-          <div class="w-full space-y-3">
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">2r</span>
-            </label>
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">2πr</span>
-            </label>
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">πr</span>
-            </label>
-            <label class="flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition">
-              <input type="checkbox" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer">
-              <span class="font-semibold text-gray-900 text-lg">πr²</span>
-            </label>
+          <div id="optionList" class="w-full space-y-3">
+            <!-- options render JS -->
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Boutons de navigation et validation - Disposition 2x2 centrés -->
     <div class="flex flex-col gap-4 items-center justify-center">
-      <!-- Première ligne: Précédent et Suivant -->
       <div class="flex items-center gap-4">
-        <button class="flex items-center gap-2 bg-white border-2 border-[#8271D7] text-gray-900 rounded-btn px-5 py-2 font-semibold hover:bg-panel transition">
+        <button id="prevBtn" class="flex items-center gap-2 bg-white border-2 border-[#8271D7] text-gray-900 rounded-btn px-5 py-2 font-semibold hover:bg-panel transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
           </svg>
           Précédent
         </button>
-        <button class="flex items-center gap-2 bg-white border-2 border-[#8271D7] text-gray-900 rounded-btn px-5 py-2 font-semibold hover:bg-panel transition">
+        <button id="nextBtn" class="flex items-center gap-2 bg-white border-2 border-[#8271D7] text-gray-900 rounded-btn px-5 py-2 font-semibold hover:bg-panel transition">
           Suivant
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M5 12h14M12 5l7 7-7 7"/>
           </svg>
         </button>
       </div>
-      <!-- Deuxième ligne: Valider l'état et Validation du quiz -->
-      <div class="flex items-center gap-4">
-        <button class="flex items-center gap-2 bg-primary text-white rounded-btn px-6 py-3 font-semibold hover:bg-primaryDark transition">
+      <div class="flex items-center gap-4 flex-wrap justify-center">
+        <button id="saveStateBtn" class="flex items-center gap-2 bg-primary text-white rounded-btn px-6 py-3 font-semibold hover:bg-primaryDark transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <rect x="3" y="3" width="18" height="18" rx="2"/>
             <path d="M9 9l6 6M15 9l-6 6"/>
           </svg>
           Valider l'état
         </button>
-        <button class="flex items-center gap-2 bg-primary text-white rounded-btn px-6 py-3 font-semibold hover:bg-primaryDark transition">
-          <a href="Score.html">Validation du quiz</a>
+        <button id="submitQuizBtn" class="flex items-center gap-2 bg-primary text-white rounded-btn px-6 py-3 font-semibold hover:bg-primaryDark transition">
+          Validation du quiz
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M20 6L9 17l-5-5"/>
           </svg>
         </button>
       </div>
+      <p id="statusMessage" class="text-sm text-gray-600"></p>
     </div>
   </main>
 
@@ -255,9 +234,9 @@
 
 
 
-    <!-- Script mobile menu simple -->
+    <!-- Script logique quiz + mobile menu -->
    <script>
-        // Éléments DOM
+        // Éléments DOM généraux
         const searchInput = document.getElementById('searchInput');
         const mobileSearchBtn = document.getElementById('mobileSearchBtn');
         const mobileSearchBar = document.getElementById('mobileSearchBar');
@@ -266,81 +245,183 @@
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const mobileMenu = document.getElementById('mobileMenu');
 
-        // Données de recherche (exemple - à remplacer par vos vraies données)
-        const quizData = [
-            { title: 'Quiz De Mathematique', chapter: 'Chapitre 1 : Arithmétique Et Théorie Des Nombres', questions: '10 Questions', level: 'Avancé' },
-            { title: 'Quiz De Mathematique', chapter: 'Chapitre 2 : Polynômes Et Équations Du Second Degré', questions: '20 Questions', level: 'Moyen' },
-            { title: 'Quiz De Mathematique', chapter: 'Chapitre 3 : Calcul Vectoriel', questions: '15 Questions', level: 'Débutant' }
+        // Éléments quiz
+        const questionTitle = document.getElementById('questionTitle');
+        const questionText = document.getElementById('questionText');
+        const optionList = document.getElementById('optionList');
+        const questionImageWrapper = document.getElementById('questionImageWrapper');
+        const questionImage = document.getElementById('questionImage');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const saveStateBtn = document.getElementById('saveStateBtn');
+        const submitQuizBtn = document.getElementById('submitQuizBtn');
+        const statusMessage = document.getElementById('statusMessage');
+        const timerDisplay = document.getElementById('timerDisplay');
+        const timerText = document.getElementById('timerText');
+
+        // Données mock des questions (10 items)
+        const questions = [
+          { id: 'q2', text: 'Combien font 5 + 7 ?', options: ['10', '11', '12', '13'], correctIndex: 2 },
+          { id: 'q3', text: 'La dérivée de x² est ?', options: ['x', '2x', 'x²', '2'], correctIndex: 1 },
+          { id: 'q4', text: 'Le périmètre d’un carré de côté 4 est ?', options: ['8', '12', '14', '16'], correctIndex: 3 },
+          { id: 'q5', text: 'π est approximativement ?', options: ['2.14', '3.14', '3.41', '4.13'], correctIndex: 1 },
+          { id: 'q6', text: 'La solution de 2x = 10 est ?', options: ['2', '4', '5', '10'], correctIndex: 2 },
+          { id: 'q7', text: 'Le log base 10 de 100 est ?', options: ['1', '2', '3', '10'], correctIndex: 1 },
+          { id: 'q8', text: 'Une fonction linéaire a pour forme ?', options: ['ax + b', 'ax² + b', 'a/x', 'a^x'], correctIndex: 0 },
+          { id: 'q9', text: 'La racine carrée de 81 est ?', options: ['7', '8', '9', '10'], correctIndex: 2 },
+          { id: 'q10', text: 'Combien de degrés dans un triangle ?', options: ['90', '120', '180', '360'], correctIndex: 2 }
         ];
 
-        // Fonction de recherche
-        function performSearch(query) {
-            if (!query.trim()) {
-                return quizData;
+        let currentIndex = 0;
+        const userAnswers = Array(questions.length).fill(null);
+        let quizFinished = false;
+
+        // Timer (15 minutes)
+        let remainingSeconds = 15 * 60;
+        let timerInterval = null;
+
+        function formatTime(seconds) {
+          const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+          const s = (seconds % 60).toString().padStart(2, '0');
+          return `${m}:${s}`;
+        }
+
+        function updateTimerDisplay() {
+          if (timerText) {
+            timerText.textContent = `${formatTime(remainingSeconds)} Min`;
+          }
+        }
+
+        function startTimer() {
+          updateTimerDisplay();
+          timerInterval = setInterval(() => {
+            remainingSeconds -= 1;
+            if (remainingSeconds <= 0) {
+              remainingSeconds = 0;
+              updateTimerDisplay();
+              clearInterval(timerInterval);
+              handleSubmit(true);
+            } else {
+              updateTimerDisplay();
             }
-
-            const lowerQuery = query.toLowerCase();
-            return quizData.filter(quiz => 
-                quiz.title.toLowerCase().includes(lowerQuery) ||
-                quiz.chapter.toLowerCase().includes(lowerQuery) ||
-                quiz.level.toLowerCase().includes(lowerQuery)
-            );
+          }, 1000);
         }
 
-        // Fonction pour filtrer les cartes visuellement
-        function filterCards(query) {
-            const cards = document.querySelectorAll('article');
-            const results = performSearch(query);
-            
-            cards.forEach((card, index) => {
-                if (index < results.length) {
-                    card.style.display = '';
-                    card.classList.remove('hidden');
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        function setStatus(message, tone = 'neutral') {
+          const tones = {
+            neutral: 'text-gray-600',
+            success: 'text-emerald-600',
+            danger: 'text-red-600'
+          };
+          statusMessage.className = `text-sm ${tones[tone] || tones.neutral}`;
+          statusMessage.textContent = message;
+        }
 
-            // Si aucun résultat, afficher un message
-            const cardsContainer = document.querySelector('.space-y-4, .space-y-6');
-            let noResultsMsg = document.getElementById('noResultsMsg');
-            
-            if (results.length === 0 && query.trim()) {
-                if (!noResultsMsg) {
-                    noResultsMsg = document.createElement('div');
-                    noResultsMsg.id = 'noResultsMsg';
-                    noResultsMsg.className = 'text-center py-12 text-brand-gray';
-                    noResultsMsg.innerHTML = '<p class="text-lg font-semibold mb-2">Aucun résultat trouvé</p><p class="text-sm">Essayez avec d\'autres mots-clés</p>';
-                    cardsContainer.appendChild(noResultsMsg);
-                }
-            } else if (noResultsMsg) {
-                noResultsMsg.remove();
+        function renderQuestion() {
+          const total = questions.length;
+          const q = questions[currentIndex];
+          if (!q) return;
+
+          questionTitle.textContent = `Question ${currentIndex + 1}/${total} – Quiz Mathématique`;
+          questionText.textContent = q.text;
+
+          if (q.image) {
+            questionImageWrapper.classList.remove('hidden');
+            questionImage.src = q.image;
+            questionImage.alt = `Illustration de la question ${currentIndex + 1}`;
+          } else {
+            questionImageWrapper.classList.add('hidden');
+            questionImage.src = '';
+          }
+
+          optionList.innerHTML = '';
+          q.options.forEach((opt, idx) => {
+            const isSelected = userAnswers[currentIndex] === idx;
+            const wrapper = document.createElement('label');
+            wrapper.className = `flex items-center gap-3 bg-white border-2 border-[#8271D7] rounded-btn px-4 py-3 cursor-pointer hover:bg-panel transition`;
+            wrapper.dataset.index = idx;
+
+            wrapper.innerHTML = `
+              <input type="radio" name="option-${q.id}" class="h-5 w-5 border-2 border-black rounded text-primary focus:ring-2 focus:ring-primary focus:ring-offset-0 cursor-pointer" ${isSelected ? 'checked' : ''}/>
+              <span class="font-semibold text-gray-900 text-lg">${opt}</span>
+            `;
+            wrapper.addEventListener('click', () => {
+              userAnswers[currentIndex] = idx;
+              renderQuestion();
+            });
+            optionList.appendChild(wrapper);
+          });
+
+          prevBtn.disabled = currentIndex === 0;
+          nextBtn.disabled = currentIndex === total - 1;
+          prevBtn.classList.toggle('opacity-50', prevBtn.disabled);
+          nextBtn.classList.toggle('opacity-50', nextBtn.disabled);
+        }
+
+        function goNext() {
+          if (currentIndex < questions.length - 1) {
+            currentIndex += 1;
+            renderQuestion();
+          }
+        }
+
+        function goPrev() {
+          if (currentIndex > 0) {
+            currentIndex -= 1;
+            renderQuestion();
+          }
+        }
+
+        function handleSaveState() {
+          setStatus('Réponses sauvegardées localement.', 'success');
+        }
+
+        function allAnswered() {
+          return userAnswers.every((ans) => ans !== null);
+        }
+
+        function computeScore() {
+          let score = 0;
+          questions.forEach((q, idx) => {
+            if (userAnswers[idx] === q.correctIndex) {
+              score += 1;
             }
+          });
+          return score;
         }
 
-        // Écouteur pour la recherche desktop
-        if (searchInput) {
-            let searchTimeout;
-            searchInput.addEventListener('input', (e) => {
-                clearTimeout(searchTimeout);
-                searchTimeout = setTimeout(() => {
-                    filterCards(e.target.value);
-                }, 300);
-            });
+        function handleSubmit(force = false) {
+          if (quizFinished) return;
+
+          if (!allAnswered() && !force) {
+            setStatus('Veuillez répondre à toutes les questions avant de valider.', 'danger');
+            return;
+          }
+
+          quizFinished = true;
+          if (timerInterval) clearInterval(timerInterval);
+          const score = computeScore();
+          const total = questions.length;
+          
+          // Stocker le score dans localStorage pour la page Score
+          localStorage.setItem('quizScore', JSON.stringify({
+            score: score,
+            total: total,
+            correct: score,
+            incorrect: total - score
+          }));
+          
+          // Rediriger vers la page Score
+          window.location.href = 'Score.html';
         }
 
-        // Écouteur pour la recherche mobile
-        if (mobileSearchInput) {
-            let mobileSearchTimeout;
-            mobileSearchInput.addEventListener('input', (e) => {
-                clearTimeout(mobileSearchTimeout);
-                mobileSearchTimeout = setTimeout(() => {
-                    filterCards(e.target.value);
-                }, 300);
-            });
-        }
+        // Listeners navigation et actions
+        prevBtn.addEventListener('click', goPrev);
+        nextBtn.addEventListener('click', goNext);
+        saveStateBtn.addEventListener('click', handleSaveState);
+        submitQuizBtn.addEventListener('click', handleSubmit);
 
-        // Toggle mobile search bar
+        // Mobile search/menu logique
         if (mobileSearchBtn && mobileSearchBar) {
             mobileSearchBtn.addEventListener('click', () => {
                 mobileSearchBar.classList.toggle('hidden');
@@ -349,44 +430,29 @@
                 }
             });
         }
-
-        // Fermer la barre de recherche mobile
         if (closeMobileSearch && mobileSearchBar) {
             closeMobileSearch.addEventListener('click', () => {
                 mobileSearchBar.classList.add('hidden');
                 mobileSearchInput.value = '';
-                filterCards('');
             });
         }
-
-        // Toggle mobile menu
         if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
-                // Fermer la recherche si ouverte
                 if (mobileSearchBar && !mobileSearchBar.classList.contains('hidden')) {
                     mobileSearchBar.classList.add('hidden');
                 }
             });
         }
-
-        // Fermer les menus au clic en dehors
         document.addEventListener('click', (e) => {
             if (mobileMenu && !mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
                 mobileMenu.classList.add('hidden');
             }
         });
 
-        // Synchroniser les deux champs de recherche
-        if (searchInput && mobileSearchInput) {
-            searchInput.addEventListener('input', (e) => {
-                mobileSearchInput.value = e.target.value;
-            });
-            mobileSearchInput.addEventListener('input', (e) => {
-                searchInput.value = e.target.value;
-            });
-        }
+        // Init
+        renderQuestion();
+        startTimer();
     </script>
 </body>
 </html>
-
